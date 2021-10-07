@@ -1,0 +1,11 @@
+---
+  pt-BR:
+    activerecord:
+      attributes:
+        project/working_model:
+          remote: 'Remoto'
+          presential: 'Presencial'
+    projects:
+      show:
+        value: 'Máximo pago por hora: '
+        day: 'Último dia útil: '

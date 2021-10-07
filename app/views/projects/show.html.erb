@@ -1,0 +1,7 @@
+<h1><%= @project.title %></h1>
+
+<h3><%= @project.description %></h3>
+<h3><%= @project.requirements %></h3>
+<h3><%= "#{t('.value')} #{number_to_currency(@project.maximum_value_per_hour)}" %></h3>
+<h3><%= " #{t('.day')} #{l(@project.end_date)}" %></h3>
+<h3><%= Project.human_attribute_name("working_model.#{@project.working_model}") %></h3>
