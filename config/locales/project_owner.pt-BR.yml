@@ -1,0 +1,13 @@
+---
+  pt-BR:
+    activerecord:
+      attributes:    
+        project_owner:
+          password: 'Senha'
+    project_owners:
+      sessions:
+        new:
+          title: 'Área do dono do projeto'
+          login: 'Entrar'
+
+    

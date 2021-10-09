@@ -11,8 +11,16 @@
   </head>
 
   <body>
+    <h1>Área do dono do projeto</h1>
     <p><%= notice %></p>
     <p><%= alert %></p>
+
+    <p><%= current_project_owner.email %></p>
+
+    <p><%= link_to 'Cadastrar Projeto', '#' %></p>
+
+    <p><%= link_to 'Sair', '#' %></p>
+    
     <%= yield %>
   </body>
 </html>

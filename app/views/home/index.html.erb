@@ -7,3 +7,7 @@
     <%= link_to project.title, project_path(project) %>
   <% end %>
 </nav>
+
+<nav>
+  <%= link_to 'Área do dono do projeto', new_project_owner_session_path unless project_owner_signed_in? %>
+</nav>
