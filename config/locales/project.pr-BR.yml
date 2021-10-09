@@ -1,11 +1,25 @@
 ---
   pt-BR:
     activerecord:
-      attributes:
-        project/working_model:
-          remote: 'Remoto'
-          presential: 'Presencial'
+      attributes:    
+        project:
+          working_models:
+            remote: 'Remoto'
+            presential: 'Presencial'
+          title: 'Título'
+          description: 'Descrição'
+          requirements: 'Requerimentos'
+          maximum_value_per_hour: 'Valor máximo por hora'
+          end_date: 'Último dia útil'
+          working_model: 'Modelo de trabalho' 
     projects:
       show:
         value: 'Máximo pago por hora: '
         day: 'Último dia útil: '
+    admin:
+      projects:
+        show:
+          value: 'Máximo pago por hora:'
+          day: 'Último dia útil:'
+        new:
+          select: 'Selecione'
