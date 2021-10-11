@@ -5,6 +5,7 @@ class Admin::ProjectsController < ApplicationController
   
   def create
     @project = Project.new(project_params)
+    @project.project_owner = current_project_owner
     if @project.save
       redirect_to [:admin, @project]
     else
@@ -14,6 +15,10 @@ class Admin::ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
+  end
+
+  def my_projects
+    @projects = current_project_owner.projects
   end
 
   private

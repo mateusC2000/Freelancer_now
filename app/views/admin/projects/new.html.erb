@@ -9,7 +9,7 @@
 <%= form_with model: [:admin, @project] do |f| %>
   <div>
     <%= f.label :working_model %>
-    <%= f.select :working_model, Project.working_models.keys.map { |key| [Project.human_enum_name(:working_model, key), key] }, { prompt: t('.select') } %>
+    <%= f.select :working_model, @project.class.working_models.keys.map { |key| [@project.class.human_enum_name(:working_model, key), key] }, { prompt: t('.select') } %>
   </div>
   <div>
     <%= f.label :title %>
@@ -29,7 +29,7 @@
   </div>
   <div>
     <%= f.label :end_date %>
-    <%= f.number_field :end_date %>
+    <%= f.date_field :end_date %>
   </div>
   <div>
     <%= f.submit 'Criar Projeto' %>

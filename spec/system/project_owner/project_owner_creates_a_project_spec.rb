@@ -31,6 +31,5 @@ describe 'Project Owner creates a project' do
     click_on 'Criar Projeto'
 
     expect(page).to have_content('não pode ficar em branco', count: 6)
-    
   end
 end

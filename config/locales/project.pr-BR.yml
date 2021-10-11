@@ -23,3 +23,6 @@
           day: 'Último dia útil:'
         new:
           select: 'Selecione'
+        my_projects:
+          empty: 'Você ainda não cadastrou projetos'
+          first: 'Cadastre seu primeiro projeto agora'

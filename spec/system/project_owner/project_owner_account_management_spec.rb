@@ -19,10 +19,8 @@ describe 'Project Owner account management' do
       expect(page).to have_link('Sair')
       expect(page).not_to have_link('Área do dono do projeto')
       expect(page).to have_link('Cadastrar Projeto')
-
     end
     it 'there can be no blank fields' do
-
       visit new_project_owner_session_path
       within 'form' do
         click_on 'Entrar'

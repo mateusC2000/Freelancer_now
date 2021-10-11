@@ -1,4 +1,5 @@
 class Project < ApplicationRecord
+  belongs_to :project_owner
   enum working_model: { presential: 1, remote: 2 }
 
   validates :title, :description, :requirements,

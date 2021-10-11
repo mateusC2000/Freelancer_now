@@ -1,0 +1,10 @@
+<h1>Meus Projetos</h1>
+
+<% if @projects.empty? %>
+  <h2><%= t('.empty') %></h2>
+  <h3><%= link_to(t('.first'), new_admin_project_path) %></h3>
+<% else %>
+  <% @projects.each do |project| %>
+    <h2><%= link_to project.title, project %></h2>
+  <% end %>
+<% end %>
