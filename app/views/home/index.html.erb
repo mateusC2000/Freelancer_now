@@ -1,6 +1,6 @@
-<h1><%= 'Freelancer Now' %></h1>
+<h1><%= t('.title') %></h1>
 
-<h3><%= 'Sua próxima contratação está aqui!' %></h3>
+<h3><%= t('.slogan') %></h3>
 
 <nav>
   <% @projects.each do |project| %>
@@ -9,5 +9,5 @@
 </nav>
 
 <nav>
-  <%= link_to 'Área do dono do projeto', new_project_owner_session_path unless project_owner_signed_in? %>
+  <%= link_to t('.area_owner'), new_project_owner_session_path unless project_owner_signed_in? %>
 </nav>
