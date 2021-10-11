@@ -27,6 +27,7 @@ describe 'Project owner view own projects' do
 
     expect(page).to have_content('Desenvolvedor de Sites')
     expect(page).not_to have_content('Desenvolvedor de Aplicativos')
+    expect(page).to have_link('Voltar', href: root_path)
   end
 
   it 'and has no properties yet' do

@@ -25,5 +25,6 @@ describe 'Visitor visits home page' do
     expect(page).to have_content('Máximo pago por hora: R$ 10,00')
     expect(page).to have_content('Último dia útil: 15/10/2021')
     expect(page).to have_content('Remoto')
+    expect(page).to have_link('Voltar', href: root_path)
   end
 end
