@@ -31,4 +31,5 @@
       index:
         title: 'Freelancer Now'
         slogan: 'Sua próxima contratação está aqui!'
-        area_owner: 'Área do dono do projeto'
+        area_owner: 'Área do dono de projetos'
+        area_dev: 'Área de desenvolvedores'

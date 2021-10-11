@@ -11,17 +11,13 @@
   </head>
 
   <body>
-    <h1>Área do dono de projetos</h1>
+    <h1>Área de desenvolvedores</h1>
     <p><%= notice %></p>
     <p><%= alert %></p>
 
-    <p><%= current_project_owner.email %></p>
+    <p><%= current_developer.email %></p>
 
-    <p><%= link_to 'Cadastrar Projeto', new_admin_project_path %></p>
-
-    <p><%= link_to 'Meus Projetos', my_projects_admin_projects_path %></p>
-
-    <p><%= link_to 'Sair', destroy_project_owner_session_path, method: :delete %></p>
+    <p><%= link_to 'Sair', destroy_developer_session_path, method: :delete %></p>
     
     <%= yield %>
   </body>

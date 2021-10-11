@@ -5,6 +5,9 @@
 <nav>
   <%= link_to t('.area_owner'), new_project_owner_session_path unless project_owner_signed_in? %>
 </nav>
+<nav>
+  <%= link_to t('.area_dev'), new_developer_session_path %>
+</nav>
 
 <nav>
   <% @projects.each do |project| %>

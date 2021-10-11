@@ -10,6 +10,8 @@ class HomeController < ApplicationController
   def change_layout
     if project_owner_signed_in?
       'project_owner'
+    elsif developer_signed_in?
+      'developer'
     end
   end
 end

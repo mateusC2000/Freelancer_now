@@ -2,11 +2,11 @@
   pt-BR:
     activerecord:
       attributes:    
-        project_owner:
+        developer:
           password: 'Senha'
-    project_owners:
+    developers:
       sessions:
         new:
-          title: 'Área do dono de projetos'
+          title: 'Área do desenvolvedor'
           login: 'Entrar'
     
