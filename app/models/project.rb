@@ -5,4 +5,6 @@ class Project < ApplicationRecord
   validates :title, :description, :requirements,
             :maximum_value_per_hour, :end_date,
             :working_model, presence: true
+
+  validates :maximum_value_per_hour, numericality: { greater_than: 0 }
 end
