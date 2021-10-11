@@ -27,5 +27,17 @@ describe 'Project Owner account management' do
       end
       expect(page).to have_content('Email ou senha inválida.')
     end
+    it 'and logs out' do
+      teu = ProjectOwner.create!(email: 'teu@shelby.com.br', password: '123456789')
+
+      login_as teu, scope: :project_owner
+      visit root_path
+      click_on 'Sair'
+
+      expect(page).to have_content('Saiu com sucesso')
+      expect(page).to_not have_content(teu.email)
+      expect(page).to_not have_link('Sair')
+      expect(page).to_not have_link('Cadastrar Imóvel')
+    end
   end
 end

@@ -3,11 +3,11 @@
 <h3><%= t('.slogan') %></h3>
 
 <nav>
-  <% @projects.each do |project| %>
-    <%= link_to project.title, project_path(project) %>
-  <% end %>
+  <%= link_to t('.area_owner'), new_project_owner_session_path unless project_owner_signed_in? %>
 </nav>
 
 <nav>
-  <%= link_to t('.area_owner'), new_project_owner_session_path unless project_owner_signed_in? %>
+  <% @projects.each do |project| %>
+    <p><%= link_to project.title, project_path(project) %></p>
+  <% end %>
 </nav>

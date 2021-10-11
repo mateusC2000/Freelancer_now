@@ -21,7 +21,7 @@
 
     <p><%= link_to 'Meus Projetos', my_projects_admin_projects_path %></p>
 
-    <p><%= link_to 'Sair', '#' %></p>
+    <p><%= link_to 'Sair', destroy_project_owner_session_path, method: :delete %></p>
     
     <%= yield %>
   </body>
