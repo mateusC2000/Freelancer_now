@@ -9,3 +9,7 @@
           academic_formation: 'Formação Acadêmica'
           performance_zone: 'Zona de Atuação'
           professional_experiences: 'Experiências Profissionais'
+    user:
+      developer_profiles:
+        show:
+          back: 'Voltar'

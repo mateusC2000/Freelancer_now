@@ -14,8 +14,4 @@
         register_project: 'Cadastrar Projeto'
         my_projects: 'Meus Projetos'
         exit: 'Sair'
-    user:
-      profiles:
-        my_profile:
-          back: 'Voltar'
         

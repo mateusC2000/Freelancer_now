@@ -12,6 +12,8 @@ class HomeController < ApplicationController
       'project_owner'
     elsif developer_signed_in?
       'developer'
+    else
+      'application'
     end
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_11_224943) do
+ActiveRecord::Schema.define(version: 2021_10_12_201608) do
 
   create_table "developer_profiles", force: :cascade do |t|
     t.string "full_name"
@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 2021_10_11_224943) do
     t.string "professional_experiences"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "developer_id", null: false
+    t.index ["developer_id"], name: "index_developer_profiles_on_developer_id"
   end
 
   create_table "developers", force: :cascade do |t|
@@ -60,5 +62,6 @@ ActiveRecord::Schema.define(version: 2021_10_11_224943) do
     t.index ["project_owner_id"], name: "index_projects_on_project_owner_id"
   end
 
+  add_foreign_key "developer_profiles", "developers"
   add_foreign_key "projects", "project_owners"
 end

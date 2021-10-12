@@ -11,9 +11,6 @@ Rails.application.routes.draw do
   end
 
   namespace :user do
-    resources :developers
-    resources :profiles do
-      get 'my_profile'
-    end
+    resources :developer_profiles, only: %i[new create show]
   end
 end
