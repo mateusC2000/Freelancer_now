@@ -16,8 +16,8 @@
     <p><%= alert %></p>
 
     <p><%= current_developer.email %></p>
-
-    <p><%= link_to 'Sair', destroy_developer_session_path, method: :delete %></p>
+    <p><%= link_to t('.my_profile'),  my_profile_user_developer_path(current_developer) %></p>
+    <p><%= link_to t('.exit'), destroy_developer_session_path, method: :delete %></p>
     
     <%= yield %>
   </body>

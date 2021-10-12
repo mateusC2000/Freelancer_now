@@ -17,11 +17,11 @@
 
     <p><%= current_project_owner.email %></p>
 
-    <p><%= link_to 'Cadastrar Projeto', new_admin_project_path %></p>
+    <p><%= link_to t('.register_project'), new_admin_project_path %></p>
 
-    <p><%= link_to 'Meus Projetos', my_projects_admin_projects_path %></p>
+    <p><%= link_to t('.my_projects'), my_projects_admin_projects_path %></p>
 
-    <p><%= link_to 'Sair', destroy_project_owner_session_path, method: :delete %></p>
+    <p><%= link_to t('.exit'), destroy_project_owner_session_path, method: :delete %></p>
     
     <%= yield %>
   </body>

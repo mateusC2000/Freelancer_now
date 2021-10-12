@@ -1,0 +1,7 @@
+<h1><%= @developer_profile.full_name %></h1>
+<h3><%= "#{@developer_profile.class.human_attribute_name(:social_name)}: #{@developer_profile.social_name}" %></h3>
+<h3><%= "#{@developer_profile.class.human_attribute_name(:date_birth)}: #{l(@developer_profile.date_birth)}" %></h3>
+<h3><%= "#{@developer_profile.class.human_attribute_name(:academic_formation)}: #{@developer_profile.academic_formation}" %></h3>
+<h3><%= "#{@developer_profile.class.human_attribute_name(:performance_zone)}: #{@developer_profile.performance_zone}" %></h3>
+<h3><%= "#{@developer_profile.class.human_attribute_name(:professional_experiences)}: #{@developer_profile.professional_experiences}" %></h3>
+<%= link_to t('.back'), root_path %>

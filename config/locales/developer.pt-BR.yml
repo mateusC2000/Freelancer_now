@@ -9,4 +9,7 @@
         new:
           title: 'Área do desenvolvedor'
           login: 'Entrar'
-    
+    layouts:
+      developer:
+        my_profile: 'Meu Perfil'
+        exit: 'Sair'

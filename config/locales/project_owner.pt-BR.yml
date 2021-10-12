@@ -9,4 +9,12 @@
         new:
           title: 'Área do dono de projetos'
           login: 'Entrar'
-    
+    layouts:
+      project_owner:
+        register_project: 'Cadastrar Projeto'
+        my_projects: 'Meus Projetos'
+        exit: 'Sair'
+    user:
+      developers:
+        my_profile:
+          back: 'Voltar'

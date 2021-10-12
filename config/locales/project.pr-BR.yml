@@ -21,15 +21,18 @@
         show:
           value: 'Máximo pago por hora:'
           day: 'Último dia útil:'
+          back: 'Voltar'
         new:
           select: 'Selecione'
           submit: 'Criar Projeto'
         my_projects:
           empty: 'Você ainda não cadastrou projetos'
           first: 'Cadastre seu primeiro projeto agora'
+          back: 'Voltar'
     home:
       index:
         title: 'Freelancer Now'
         slogan: 'Sua próxima contratação está aqui!'
         area_owner: 'Área do dono de projetos'
         area_dev: 'Área de desenvolvedores'
+        available_projects: 'Projetos Disponíveis'

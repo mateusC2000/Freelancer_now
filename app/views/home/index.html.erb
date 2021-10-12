@@ -3,14 +3,16 @@
 <h3><%= t('.slogan') %></h3>
 
 <nav>
-  <%= link_to t('.area_owner'), new_project_owner_session_path unless project_owner_signed_in? %>
+  <h5><%= link_to t('.area_owner'), new_project_owner_session_path unless project_owner_signed_in? || developer_signed_in?%></h5>
 </nav>
 <nav>
-  <%= link_to t('.area_dev'), new_developer_session_path %>
+  <h5><%= link_to t('.area_dev'), new_developer_session_path unless developer_signed_in? || project_owner_signed_in? %></h5>
 </nav>
+
+<h3><%= t('.available_projects') %></h3>
 
 <nav>
   <% @projects.each do |project| %>
-    <p><%= link_to project.title, project_path(project) %></p>
+    <h4><%= link_to project.title, project_path(project) %></h4>
   <% end %>
 </nav>

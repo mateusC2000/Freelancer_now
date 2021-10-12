@@ -1,0 +1,11 @@
+---
+  pt-BR:
+    activerecord:
+      attributes:    
+        developer_profile:
+          full_name: 'Nome Completo'
+          social_name: 'Nome Social'
+          date_birth: 'Data de Nascimento'
+          academic_formation: 'Formação Acadêmica'
+          performance_zone: 'Zona de Atuação'
+          professional_experiences: 'Experiências Profissionais'
