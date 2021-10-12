@@ -4,13 +4,16 @@ Rails.application.routes.draw do
   root 'home#index'
   resources :projects, only: %i[show]
 
-
   namespace :admin do
     resources :projects, only: %i[new create show] do
       get 'my_projects', on: :collection
     end
   end
+
   namespace :user do
-    resources :developers, only: %i[new]
+    resources :developers do
+      get 'my_profile', on: :member
+    end
   end
+
 end

@@ -14,6 +14,7 @@ describe 'Project Owner account management' do
       end
 
       expect(page).to have_content('Login efetuado com sucesso!')
+      expect(page).to have_content('Projetos Disponíveis')
       expect(page).to have_content('Área do dono de projetos')
       expect(page).to have_content(teu.email)
       expect(page).to have_link('Sair')
@@ -37,6 +38,7 @@ describe 'Project Owner account management' do
       click_on 'Sair'
 
       expect(page).to have_content('Saiu com sucesso')
+      expect(page).to have_content('Projetos Disponíveis')
       expect(page).to_not have_content(teu.email)
       expect(page).to_not have_link('Sair')
       expect(page).to_not have_link('Cadastrar Imóvel')

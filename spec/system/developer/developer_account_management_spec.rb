@@ -14,6 +14,7 @@ describe 'Developer account management' do
       end
 
       expect(page).to have_content('Login efetuado com sucesso!')
+      expect(page).to have_content('Projetos Disponíveis')
       expect(page).to have_content('Área de desenvolvedores')
       expect(page).to have_content(teu.email)
       expect(page).to have_link('Sair')
