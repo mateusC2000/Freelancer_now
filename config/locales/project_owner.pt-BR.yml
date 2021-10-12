@@ -15,6 +15,7 @@
         my_projects: 'Meus Projetos'
         exit: 'Sair'
     user:
-      developers:
+      profiles:
         my_profile:
           back: 'Voltar'
+        

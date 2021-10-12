@@ -11,9 +11,9 @@ Rails.application.routes.draw do
   end
 
   namespace :user do
-    resources :developers do
-      get 'my_profile', on: :member
+    resources :developers
+    resources :profiles do
+      get 'my_profile'
     end
   end
-
 end
