@@ -13,3 +13,5 @@
       developer_profiles:
         show:
           back: 'Voltar'
+        new:
+          submit: 'Criar Perfil'

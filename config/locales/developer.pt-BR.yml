@@ -12,4 +12,5 @@
     layouts:
       developer:
         my_profile: 'Meu Perfil'
+        complete_profile: 'Completar Perfil'
         exit: 'Sair'

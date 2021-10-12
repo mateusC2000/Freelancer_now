@@ -6,7 +6,7 @@ describe 'Developer creates profile' do
 
     login_as joao, scope: :developer
     visit root_path
-    click_on 'Atualizar Perfil'
+    click_on 'Completar Perfil'
 
     fill_in 'Nome Completo', with: 'João Batista Campos'
     fill_in 'Nome Social', with: 'João'
@@ -14,7 +14,7 @@ describe 'Developer creates profile' do
     fill_in 'Formação Acadêmica', with: 'Pós Graduado em Full Stack.'
     fill_in 'Zona de Atuação', with: 'Sou desenvolvedor nas áreas de back-end e front-end.'
     fill_in 'Experiências Profissionais', with: 'Participação na turma 5 do Treinadev, e estágio em parceiras.'
-    click_on 'Atualizar Perfil'
+    click_on 'Criar Perfil'
 
     expect(page).to have_content('Perfil atualizado com sucesso')
     expect(page).to have_content('João Batista Campos')
@@ -30,7 +30,7 @@ describe 'Developer creates profile' do
 
     login_as joao, scope: :developer
     visit new_user_developer_profile_path
-    click_on 'Atualizar Perfil'
+    click_on 'Criar Perfil'
 
     expect(page).to have_content('não pode ficar em branco', count: 6)
   end

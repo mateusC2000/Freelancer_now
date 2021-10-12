@@ -16,6 +16,7 @@
       show:
         value: 'Máximo pago por hora: '
         day: 'Último dia útil: '
+        back: 'Voltar'
     admin:
       projects:
         show:
