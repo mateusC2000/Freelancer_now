@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_12_201608) do
+ActiveRecord::Schema.define(version: 2021_10_13_190214) do
 
   create_table "developer_profiles", force: :cascade do |t|
     t.string "full_name"
@@ -62,6 +62,20 @@ ActiveRecord::Schema.define(version: 2021_10_12_201608) do
     t.index ["project_owner_id"], name: "index_projects_on_project_owner_id"
   end
 
+  create_table "proposals", force: :cascade do |t|
+    t.integer "status", default: 0
+    t.integer "project_id", null: false
+    t.integer "developer_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "motivation"
+    t.integer "weekly_hours_available"
+    t.index ["developer_id"], name: "index_proposals_on_developer_id"
+    t.index ["project_id"], name: "index_proposals_on_project_id"
+  end
+
   add_foreign_key "developer_profiles", "developers"
   add_foreign_key "projects", "project_owners"
+  add_foreign_key "proposals", "developers"
+  add_foreign_key "proposals", "projects"
 end

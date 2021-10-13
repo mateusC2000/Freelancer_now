@@ -8,6 +8,7 @@ describe 'Developer sees your profile ' do
                              performance_zone: 'Sou desenvolvedor nas áreas de back-end e front-end.',
                              professional_experiences: 'Já trabalhei em empresas como Millennium Falcon Code e TIE Avançado.',
                              developer: darth)
+                             
     login_as darth, scope: :developer
     visit root_path
     click_on 'Meu Perfil'

@@ -17,6 +17,14 @@
         value: 'Máximo pago por hora: '
         day: 'Último dia útil: '
         back: 'Voltar'
+    user:
+      projects:
+        show:
+          apply_vacancy: 'Candidatar-se a vaga: '
+          submit: 'Candidate-se'
+          value: 'Máximo pago por hora:'
+          day: 'Último dia útil:'
+          back: 'Voltar'
     admin:
       projects:
         show:

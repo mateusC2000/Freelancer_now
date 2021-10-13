@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   layout :change_layout
-  
+
   def index
     @projects = Project.all
   end

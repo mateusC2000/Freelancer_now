@@ -1,0 +1,7 @@
+<% if @proposal.pending? %>
+  <h2><%= t('.proposal_pending') %></h2>
+<% end %>
+<h3><%= "#{@proposal.class.human_attribute_name(:created_at)}: #{l(@proposal.created_at, format: :long )}" %></h3>
+<h3><%= "#{@proposal.class.human_attribute_name(:status)}: #{@proposal.class.human_enum_name(:status, @proposal.status)}" %></h3>
+<h3><%= "#{@proposal.class.human_attribute_name(:motivation)}: #{@proposal.motivation}" %></h3>
+<h3><%= "#{@proposal.class.human_attribute_name(:weekly_hours_available)}: #{@proposal.weekly_hours_available}" %></h3>

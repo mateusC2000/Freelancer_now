@@ -1,0 +1,17 @@
+---
+  pt-BR:
+    activerecord:
+      attributes:    
+        proposal:
+          created_at: 'Proposta enviada em'
+          status: 'Situação da Proposta'
+          motivation: 'Motivação'
+          weekly_hours_available: 'Horas Semanais Disponíveis'
+          statuses:
+            pending: 'Pendente'
+    user:
+      proposals:
+        show:
+          proposal_pending: 'Avaliaremos seu perfil e em breve retornaremos uma resposta.'
+        create:
+          success: 'Proposta enviada com sucesso!'

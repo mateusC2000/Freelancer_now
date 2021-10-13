@@ -6,4 +6,16 @@
 <h3><%= " #{t('.day')} #{l(@project.end_date)}" %></h3>
 <h3><%= @project.class.human_enum_name(:working_model, @project.working_model) %></h3>
 <%= link_to t('.back'), root_path %>
-<%= button_to 'Candidate-se',  user_project_proposals_path(@project) %>
+
+<h3><%= t('.apply_vacancy') %></h3>
+<%= form_with model: [:user, @project, @proposal] do |f|  %>
+  <div>
+    <%= f.label :motivation %>
+    <%= f.text_area :motivation %>
+  </div>
+  <div>
+    <%= f.label :weekly_hours_available %>
+    <%= f.text_area :weekly_hours_available %>
+  </div>
+  <%= f.submit t('.submit') %>
+<% end %>
