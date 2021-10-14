@@ -28,4 +28,7 @@ describe 'Developer applies for vacancy' do
     expect(page).to have_content("Proposta enviada em: #{I18n.l(Proposal.last.created_at, format: :long)}")
     expect(page).to have_content('Situação da Proposta: Pendente')
   end
+
+  xit 'e não deve haver campos em branco' do
+  end
 end

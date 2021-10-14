@@ -10,6 +10,9 @@ Rails.application.routes.draw do
     resources :projects, only: %i[new create show] do
       get 'my_projects', on: :collection
     end
+    resources :proposals do
+      post 'accept', on: :member
+    end
   end
 
   namespace :user do

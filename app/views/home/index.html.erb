@@ -11,16 +11,11 @@
 
 <h3><%= t('.available_projects') %></h3>
 
-<% if developer_signed_in? %>
-  <nav>
-    <% @projects.each do |project| %>
-      <h4><%= link_to project.title, user_project_path(project) %></h4>
-    <% end %>
-  </nav>
-<% else %>
-  <nav>
-    <% @projects.each do |project| %>
-      <h4><%= link_to project.title, project_path(project) %></h4>
-    <% end %>
-  </nav>
-<% end %>
+<nav>
+  <% @projects.each do |project| %>
+    <h4><%= link_to project.title, user_project_path(project) if developer_signed_in? %></h4>
+    <h4><%= link_to project.title, admin_project_path(project) if project_owner_signed_in?%></h4>
+    <h4><%= link_to project.title, project_path(project) unless developer_signed_in? || project_owner_signed_in? %></h4>
+  <% end %>
+</nav>
+

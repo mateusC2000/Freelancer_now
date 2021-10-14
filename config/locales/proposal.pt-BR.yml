@@ -9,6 +9,7 @@
           weekly_hours_available: 'Horas Semanais Disponíveis'
           statuses:
             pending: 'Pendente'
+            accepted: 'Aceita'
     user:
       proposals:
         show:

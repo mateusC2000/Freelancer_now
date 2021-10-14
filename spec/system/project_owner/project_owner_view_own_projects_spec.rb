@@ -18,8 +18,8 @@ describe 'Project owner view own projects' do
                       maximum_value_per_hour: 10, end_date: '15/10/2021', working_model: 1, project_owner: teu })
 
     Project.create!({ title: 'Desenvolvedor de Aplicativos', description: 'Desenvolvimento de apps e-commerce e institucionais',
-                       requirements: 'Buscamos pessoas com experiência em e-commerce, JS, Java e C#',
-                       maximum_value_per_hour: 15, end_date: '20/10/2021', working_model: 2, project_owner: kurt })
+                      requirements: 'Buscamos pessoas com experiência em e-commerce, JS, Java e C#',
+                      maximum_value_per_hour: 15, end_date: '20/10/2021', working_model: 2, project_owner: kurt })
 
     login_as teu, scope: :project_owner
     visit root_path

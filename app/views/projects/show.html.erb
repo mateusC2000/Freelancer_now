@@ -6,4 +6,4 @@
 <h3><%= " #{t('.day')} #{l(@project.end_date)}" %></h3>
 <h3><%= @project.class.human_enum_name(:working_model, @project.working_model) %></h3>
 <%= link_to t('.back'), root_path %>
-<%= button_to 'Candidate-se',  user_project_proposals_path(@project) %>
+<%= link_to 'Candidate-se',  new_developer_session_path %>
