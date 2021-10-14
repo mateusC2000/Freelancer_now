@@ -15,6 +15,6 @@
     <h4><%= "#{proposal.class.human_attribute_name(:weekly_hours_available)}: #{proposal.weekly_hours_available}" %></h4>
     <h3><%= "#{proposal.class.human_attribute_name(:status)}: #{proposal.class.human_enum_name(:status, proposal.status)}" %></h3>
     <%= button_to 'Aceitar Proposta', accept_admin_proposal_path(proposal) %>
-    <%= link_to 'Recusar Proposta', '#' %>
+    <%= button_to 'Recusar Proposta', recused_admin_proposal_path(proposal) %>
   <% end %>
 <% end %>

@@ -10,6 +10,7 @@
           statuses:
             pending: 'Pendente'
             accepted: 'Aceita'
+            recused: 'Recusada'
     user:
       proposals:
         show:
