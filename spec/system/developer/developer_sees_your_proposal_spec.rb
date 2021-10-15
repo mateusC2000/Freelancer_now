@@ -97,4 +97,31 @@ describe 'Developer sees your proposal' do
     expect(page).to have_content("Proposta enviada em: #{I18n.l(Proposal.last.updated_at, format: :long)}")
     expect(page).to have_content('Situação da Proposta: Recusada')
   end
+
+  it 'must be logged in to view own proposals' do
+    john = ProjectOwner.create!(email: 'john@mmurphy.com.br', password: '1234567')
+    jproject = Project.create!({ title: 'Front on Fire', description: 'Aprimoramento de site de imóveis com front-end',
+                                 requirements: 'Buscamos devs com experiência na área de front-end',
+                                 maximum_value_per_hour: 25, end_date: '22/10/2021', working_model: 1, project_owner: john })
+
+    visit user_project_proposals_path(jproject)
+
+    expect(current_path).to eq(new_developer_session_path)
+    expect(page).to have_content('Para continuar, efetue login ou registre-se')
+  end
+
+  it 'must be logged in to view details of proposal' do
+    john = ProjectOwner.create!(email: 'john@mmurphy.com.br', password: '1234567')
+    jproject = Project.create!({ title: 'Front on Fire', description: 'Aprimoramento de site de imóveis com front-end',
+                                 requirements: 'Buscamos devs com experiência na área de front-end',
+                                 maximum_value_per_hour: 25, end_date: '22/10/2021', working_model: 1, project_owner: john })
+    bellamy = Developer.create!(email: 'bellamy@blake', password: '123456')
+    proposal = Proposal.create!({ motivation: 'Por pura diversão', weekly_hours_available: 20,
+                                  project: jproject, developer: bellamy, status: :recused })
+
+    visit user_project_proposal_path(jproject, proposal)
+
+    expect(current_path).to eq(new_developer_session_path)
+    expect(page).to have_content('Para continuar, efetue login ou registre-se')
+  end
 end

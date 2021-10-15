@@ -40,4 +40,16 @@ describe 'Project owner view own projects' do
     expect(page).to have_content 'Você ainda não cadastrou projetos'
     expect(page).to have_link('Cadastre seu primeiro projeto agora', href: new_admin_project_path)
   end
+
+  it 'must be logged in to view a project' do
+    teu = ProjectOwner.create!(email: 'teu@shelby.com.br', password: '123456789')
+    project = Project.create!({ title: 'Desenvolvedor de Sites', description: 'Desenvolvimento de sites e-commerce e institucionais',
+                                requirements: 'Buscamos pessoas com experiência em e-commerce, Google ADS CMS SEO',
+                                maximum_value_per_hour: 10, end_date: '15/10/2021', working_model: 1, project_owner: teu })
+
+    visit admin_project_path(project)
+
+    expect(current_path).to eq(new_project_owner_session_path)
+    expect(page).to have_content('Para continuar, efetue login ou registre-se')
+  end
 end

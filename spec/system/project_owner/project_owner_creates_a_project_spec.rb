@@ -33,4 +33,12 @@ describe 'Project Owner creates a project' do
 
     expect(page).to have_content('não pode ficar em branco', count: 6)
   end
+
+  it 'must be logged in to creates a project' do
+
+    visit new_admin_project_path
+
+    expect(current_path).to eq(new_project_owner_session_path)
+    expect(page).to have_content('Para continuar, efetue login ou registre-se')
+  end
 end

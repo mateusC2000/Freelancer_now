@@ -66,4 +66,18 @@ describe 'Developer sees your profile ' do
     expect(page).to have_link('Completar Perfil')
     expect(page).not_to have_link('Meu Perfil')
   end
+
+  it 'must be logged in to view own profile' do
+    darth = Developer.create!(email: 'darth@vader.com.br', password: '123456789')
+    profile = DeveloperProfile.create!(full_name: 'Anakin Skywalker', social_name: 'Anakin', date_birth: '09/10/1985',
+                                       academic_formation: 'Graduado em Ciências da Tecnologia e Ciências de Dados.',
+                                       performance_zone: 'Sou desenvolvedor nas áreas de back-end e front-end.',
+                                       professional_experiences: 'Já trabalhei em empresas como Millennium Falcon Code e TIE Avançado.',
+                                       developer: darth)
+
+    visit user_developer_profile_path(profile)
+
+    expect(current_path).to eq(new_developer_session_path)
+    expect(page).to have_content('Para continuar, efetue login ou registre-se')
+  end
 end

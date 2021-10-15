@@ -128,4 +128,12 @@ describe 'Project owner view proposals' do
     expect(page).to have_content('Situação da Proposta: Recusada')
     expect(page).to have_link('Voltar', href: my_projects_admin_projects_path)
   end
+
+  it 'must be logged in to view a proposal' do
+
+    visit my_projects_admin_projects_path
+
+    expect(current_path).to eq(new_project_owner_session_path)
+    expect(page).to have_content('Para continuar, efetue login ou registre-se')
+  end
 end

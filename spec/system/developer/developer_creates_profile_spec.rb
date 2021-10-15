@@ -34,4 +34,12 @@ describe 'Developer creates profile' do
 
     expect(page).to have_content('não pode ficar em branco', count: 6)
   end
+
+  it 'must be logged in to creates a profile' do
+
+    visit new_user_developer_profile_path
+
+    expect(current_path).to eq(new_developer_session_path)
+    expect(page).to have_content('Para continuar, efetue login ou registre-se')
+  end
 end
