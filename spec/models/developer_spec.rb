@@ -1,5 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe Developer, type: :model do
-
+describe Developer do
+  it { should have_many(:proposals) }
+  it { should have_many(:projects).through(:proposals) }
+  it { should have_one(:developer_profile) }
 end

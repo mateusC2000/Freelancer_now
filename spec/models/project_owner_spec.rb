@@ -1,4 +1,5 @@
 require 'rails_helper'
 
-RSpec.describe ProjectOwner, type: :model do
+describe ProjectOwner do
+  it { should have_many(:projects) }
 end
