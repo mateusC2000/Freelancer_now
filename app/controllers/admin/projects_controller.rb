@@ -1,5 +1,5 @@
 class Admin::ProjectsController < ApplicationController
-  before_action :authenticate_project_owner!, only: %i[show my_projects new]
+  before_action :authenticate_project_owner!
   
   def new
     @project = Project.new
