@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   root 'home#index'
 
   resources :projects, only: %i[show]
- 
 
   namespace :admin do
     resources :projects, only: %i[new create show] do
@@ -19,7 +18,7 @@ Rails.application.routes.draw do
   namespace :user do
     resources :developer_profiles, only: %i[new create show]
     resources :projects, only: %i[show] do
-      resources :proposals, only: %i[create show]
+      resources :proposals, only: %i[index create show]
     end
   end
 end

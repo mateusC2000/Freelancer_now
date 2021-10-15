@@ -1,5 +1,9 @@
 <% if @proposal.pending? %>
   <h2><%= t('.proposal_pending') %></h2>
+<% elsif @proposal.accepted? %>
+  <h2><%=  t('.proposal_accepted') %></h2>
+<% else %>
+  <h2><%= t('.proposal_recused') %></h2>
 <% end %>
 <h3><%= "#{@proposal.class.human_attribute_name(:created_at)}: #{l(@proposal.created_at, format: :long )}" %></h3>
 <h3><%= "#{@proposal.class.human_attribute_name(:status)}: #{@proposal.class.human_enum_name(:status, @proposal.status)}" %></h3>

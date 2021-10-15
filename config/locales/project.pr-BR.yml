@@ -1,5 +1,7 @@
 ---
   pt-BR:
+    errors: 
+      invalid_date: 'não pode ser em datas passadas'
     activerecord:
       attributes:    
         project:

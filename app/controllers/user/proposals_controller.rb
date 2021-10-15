@@ -1,5 +1,9 @@
 class User::ProposalsController < ApplicationController
-  before_action :set_project, only: %i[create show]
+  before_action :set_project, only: %i[create show index]
+
+  def index
+    @proposals = current_developer.proposals
+  end
 
   def create
     @proposal = current_developer.proposals.new(proposal_params)
