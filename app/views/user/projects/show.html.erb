@@ -7,6 +7,13 @@
 <h3><%= @project.class.human_enum_name(:working_model, @project.working_model) %></h3>
 <%= link_to t('.back'), root_path %>
 
+
+<% if @proposal.errors.any? %>
+  <% @proposal.errors.full_messages.each do |error| %>
+    <li><%= error %></li>
+  <% end %>
+<% end %>
+
 <h3><%= t('.apply_vacancy') %></h3>
 <%= form_with model: [:user, @project, @proposal] do |f|  %>
   <div>

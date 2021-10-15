@@ -8,8 +8,11 @@ class User::ProposalsController < ApplicationController
   def create
     @proposal = current_developer.proposals.new(proposal_params)
     @proposal.project = @project
-    @proposal.save
-    redirect_to [:user, @project, @proposal], notice: t('.success')
+    if @proposal.save
+      redirect_to [:user, @project, @proposal], notice: t('.success')
+    else
+      render 'user/projects/show'
+    end
   end
 
   def show
