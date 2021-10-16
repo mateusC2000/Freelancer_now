@@ -6,4 +6,6 @@ class Proposal < ApplicationRecord
 
   validates :motivation, :weekly_hours_available, presence: true
   validates :weekly_hours_available, numericality: { greater_than: 0 }
+
+  validates :project_id, uniqueness: { scope: :developer_id }
 end

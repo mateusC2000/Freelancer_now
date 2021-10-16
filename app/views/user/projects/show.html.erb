@@ -14,15 +14,20 @@
   <% end %>
 <% end %>
 
-<h3><%= t('.apply_vacancy') %></h3>
-<%= form_with model: [:user, @project, @proposal] do |f|  %>
-  <div>
-    <%= f.label :motivation %>
-    <%= f.text_area :motivation %>
-  </div>
-  <div>
-    <%= f.label :weekly_hours_available %>
-    <%= f.number_field :weekly_hours_available %>
-  </div>
-  <%= f.submit t('.submit') %>
+<% if current_developer.projects.include?(@project) %>
+  <p><%= 'Você já enviou proposta a esse projeto.' %></p>
+  <p>Para ver detalhes da proposta clique em: <%= link_to 'Minhas Propostas', user_project_proposals_path(@project) %></p>
+<% else %>
+  <h3><%= t('.apply_vacancy') %></h3>
+  <%= form_with model: [:user, @project, @proposal] do |f|  %>
+    <div>
+      <%= f.label :motivation %>
+      <%= f.text_area :motivation %>
+    </div>
+    <div>
+      <%= f.label :weekly_hours_available %>
+      <%= f.number_field :weekly_hours_available %>
+    </div>
+    <%= f.submit t('.submit') %>
+  <% end %>
 <% end %>
