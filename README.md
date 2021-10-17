@@ -1,24 +1,86 @@
-# README
+# FreelancerNow
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+##  Sobre o Projeto
 
-Things you may want to cover:
+O projeto consiste em criar uma plataforma Web que reúna em torno de projetos a serem
+executados pessoas interessadas em contratar um freelancer com profissionais de tecnologia.
+Os profissionais podem criar uma conta na plataforma para buscar projetos e enviar uma
+proposta. Os donos de projetos cadastram seus projetos e avaliam as propostas,
+de forma que eles podem aceitar tal proposta ou não.
 
-* Ruby version
+## Pré-requisitos:
 
-* System dependencies
+ * Ruby 3.0.1
+ * Rails 6.1.4.1
 
-* Configuration
+### Gems Complementares
 
-* Database creation
+#### Testes
 
-* Database initialization
+  * RSpec  https://rubygems.org/gems/rspec/versions/3.10.0
+  * Capybara  https://rubygems.org/gems/capybara/versions/3.35.3
+  * Shoulda Matchers  https://github.com/thoughtbot/shoulda-matchers
+                                          
+#### Autorização/Autenticação
 
-* How to run the test suite
+  * Devise  https://github.com/heartcombo/devise#getting-started
 
-* Services (job queues, cache servers, search engines, etc.)
+## Funcões
 
-* Deployment instructions
+### Donos de Projetos
 
-* ...
+  * Cadastram projetos na aplicação.
+  * Gerencia propostas dos desenvolvedores interessados no projeto.
+
+### Desenvolvedores
+
+  * Cadastram propostas aos projetos na plataforma.
+
+## Para execução do projeto: 
+
+  * Clone o projeto em sua máquina
+
+```
+  git clone https://github.com/mateusC2000/Freelancer_now.git
+```
+### Instale as dependências necessárias:
+
+  * Rode o comando: 
+```
+cd freelancer_now
+```
+  * Após, rode  o comando: 
+```
+bin/setup
+```
+
+## Configuração do Banco de Dados
+
+  * Rode o comando abaixo e preencha o banco de dados com os dados pré-existentes da aplicação.
+```
+rails db:seed
+```
+
+  * Rode o comando abaixo para executar a aplicação.
+```
+rails server
+```
+
+  * Vá ao seu navegador e acesse:
+```
+http://localhost:3000
+```
+## Observações:
+
+  * Dentre os dados do banco de dados há 2 logins já existentes para a área de dono de projetos com projetos já existentes, são eles:
+```
+email: kurt@weler.com.br, senha: 123456789
+```
+```
+email: jane@doe.com.br, senha: 123456789
+```
+
+  * E há um desenvolvedor com proposta feita a um dos projetos existentes:
+```
+email: darth@vader.com.br, senha: 123456789
+```
