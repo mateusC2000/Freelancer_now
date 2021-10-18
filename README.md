@@ -2,11 +2,9 @@
 
 ##  Sobre o Projeto
 
-O projeto consiste em criar uma plataforma Web que reúna em torno de projetos a serem
-executados pessoas interessadas em contratar um freelancer com profissionais de tecnologia.
+O projeto consiste em uma plataforma web baseada em um negócio com foco de que criadores de projetos e profissionais da área de tecnologia possam se encontrarem para fins profissionais.
 Os profissionais podem criar uma conta na plataforma para buscar projetos e enviar uma
-proposta. Os donos de projetos cadastram seus projetos e avaliam as propostas,
-de forma que eles podem aceitar tal proposta ou não.
+proposta referente ao mesmo. Os donos de projetos cadastram seus projetos e avaliam as propostas e perfis dos profissionais, de forma que eles podem aceitar tal proposta ou não.
 
 ## Pré-requisitos:
 
@@ -30,7 +28,7 @@ de forma que eles podem aceitar tal proposta ou não.
 ### Donos de Projetos
 
   * Cadastram projetos na aplicação.
-  * Gerencia propostas dos desenvolvedores interessados no projeto.
+  * Gerenciam propostas dos desenvolvedores interessados no projeto.
 
 ### Desenvolvedores
 
@@ -47,7 +45,7 @@ de forma que eles podem aceitar tal proposta ou não.
 
   * Rode o comando: 
 ```
-cd freelancer_now
+cd Freelancer_now
 ```
   * Após, rode  o comando: 
 ```
