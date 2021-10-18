@@ -6,7 +6,7 @@ describe 'Developer applies for vacancy' do
     kurt = ProjectOwner.create!(email: 'kurt@weler.com.br', password: '123456789')
     Project.create!( title: 'Desenvolvedor de Sites', description: 'Desenvolvimento de sites e-commerce e institucionais',
                      requirements: 'Buscamos pessoas com experiência em e-commerce, Google ADS CMS SEO',
-                     maximum_value_per_hour: 150, end_date: '15/10/2021', working_model: 1, project_owner: kurt )
+                     maximum_value_per_hour: 150, end_date: 5.days.from_now, working_model: 1, project_owner: kurt )
     darth = Developer.create!(email: 'darth@vader.com.br', password: '123456789')
     DeveloperProfile.create!(full_name: 'Anakin Skywalker', social_name: 'Anakin', date_birth: '09/10/1985',
                              academic_formation: 'Graduado em Ciências da Tecnologia e Ciências de Dados.',
@@ -33,7 +33,7 @@ describe 'Developer applies for vacancy' do
     kurt = ProjectOwner.create!(email: 'kurt@weler.com.br', password: '123456789')
     Project.create!( title: 'Desenvolvedor de Sites', description: 'Desenvolvimento de sites e-commerce e institucionais',
                      requirements: 'Buscamos pessoas com experiência em e-commerce, Google ADS CMS SEO',
-                     maximum_value_per_hour: 150, end_date: '15/10/2021', working_model: 1, project_owner: kurt )
+                     maximum_value_per_hour: 150, end_date: 5.days.from_now, working_model: 1, project_owner: kurt )
     darth = Developer.create!(email: 'darth@vader.com.br', password: '123456789')
     DeveloperProfile.create!(full_name: 'Anakin Skywalker', social_name: 'Anakin', date_birth: '09/10/1985',
                              academic_formation: 'Graduado em Ciências da Tecnologia e Ciências de Dados.',

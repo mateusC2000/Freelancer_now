@@ -1,6 +1,6 @@
-class Admin::ProposalsController < ApplicationController
-  before_action :authenticate_project_owner!
+class Admin::ProposalsController < ProjectOwnersController
   before_action :set_proposal
+
   def accept
     @proposal.accepted!
     redirect_to [:admin, @proposal.project], notice: 'Proposta aceita com sucesso!'

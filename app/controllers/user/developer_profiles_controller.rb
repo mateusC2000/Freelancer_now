@@ -1,5 +1,4 @@
-class User::DeveloperProfilesController < ApplicationController
-  before_action :authenticate_developer!
+class User::DeveloperProfilesController < DevelopersController
 
   def show
     @developer_profile = DeveloperProfile.find(params[:id])

@@ -1,5 +1,4 @@
-class Admin::ProjectsController < ApplicationController
-  before_action :authenticate_project_owner!
+class Admin::ProjectsController < ProjectOwnersController
   
   def new
     @project = Project.new

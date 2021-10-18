@@ -1,5 +1,4 @@
-class User::ProposalsController < ApplicationController
-  before_action :authenticate_developer!
+class User::ProposalsController < DevelopersController
   before_action :set_project, only: %i[create show index]
 
   def index

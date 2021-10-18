@@ -5,12 +5,12 @@ describe 'Developer sees your proposal' do
     kurt = ProjectOwner.create!(email: 'kurt@weler.com.br', password: '123456789')
     kproject = Project.create!({ title: 'Desenvolvedor de Sites', description: 'Desenvolvimento de sites e-commerce e institucionais',
                                  requirements: 'Buscamos pessoas com experiência em e-commerce, Google ADS CMS SEO',
-                                 maximum_value_per_hour: 10, end_date: '15/10/2021', working_model: 1, project_owner: kurt })
+                                 maximum_value_per_hour: 10, end_date: 5.days.from_now, working_model: 1, project_owner: kurt })
 
     john = ProjectOwner.create!(email: 'john@mmurphy.com.br', password: '1234567')
     jproject = Project.create!({ title: 'Front on Fire', description: 'Aprimoramento de site de imóveis com front-end',
                                  requirements: 'Buscamos devs com experiência na área de front-end',
-                                 maximum_value_per_hour: 25, end_date: '22/10/2021', working_model: 1, project_owner: john })
+                                 maximum_value_per_hour: 25, end_date: 5.days.from_now, working_model: 1, project_owner: john })
 
     bellamy = Developer.create!(email: 'bellamy@blake', password: '123456')
     DeveloperProfile.create!(full_name: 'Bellamy Blake', social_name: 'Bellamy', date_birth: '09/10/1985',
@@ -36,12 +36,12 @@ describe 'Developer sees your proposal' do
     kurt = ProjectOwner.create!(email: 'kurt@weler.com.br', password: '123456789')
     kproject = Project.create!({ title: 'Desenvolvedor de Sites', description: 'Desenvolvimento de sites e-commerce e institucionais',
                                  requirements: 'Buscamos pessoas com experiência em e-commerce, Google ADS CMS SEO',
-                                 maximum_value_per_hour: 10, end_date: '15/10/2021', working_model: 1, project_owner: kurt })
+                                 maximum_value_per_hour: 10, end_date: 5.days.from_now, working_model: 1, project_owner: kurt })
 
     john = ProjectOwner.create!(email: 'john@mmurphy.com.br', password: '1234567')
     jproject = Project.create!({ title: 'Front on Fire', description: 'Aprimoramento de site de imóveis com front-end',
                                  requirements: 'Buscamos devs com experiência na área de front-end',
-                                 maximum_value_per_hour: 25, end_date: '22/10/2021', working_model: 1, project_owner: john })
+                                 maximum_value_per_hour: 25, end_date: 5.days.from_now, working_model: 1, project_owner: john })
 
     bellamy = Developer.create!(email: 'bellamy@blake', password: '123456')
     DeveloperProfile.create!(full_name: 'Bellamy Blake', social_name: 'Bellamy', date_birth: '09/10/1985',
@@ -69,12 +69,12 @@ describe 'Developer sees your proposal' do
     kurt = ProjectOwner.create!(email: 'kurt@weler.com.br', password: '123456789')
     kproject = Project.create!({ title: 'Desenvolvedor de Sites', description: 'Desenvolvimento de sites e-commerce e institucionais',
                                  requirements: 'Buscamos pessoas com experiência em e-commerce, Google ADS CMS SEO',
-                                 maximum_value_per_hour: 10, end_date: '15/10/2021', working_model: 1, project_owner: kurt })
+                                 maximum_value_per_hour: 10, end_date: 5.days.from_now, working_model: 1, project_owner: kurt })
 
     john = ProjectOwner.create!(email: 'john@mmurphy.com.br', password: '1234567')
     jproject = Project.create!({ title: 'Front on Fire', description: 'Aprimoramento de site de imóveis com front-end',
                                  requirements: 'Buscamos devs com experiência na área de front-end',
-                                 maximum_value_per_hour: 25, end_date: '22/10/2021', working_model: 1, project_owner: john })
+                                 maximum_value_per_hour: 25, end_date: 5.days.from_now, working_model: 1, project_owner: john })
 
     bellamy = Developer.create!(email: 'bellamy@blake', password: '123456')
     DeveloperProfile.create!(full_name: 'Bellamy Blake', social_name: 'Bellamy', date_birth: '09/10/1985',
@@ -102,7 +102,7 @@ describe 'Developer sees your proposal' do
     john = ProjectOwner.create!(email: 'john@mmurphy.com.br', password: '1234567')
     jproject = Project.create!({ title: 'Front on Fire', description: 'Aprimoramento de site de imóveis com front-end',
                                  requirements: 'Buscamos devs com experiência na área de front-end',
-                                 maximum_value_per_hour: 25, end_date: '22/10/2021', working_model: 1, project_owner: john })
+                                 maximum_value_per_hour: 25, end_date: 5.days.from_now, working_model: 1, project_owner: john })
 
     visit user_project_proposals_path(jproject)
 
@@ -114,7 +114,7 @@ describe 'Developer sees your proposal' do
     john = ProjectOwner.create!(email: 'john@mmurphy.com.br', password: '1234567')
     jproject = Project.create!({ title: 'Front on Fire', description: 'Aprimoramento de site de imóveis com front-end',
                                  requirements: 'Buscamos devs com experiência na área de front-end',
-                                 maximum_value_per_hour: 25, end_date: '22/10/2021', working_model: 1, project_owner: john })
+                                 maximum_value_per_hour: 25, end_date: 5.days.from_now, working_model: 1, project_owner: john })
     bellamy = Developer.create!(email: 'bellamy@blake', password: '123456')
     proposal = Proposal.create!({ motivation: 'Por pura diversão', weekly_hours_available: 20,
                                   project: jproject, developer: bellamy, status: :recused })
