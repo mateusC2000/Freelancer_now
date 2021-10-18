@@ -1,9 +1,15 @@
-<h1><%= @project.title %></h1>
+<div class="container">
 
-<h3><%= @project.description %></h3>
-<h3><%= @project.requirements %></h3>
-<h3><%= "#{t('.value')} #{number_to_currency(@project.maximum_value_per_hour)}" %></h3>
-<h3><%= " #{t('.day')} #{l(@project.end_date)}" %></h3>
-<h3><%= @project.class.human_enum_name(:working_model, @project.working_model) %></h3>
-<%= link_to t('.back'), root_path %>
-<%= link_to 'Candidate-se',  new_developer_session_path %>
+  <div class="navbar navbar-dark bg-primary">
+    <h1><%= @project.title %></h1>
+  </div>
+
+  <h5><%= @project.description %></h5>
+  <h5><%= @project.requirements %></h5>
+  <h5><%= "#{t('.value')} #{number_to_currency(@project.maximum_value_per_hour)}" %></h5>
+  <h5><%= " #{t('.day')} #{l(@project.end_date)}" %></h5>
+  <h5><%= @project.class.human_enum_name(:working_model, @project.working_model) %></h5>
+
+  <%= link_to 'Candidate-se',  new_developer_session_path, class: 'btn btn-primary btn-sm' %>
+  <%= link_to t('.back'), root_path, class: 'btn btn-secondary btn-sm' %>
+</div>

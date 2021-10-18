@@ -1,20 +1,24 @@
-<h1><%= @project.title %></h1>
+<div class="container">
+  <div class="navbar navbar-dark bg-primary">
+    <h1><%= @project.title %></h1>
+  </div>
 
-<h3><%= @project.description %></h3>
-<h3><%= @project.requirements %></h3>
-<h3><%= "#{t('.value')} #{number_to_currency(@project.maximum_value_per_hour)}" %></h3>
-<h3><%= " #{t('.day')} #{l(@project.end_date)}" %></h3>
-<h3><%= @project.class.human_enum_name(:working_model, @project.working_model) %></h3>
-<%= link_to t('.back'), my_projects_admin_projects_path %>
+  <h3><%= @project.description %></h3>
+  <h3><%= @project.requirements %></h3>
+  <h3><%= "#{t('.value')} #{number_to_currency(@project.maximum_value_per_hour)}" %></h3>
+  <h3><%= " #{t('.day')} #{l(@project.end_date)}" %></h3>
+  <h3><%= @project.class.human_enum_name(:working_model, @project.working_model) %></h3>
+  <%= link_to t('.back'), my_projects_admin_projects_path, class: 'btn btn-secondary btn-sm' %>
 
-<% if project_owner_signed_in? && @project.project_owner == current_project_owner %>
-  <h3>Propostas</h3>
-  <% @project.proposals.each do |proposal| %>
-    <h4>Proposta de <%= link_to proposal.developer.developer_profile.full_name, '#' %></h4>
-    <h4><%= "#{proposal.class.human_attribute_name(:motivation)}: #{proposal.motivation}" %></h4>
-    <h4><%= "#{proposal.class.human_attribute_name(:weekly_hours_available)}: #{proposal.weekly_hours_available}" %></h4>
-    <h3><%= "#{proposal.class.human_attribute_name(:status)}: #{proposal.class.human_enum_name(:status, proposal.status)}" %></h3>
-    <%= button_to 'Aceitar Proposta', accept_admin_proposal_path(proposal) %>
-    <%= button_to 'Recusar Proposta', recused_admin_proposal_path(proposal) %>
+  <% if project_owner_signed_in? && @project.project_owner == current_project_owner %>
+    <% @project.proposals.each do |proposal| %>
+      <h3>Propostas</h3>
+      <h4>Proposta de <%= link_to proposal.developer.developer_profile.full_name, '#' %></h4>
+      <h4><%= "#{proposal.class.human_attribute_name(:motivation)}: #{proposal.motivation}" %></h4>
+      <h4><%= "#{proposal.class.human_attribute_name(:weekly_hours_available)}: #{proposal.weekly_hours_available}" %></h4>
+      <h3><%= "#{proposal.class.human_attribute_name(:status)}: #{proposal.class.human_enum_name(:status, proposal.status)}" %></h3>
+      <%= button_to 'Aceitar Proposta', accept_admin_proposal_path(proposal) %>
+      <%= button_to 'Recusar Proposta', recused_admin_proposal_path(proposal) %>
+    <% end %>
   <% end %>
-<% end %>
+</div>

@@ -11,8 +11,40 @@
   </head>
 
   <body>
-    <p><%= notice %></p>
-    <p><%= alert %></p>
-    <%= yield %>
+    <% if notice %>
+        <div class="alert alert-success" role="alert">
+          <%= notice %>
+        </div>
+    <% end %>
+    <% if alert %>
+      <div class="alert alert-danger" role="alert">
+        <%= alert %>
+      </div>
+    <% end %>
+
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href=<%= root_path %>>FreelancerNow</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <% unless developer_signed_in? || project_owner_signed_in? %>
+                <li class="nav-item">
+                  <%= link_to 'Área do dono de projetos', new_project_owner_session_path, class: 'nav-link' %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to 'Área de desenvolvedores', new_developer_session_path, class: 'nav-link' %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    
+      <%= yield %>
+    </div>
   </body>
 </html>

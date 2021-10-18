@@ -1,33 +1,35 @@
-<h1><%= @project.title %></h1>
+<div class="container">
+  <h1><%= @project.title %></h1>
 
-<h3><%= @project.description %></h3>
-<h3><%= @project.requirements %></h3>
-<h3><%= "#{t('.value')} #{number_to_currency(@project.maximum_value_per_hour)}" %></h3>
-<h3><%= " #{t('.day')} #{l(@project.end_date)}" %></h3>
-<h3><%= @project.class.human_enum_name(:working_model, @project.working_model) %></h3>
-<%= link_to t('.back'), root_path %>
+  <h3><%= @project.description %></h3>
+  <h3><%= @project.requirements %></h3>
+  <h3><%= "#{t('.value')} #{number_to_currency(@project.maximum_value_per_hour)}" %></h3>
+  <h3><%= " #{t('.day')} #{l(@project.end_date)}" %></h3>
+  <h3><%= @project.class.human_enum_name(:working_model, @project.working_model) %></h3>
+  <%= link_to t('.back'), root_path, class: 'btn btn-secondary btn-sm' %>
 
 
-<% if @proposal.errors.any? %>
-  <% @proposal.errors.full_messages.each do |error| %>
-    <li><%= error %></li>
+  <% if @proposal.errors.any? %>
+    <% @proposal.errors.full_messages.each do |error| %>
+      <li><%= error %></li>
+    <% end %>
   <% end %>
-<% end %>
 
-<% if current_developer.projects.include?(@project) %>
-  <p><%= 'Você já enviou proposta a esse projeto.' %></p>
-  <p>Para ver detalhes da proposta clique em: <%= link_to 'Minhas Propostas', user_project_proposals_path(@project) %></p>
-<% else %>
-  <h3><%= t('.apply_vacancy') %></h3>
-  <%= form_with model: [:user, @project, @proposal] do |f|  %>
-    <div>
-      <%= f.label :motivation %>
-      <%= f.text_area :motivation %>
-    </div>
-    <div>
-      <%= f.label :weekly_hours_available %>
-      <%= f.number_field :weekly_hours_available %>
-    </div>
-    <%= f.submit t('.submit') %>
+  <% if current_developer.projects.include?(@project) %>
+    <p><%= 'Você já enviou proposta a esse projeto.' %></p>
+    <p>Para ver detalhes da proposta clique em: <%= link_to 'Minhas Propostas', user_project_proposals_path(@project) %></p>
+  <% else %>
+    <h3><%= t('.apply_vacancy') %></h3>
+    <%= form_with model: [:user, @project, @proposal] do |f|  %>
+      <div class="form-text">
+        <%= f.label :motivation %>
+        <%= f.text_area :motivation %>
+      </div>
+      <div>
+        <%= f.label :weekly_hours_available %>
+        <%= f.number_field :weekly_hours_available %>
+      </div>
+      <%= f.submit t('.submit'), class: 'btn btn-primary btn-sm' %>
+    <% end %>
   <% end %>
-<% end %>
+</div>

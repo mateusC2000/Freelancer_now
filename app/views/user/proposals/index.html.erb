@@ -1,6 +1,6 @@
-<h2><%= t('.my_proposals') %></h2>
+<h3><%= t('.my_proposals') %></h3>
 
 <% @proposals.each do |proposal| %>
-  <h3><%= link_to proposal.project.title, user_project_proposal_path(proposal.project, proposal) %></h3>
-  <h3><%= "#{t('.status')}: #{proposal.class.human_enum_name(:status, proposal.status)}" %></h3> 
+  <h5><%= link_to proposal.project.title, user_project_proposal_path(proposal.project, proposal) %></h5>
+  <h5><%= "#{t('.status')}: #{proposal.class.human_enum_name(:status, proposal.status)}" %></h5> 
 <% end %>

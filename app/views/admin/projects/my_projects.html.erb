@@ -1,11 +1,15 @@
-<h1>Meus Projetos</h1>
+<nav class="navbar navbar-light bg-light">
+  <div class="container-fluid">
+    <span class="navbar-brand mb-0 h1">Meus Projetos</span>
+  </div>
+</nav>
 
 <% if @projects.empty? %>
   <h2><%= t('.empty') %></h2>
   <h3><%= link_to(t('.first'), new_admin_project_path) %></h3>
 <% else %>
   <% @projects.each do |project| %>
-    <p><%= link_to project.title, admin_project_path(project) %></p>
+    <p><%= link_to project.title, admin_project_path(project), class: 'btn btn-outline-dark' %></p>
   <% end %>
-  <%= link_to t('.back'), root_path %>
+  <%= link_to t('.back'), root_path, class: 'btn btn-secondary btn-sm' %>
 <% end %>
