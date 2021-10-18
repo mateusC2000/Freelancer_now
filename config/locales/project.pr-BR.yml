@@ -22,7 +22,6 @@
     user:
       projects:
         show:
-          apply_vacancy: 'Candidatar-se a vaga: '
           submit: 'Candidate-se'
           value: 'Máximo pago por hora:'
           day: 'Último dia útil:'
@@ -33,6 +32,8 @@
           value: 'Máximo pago por hora:'
           day: 'Último dia útil:'
           back: 'Voltar'
+          accept: 'Aceitar Proposta'
+          recused: 'Recusar Proposta'
         new:
           select: 'Selecione'
           submit: 'Criar Projeto'
@@ -40,10 +41,12 @@
           empty: 'Você ainda não cadastrou projetos'
           first: 'Cadastre seu primeiro projeto agora'
           back: 'Voltar'
+          my_projects: Meus Projetos
     home:
       index:
-        title: 'Freelancer Now'
         slogan: 'Sua próxima contratação está aqui!'
+        available_projects: 'Projetos Disponíveis'
+    layouts:
+      application:
         area_owner: 'Área do dono de projetos'
         area_dev: 'Área de desenvolvedores'
-        available_projects: 'Projetos Disponíveis'

@@ -14,4 +14,5 @@
         register_project: 'Cadastrar Projeto'
         my_projects: 'Meus Projetos'
         exit: 'Sair'
+        area_owner: 'Área do dono de projetos'
         

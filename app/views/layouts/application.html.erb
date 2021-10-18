@@ -33,10 +33,10 @@
             <ul class="navbar-nav">
               <% unless developer_signed_in? || project_owner_signed_in? %>
                 <li class="nav-item">
-                  <%= link_to 'Área do dono de projetos', new_project_owner_session_path, class: 'nav-link' %>
+                  <%= link_to t('.area_owner'), new_project_owner_session_path, class: 'nav-link' %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to 'Área de desenvolvedores', new_developer_session_path, class: 'nav-link' %>
+                  <%= link_to t('.area_dev'), new_developer_session_path, class: 'nav-link' %>
                 </li>
               <% end %>
             </ul>
