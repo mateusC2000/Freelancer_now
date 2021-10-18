@@ -19,13 +19,19 @@
         value: 'Máximo pago por hora: '
         day: 'Último dia útil: '
         back: 'Voltar'
+        submit: 'Candidatar-me'
     user:
       projects:
         show:
+          more_details: 'Para ver detalhes da proposta clique em:'
+          complete_profile: 'Complete seu perfil para candidatar-se a vaga.'
           submit: 'Candidate-se'
           value: 'Máximo pago por hora:'
           day: 'Último dia útil:'
           back: 'Voltar'
+          apply_vacancy: 'Candidate-se a vaga:'
+          proposal_made: 'Você já enviou proposta a esse projeto.'
+          my_proposals: 'Minhas Propostas'
     admin:
       projects:
         show:

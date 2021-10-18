@@ -46,6 +46,9 @@
               <li class="nav-item">
                 <%= link_to t('.my_profile'),  user_developer_profile_path(current_developer), class: 'nav-link' unless current_developer.developer_profile.nil? %>
               </li>
+              <li>
+                <p><%= link_to t('.complete_profile'),  new_user_developer_profile_path, class: 'nav-link' unless current_developer.developer_profile %></p>
+              </li>
             </ul>
           </div>
         </div>
@@ -54,15 +57,13 @@
     
 
       <div class="container">
-
         <nav class="navbar navbar-light bg-light">
           <div class="container-fluid">
             <span class="navbar-brand mb-0 h1"><%= t('.developer_area') %></span>
           </div>
         </nav>
-        
-        <p><%= link_to t('.complete_profile'),  new_user_developer_profile_path unless current_developer.developer_profile %></p>
       </div>
+
       <%= yield %>
     </div>
   </body>

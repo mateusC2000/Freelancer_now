@@ -48,4 +48,19 @@ describe 'Developer applies for vacancy' do
 
     expect(page).to have_content('não pode ficar em branco', count: 2)
   end
+
+  it 'unsuccessful due to lack of profile' do
+    kurt = ProjectOwner.create!(email: 'kurt@weler.com.br', password: '123456789')
+    Project.create!( title: 'Desenvolvedor de Sites', description: 'Desenvolvimento de sites e-commerce e institucionais',
+                     requirements: 'Buscamos pessoas com experiência em e-commerce, Google ADS CMS SEO',
+                     maximum_value_per_hour: 150, end_date: 5.days.from_now, working_model: 1, project_owner: kurt )
+    darth = Developer.create!(email: 'darth@vader.com.br', password: '123456789')
+
+    login_as darth, scope: :developer
+    visit root_path
+    click_on 'Desenvolvedor de Sites'
+
+    expect(page).to have_link('Complete seu perfil para candidatar-se a vaga.')
+  end
+
 end
