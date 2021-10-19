@@ -1,5 +1,6 @@
 class Admin::ProjectsController < ProjectOwnersController
-  
+  before_action :set_project, only: %i[show edit update]
+
   def new
     @project = Project.new
   end
@@ -15,11 +16,21 @@ class Admin::ProjectsController < ProjectOwnersController
   end
 
   def show
-    @project = Project.find(params[:id])
   end
 
   def my_projects
     @projects = current_project_owner.projects
+  end
+  
+  def edit
+  end
+
+  def update
+    if @project.update(project_params)
+      redirect_to [:admin, @project], notice: t('.success')
+    else
+      render :edit
+    end
   end
 
   private
@@ -28,5 +39,9 @@ class Admin::ProjectsController < ProjectOwnersController
     params.require(:project).permit(:title, :description, :requirements,
                                     :maximum_value_per_hour, :end_date,
                                     :working_model)
+  end
+
+  def set_project
+    @project = Project.find(params[:id])
   end
 end

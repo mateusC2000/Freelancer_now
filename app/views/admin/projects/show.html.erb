@@ -8,6 +8,7 @@
   <h3><%= "#{t('.value')} #{number_to_currency(@project.maximum_value_per_hour)}" %></h3>
   <h3><%= " #{t('.day')} #{l(@project.end_date)}" %></h3>
   <h3><%= @project.class.human_enum_name(:working_model, @project.working_model) %></h3>
+  <%= link_to t('.edit'), edit_admin_project_path, class: 'btn btn-secondary btn-sm' %>
   <%= link_to t('.back'), my_projects_admin_projects_path, class: 'btn btn-secondary btn-sm' %>
 
   <% if project_owner_signed_in? && @project.project_owner == current_project_owner %>

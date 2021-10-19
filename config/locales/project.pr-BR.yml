@@ -3,8 +3,10 @@
     errors: 
       invalid_date: 'não pode ser em datas passadas'
     activerecord:
+      models:
+        project: 'Projeto'
       attributes:    
-        project:
+        project: 
           working_models:
             remote: 'Remoto'
             presential: 'Presencial'
@@ -13,13 +15,7 @@
           requirements: 'Requerimentos'
           maximum_value_per_hour: 'Valor máximo por hora'
           end_date: 'Último dia útil'
-          working_model: 'Modelo de trabalho' 
-    projects:
-      show:
-        value: 'Máximo pago por hora: '
-        day: 'Último dia útil: '
-        back: 'Voltar'
-        submit: 'Candidatar-me'
+          working_model: 'Modelo de trabalho'
     user:
       projects:
         show:
@@ -34,20 +30,26 @@
           my_proposals: 'Minhas Propostas'
     admin:
       projects:
+        edit:
+          edit: 'Editar Projeto'
         show:
           value: 'Máximo pago por hora:'
           day: 'Último dia útil:'
+          edit: 'Editar Projeto'
           back: 'Voltar'
           accept: 'Aceitar Proposta'
           recused: 'Recusar Proposta'
         new:
+          new: 'Cadastrar um Projeto'
           select: 'Selecione'
-          submit: 'Criar Projeto'
+          submit: Criar Projeto
         my_projects:
           empty: 'Você ainda não cadastrou projetos'
           first: 'Cadastre seu primeiro projeto agora'
           back: 'Voltar'
-          my_projects: Meus Projetos
+          my_projects: 'Meus Projetos'
+        update:
+          success: 'Projeto atualizado com sucesso'
     home:
       index:
         slogan: 'Sua próxima contratação está aqui!'

@@ -12,14 +12,14 @@ describe 'Project Owner creates a project' do
     fill_in 'Descrição', with: 'Desenvolvimento de sites e-commerce e institucionais'
     fill_in 'Requerimentos', with: 'Buscamos pessoas com experiência em e-commerce Google ADS CMS SEO'
     fill_in 'Valor máximo por hora', with: 10
-    fill_in 'Último dia útil', with: '30/12/2021'
+    fill_in 'Último dia útil', with: '30/11/2021'
     click_on 'Criar Projeto'
 
     expect(page).to have_content('Desenvolvedor de Sites')
     expect(page).to have_content('Desenvolvimento de sites e-commerce e institucionais')
     expect(page).to have_content('Buscamos pessoas com experiência em e-commerce Google ADS CMS SEO')
     expect(page).to have_content('Máximo pago por hora: R$ 10,00')
-    expect(page).to have_content('Último dia útil: 30/12/2021')
+    expect(page).to have_content('Último dia útil: 30/11/2021')
     expect(page).to have_content('Remoto')
     expect(page).to have_link('Voltar', href: my_projects_admin_projects_path)
   end

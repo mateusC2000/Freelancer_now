@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :projects, only: %i[show]
 
   namespace :admin do
-    resources :projects, only: %i[new create show] do
+    resources :projects, only: %i[new create show edit update] do
       get 'my_projects', on: :collection
     end
     resources :proposals do

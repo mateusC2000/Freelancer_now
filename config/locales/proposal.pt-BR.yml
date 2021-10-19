@@ -22,3 +22,4 @@
         index:
           my_proposals: 'Minhas Propostas'
           status: 'Status'
+          proposals_empty: 'Não há propostas em andamento.'

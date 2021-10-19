@@ -9,7 +9,7 @@ describe Proposal do
 
   it { should validate_numericality_of(:weekly_hours_available).is_greater_than(0) }
 
-  it 'successfully' do
+  it 'success' do
     kurt = ProjectOwner.create!(email: 'kurt@weler.com.br', password: '123456789')
     kproject = Project.create!(title: 'Desenvolvedor de Sites', description: 'Desenvolvimento de sites e-commerce e institucionais',
                                requirements: 'Buscamos pessoas com experiência em e-commerce, Google ADS CMS SEO',
