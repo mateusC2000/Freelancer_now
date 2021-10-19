@@ -1,6 +1,8 @@
 ---
   pt-BR:
     activerecord:
+      models: 
+        developer_profile: Perfil
       attributes:    
         developer_profile:
           full_name: 'Nome Completo'
@@ -13,5 +15,10 @@
       developer_profiles:
         show:
           back: 'Voltar'
+          edit: 'Editar Perfil'
         new:
           submit: 'Criar Perfil'
+        edit:
+          submit: 'Atualizar Perfil'
+        update:
+          success: 'Perfil atualizado com sucesso'

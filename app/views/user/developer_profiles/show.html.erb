@@ -4,4 +4,5 @@
 <h5><%= "#{@developer_profile.class.human_attribute_name(:academic_formation)}: #{@developer_profile.academic_formation}" %></h5>
 <h5><%= "#{@developer_profile.class.human_attribute_name(:performance_zone)}: #{@developer_profile.performance_zone}" %></h5>
 <h5><%= "#{@developer_profile.class.human_attribute_name(:professional_experiences)}: #{@developer_profile.professional_experiences}" %></h5>
-<%= link_to t('.back'), root_path %>
+<%= link_to t('.edit'), edit_user_developer_profile_path, class: 'btn btn-secondary btn-sm' %>
+<%= link_to t('.back'), root_path, class: 'btn btn-secondary btn-sm' %>
