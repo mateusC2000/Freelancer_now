@@ -16,6 +16,12 @@
           maximum_value_per_hour: 'Valor máximo por hora'
           end_date: 'Último dia útil'
           working_model: 'Modelo de trabalho'
+    projects:
+      show:
+        value: 'Máximo pago por hora: '
+        day: 'Último dia útil: '
+        submit: 'Candidate-se'
+        back: 'Voltar'
     user:
       projects:
         show:

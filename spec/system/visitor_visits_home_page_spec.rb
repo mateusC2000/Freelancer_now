@@ -15,9 +15,8 @@ describe 'Visitor visits home page' do
                     description: 'Desenvolvimento de sites e-commerce e institucionais',
                     requirements: 'Buscamos pessoas com experiência em e-commerce Google ADS CMS SEO',
                     maximum_value_per_hour: 10, end_date: '20/11/2021', working_model: 2, project_owner: teu)
-    login_as teu, scope: :project_owner
+                    
     visit root_path
-    click_on 'Meus Projetos'
     click_on 'Desenvolvedor de Sites'
 
     expect(page).to have_content('Desenvolvedor de Sites')
