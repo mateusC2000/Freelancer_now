@@ -18,9 +18,8 @@
   <% if current_developer.projects.include?(@project) %>
     <p><%= t('.proposal_made') %></p>
     <p><%= t('.more_details') %> <%= link_to t('.my_proposals'), user_project_proposals_path(@project) %></p>
-  <% elsif current_developer.developer_profile.nil?%>
-    <p><%= link_to t('.complete_profile'), new_user_developer_profile_path %></p>
-  <% else %>
+    
+  <% elsif current_developer.developer_profile.present? %>
     <h3><%= t('.apply_vacancy') %></h3>
     <%= form_with model: [:user, @project, @proposal] do |f|  %>
       <div class="form-text">
@@ -33,5 +32,7 @@
       </div>
       <%= f.submit t('.submit'), class: 'btn btn-primary btn-sm' %>
     <% end %>
+  <% else %>
+    <p><%= link_to t('.complete_profile'), new_user_developer_profile_path %></p>
   <% end %>
 </div>
