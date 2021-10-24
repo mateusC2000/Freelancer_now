@@ -11,15 +11,19 @@
             pending: 'Pendente'
             accepted: 'Aceita'
             recused: 'Recusada'
+            canceled: 'Cancelada'
     user:
       proposals:
         show:
           proposal_pending: 'Avaliaremos seu perfil e em breve retornaremos uma resposta.'
           proposal_accepted: 'Sua proposta foi aceita! Enviaremos mais informações em instantes.'
           proposal_recused: 'Após avaliarmos seu perfil, infelizmente tivemos que recusar a sua proposta.'
+          cancel_proposal: 'Cancelar Proposta'
         create:
           success: 'Proposta enviada com sucesso!'
         index:
           my_proposals: 'Minhas Propostas'
           status: 'Status'
           proposals_empty: 'Não há propostas em andamento.'
+        canceled:
+          success: 'Proposta cancelada com sucesso!'

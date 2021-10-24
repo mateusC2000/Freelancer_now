@@ -1,11 +1,16 @@
-<% if @proposal.pending? %>
-  <h5><%= t('.proposal_pending') %></h5>
-<% elsif @proposal.accepted? %>
-  <h5><%=  t('.proposal_accepted') %></h5>
+<% if @proposal.canceled?%>
+  <h5><%= "#{@proposal.class.human_attribute_name(:status)}: #{@proposal.class.human_enum_name(:status, @proposal.status)}" %></h5>
 <% else %>
-  <h5><%= t('.proposal_recused') %></h5>
+  <% if @proposal.pending? %>
+    <h5><%= t('.proposal_pending') %></h5>
+  <% elsif @proposal.accepted? %>
+    <h5><%=  t('.proposal_accepted') %></h5>
+  <% else %>
+    <h5><%= t('.proposal_recused') %></h5>
+  <% end %>
+  <h5><%= "#{@proposal.class.human_attribute_name(:created_at)}: #{l(@proposal.created_at, format: :long )}" %></h5>
+  <h5><%= "#{@proposal.class.human_attribute_name(:status)}: #{@proposal.class.human_enum_name(:status, @proposal.status)}" %></h5>
+  <h5><%= "#{@proposal.class.human_attribute_name(:motivation)}: #{@proposal.motivation}" %></h5>
+  <h5><%= "#{@proposal.class.human_attribute_name(:weekly_hours_available)}: #{@proposal.weekly_hours_available}" %></h5>
+  <%= button_to t('.cancel_proposal'), canceled_user_project_proposal_path(@proposal) if @proposal.pending? %>
 <% end %>
-<h5><%= "#{@proposal.class.human_attribute_name(:created_at)}: #{l(@proposal.created_at, format: :long )}" %></h5>
-<h5><%= "#{@proposal.class.human_attribute_name(:status)}: #{@proposal.class.human_enum_name(:status, @proposal.status)}" %></h5>
-<h5><%= "#{@proposal.class.human_attribute_name(:motivation)}: #{@proposal.motivation}" %></h5>
-<h5><%= "#{@proposal.class.human_attribute_name(:weekly_hours_available)}: #{@proposal.weekly_hours_available}" %></h5>

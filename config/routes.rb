@@ -18,7 +18,9 @@ Rails.application.routes.draw do
   namespace :user do
     resources :developer_profiles, only: %i[new create show edit update]
     resources :projects, only: %i[show] do
-      resources :proposals, only: %i[index create show]
+      resources :proposals, only: %i[index create show] do
+        post 'canceled', on: :member
+      end
     end
   end
 end

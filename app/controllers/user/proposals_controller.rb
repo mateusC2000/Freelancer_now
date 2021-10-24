@@ -19,6 +19,12 @@ class User::ProposalsController < DevelopersController
     @proposal = Proposal.find(params[:id])
   end
 
+  def canceled
+    @proposal = Proposal.find(params[:id])
+    @proposal.canceled!
+    redirect_to user_project_proposal_path, notice: t('.success')
+  end
+
   private
 
   def proposal_params
