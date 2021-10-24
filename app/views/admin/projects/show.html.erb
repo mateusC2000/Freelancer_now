@@ -13,13 +13,15 @@
 
   <% if project_owner_signed_in? && @project.project_owner == current_project_owner %>
     <% @project.proposals.each do |proposal| %>
-      <h3>Propostas</h3>
-      <h4>Proposta de <%= link_to proposal.developer.developer_profile.full_name, '#' %></h4>
-      <h4><%= "#{proposal.class.human_attribute_name(:motivation)}: #{proposal.motivation}" %></h4>
-      <h4><%= "#{proposal.class.human_attribute_name(:weekly_hours_available)}: #{proposal.weekly_hours_available}" %></h4>
-      <h3><%= "#{proposal.class.human_attribute_name(:status)}: #{proposal.class.human_enum_name(:status, proposal.status)}" %></h3>
-      <%= button_to t('.accept'), accept_admin_proposal_path(proposal) if proposal.pending? %>
-      <%= button_to t('.recused'), recused_admin_proposal_path(proposal) if proposal.pending? %>
+      <% unless proposal.canceled?%>
+        <h3>Propostas</h3>
+        <h4>Proposta de <%= link_to proposal.developer.developer_profile.full_name, '#' %></h4>
+        <h4><%= "#{proposal.class.human_attribute_name(:motivation)}: #{proposal.motivation}" %></h4>
+        <h4><%= "#{proposal.class.human_attribute_name(:weekly_hours_available)}: #{proposal.weekly_hours_available}" %></h4>
+        <h3><%= "#{proposal.class.human_attribute_name(:status)}: #{proposal.class.human_enum_name(:status, proposal.status)}" %></h3>
+        <%= button_to t('.accept'), accept_admin_proposal_path(proposal) if proposal.pending? %>
+        <%= button_to t('.recused'), recused_admin_proposal_path(proposal) if proposal.pending? %>
+      <% end %>
     <% end %>
   <% end %>
 </div>

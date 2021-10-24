@@ -3,14 +3,14 @@ require 'rails_helper'
 describe 'Project owner view proposals' do
   it 'should view proposals from owned projects' do
     kurt = ProjectOwner.create!(email: 'kurt@weler.com.br', password: '123456789')
-    kproject = Project.create!({ title: 'Desenvolvedor de Sites', description: 'Desenvolvimento de sites e-commerce e institucionais',
-                                 requirements: 'Buscamos pessoas com experiência em e-commerce, Google ADS CMS SEO',
-                                 maximum_value_per_hour: 10, end_date: '30/11/2021', working_model: 1, project_owner: kurt })
+    kproject = Project.create!(title: 'Desenvolvedor de Sites', description: 'Desenvolvimento de sites e-commerce e institucionais',
+                               requirements: 'Buscamos pessoas com experiência em e-commerce, Google ADS CMS SEO',
+                               maximum_value_per_hour: 10, end_date: '30/11/2021', working_model: 1, project_owner: kurt)
 
     john = ProjectOwner.create!(email: 'john@mmurphy.com.br', password: '1234567')
-    jproject = Project.create!({ title: 'Front on Fire', description: 'Aprimoramento de site de imóveis com front-end',
-                                 requirements: 'Buscamos devs com experiência na área de front-end',
-                                 maximum_value_per_hour: 25, end_date: '30/11/2021', working_model: 1, project_owner: john })
+    jproject = Project.create!(title: 'Front on Fire', description: 'Aprimoramento de site de imóveis com front-end',
+                               requirements: 'Buscamos devs com experiência na área de front-end',
+                               maximum_value_per_hour: 25, end_date: '30/11/2021', working_model: 1, project_owner: john)
 
     bellamy = Developer.create!(email: 'bellamy@blake', password: '123456')
     DeveloperProfile.create!(full_name: 'Bellamy Blake', social_name: 'Bellamy', date_birth: '09/10/1985',
@@ -102,5 +102,32 @@ describe 'Project owner view proposals' do
 
     expect(current_path).to eq(new_project_owner_session_path)
     expect(page).to have_content('Para continuar, efetue login ou registre-se')
+  end
+
+  it 'except canceled' do
+    kurt = ProjectOwner.create!(email: 'kurt@weler.com.br', password: '123456789')
+    project = Project.create!(title: 'Desenvolvedor de Sites', description: 'Desenvolvimento de sites e-commerce e institucionais',
+                              requirements: 'Buscamos pessoas com experiência em e-commerce, Google ADS CMS SEO',
+                              maximum_value_per_hour: 10, end_date: '30/11/2021', working_model: 1, project_owner: kurt)
+    bellamy = Developer.create!(email: 'bellamy@blake', password: '123456')
+    DeveloperProfile.create!(full_name: 'Bellamy Blake', social_name: 'Bellamy', date_birth: '09/10/1985',
+                             academic_formation: 'Graduado em Ciências da Tecnologia e Ciências de Dados.',
+                             performance_zone: 'Sou desenvolvedor nas áreas de back-end e front-end.',
+                             professional_experiences: 'Já trabalhei em empresas como Millennium Falcon Code e TIE Avançado.',
+                             developer: bellamy)
+    Proposal.create!(motivation: 'Por pura diversão', weekly_hours_available: 40,
+                     project: project, developer: bellamy, status: :canceled)
+
+    login_as kurt, scope: :project_owner
+    visit root_path
+    click_on 'Meus Projetos'
+    click_on 'Desenvolvedor de Sites'
+
+    expect(page).not_to have_content('Proposta de Bellamy Blake')
+    expect(page).not_to have_link('Bellamy Blake')
+    expect(page).not_to have_content('Motivação: Por pura diversão')
+    expect(page).not_to have_content(/40/)
+    expect(page).not_to have_button('Aceitar Proposta')
+    expect(page).not_to have_button('Recusar Proposta')
   end
 end
