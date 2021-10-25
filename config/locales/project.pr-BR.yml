@@ -45,6 +45,7 @@
           back: 'Voltar'
           accept: 'Aceitar Proposta'
           recused: 'Recusar Proposta'
+          proposals: Propostas
         new:
           new: 'Cadastrar um Projeto'
           select: 'Selecione'

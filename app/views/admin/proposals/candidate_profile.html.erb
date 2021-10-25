@@ -1,0 +1,12 @@
+<div class="container">
+  <h3>Perfil do Candidato</h3>
+
+  <p><%= "#{t('.full_name')}: #{@candidate_profile.full_name}" %></p>
+  <p><%= "#{t('.social_name')}: #{@candidate_profile.social_name}" %></p>
+  <p><%= "#{t('.date_birth')}: #{l(@candidate_profile.date_birth)}" %></p>
+  <p><%= "#{t('.academic_formation')}: #{@candidate_profile.academic_formation}" %></p>
+  <p><%= "#{t('.performance_zone')}: #{@candidate_profile.performance_zone}" %></p>
+  <p><%= "#{t('.professional_experiences')}: #{@candidate_profile.professional_experiences}" %></p>
+  <%= link_to 'Voltar', admin_project_path(@project)%>
+</div>
+

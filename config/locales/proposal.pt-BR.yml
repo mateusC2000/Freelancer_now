@@ -27,3 +27,13 @@
           proposals_empty: 'Não há propostas em andamento.'
         canceled:
           success: 'Proposta cancelada com sucesso!'
+    admin:
+      proposals:
+        candidate_profile:
+          full_name: 'Nome Completo'
+          social_name: 'Nome Social'
+          date_birth: 'Data de Nascimento'
+          academic_formation: 'Formação Acadêmica'
+          performance_zone: 'Zona de Atuação'
+          professional_experiences: 'Experiências Profissionais'
+

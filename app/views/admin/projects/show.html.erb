@@ -14,8 +14,8 @@
   <% if project_owner_signed_in? && @project.project_owner == current_project_owner %>
     <% @project.proposals.each do |proposal| %>
       <% unless proposal.canceled?%>
-        <h3>Propostas</h3>
-        <h4>Proposta de <%= link_to proposal.developer.developer_profile.full_name, '#' %></h4>
+        <h3><%= t('.proposals') %></h3>
+        <h4>Proposta de <%= link_to proposal.developer.developer_profile.full_name, candidate_profile_admin_proposal_path %></h4>
         <h4><%= "#{proposal.class.human_attribute_name(:motivation)}: #{proposal.motivation}" %></h4>
         <h4><%= "#{proposal.class.human_attribute_name(:weekly_hours_available)}: #{proposal.weekly_hours_available}" %></h4>
         <h3><%= "#{proposal.class.human_attribute_name(:status)}: #{proposal.class.human_enum_name(:status, proposal.status)}" %></h3>
