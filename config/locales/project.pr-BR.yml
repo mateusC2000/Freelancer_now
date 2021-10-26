@@ -16,6 +16,7 @@
           maximum_value_per_hour: 'Valor máximo por hora'
           end_date: 'Último dia útil'
           working_model: 'Modelo de trabalho'
+          project_category: 'Categoria'
     projects:
       show:
         value: 'Máximo pago por hora: '
@@ -41,6 +42,7 @@
         show:
           value: 'Máximo pago por hora:'
           day: 'Último dia útil:'
+          category: 'Categoria'
           edit: 'Editar Projeto'
           back: 'Voltar'
           accept: 'Aceitar Proposta'

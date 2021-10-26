@@ -38,7 +38,7 @@ class Admin::ProjectsController < ProjectOwnersController
   def project_params
     params.require(:project).permit(:title, :description, :requirements,
                                     :maximum_value_per_hour, :end_date,
-                                    :working_model)
+                                    :working_model, :project_category_id)
   end
 
   def set_project

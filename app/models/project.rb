@@ -1,7 +1,8 @@
 class Project < ApplicationRecord
   belongs_to :project_owner
   has_many :proposals
-  
+  belongs_to :project_category
+
   enum working_model: { presential: 1, remote: 2 }
 
   validates :title, :description, :requirements,

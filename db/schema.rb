@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_13_190214) do
+ActiveRecord::Schema.define(version: 2021_10_26_161701) do
 
   create_table "developer_profiles", force: :cascade do |t|
     t.string "full_name"
@@ -37,6 +37,12 @@ ActiveRecord::Schema.define(version: 2021_10_13_190214) do
     t.index ["reset_password_token"], name: "index_developers_on_reset_password_token", unique: true
   end
 
+  create_table "project_categories", force: :cascade do |t|
+    t.string "category"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "project_owners", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -59,6 +65,8 @@ ActiveRecord::Schema.define(version: 2021_10_13_190214) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "project_owner_id", null: false
+    t.integer "project_category_id", null: false
+    t.index ["project_category_id"], name: "index_projects_on_project_category_id"
     t.index ["project_owner_id"], name: "index_projects_on_project_owner_id"
   end
 
@@ -75,6 +83,7 @@ ActiveRecord::Schema.define(version: 2021_10_13_190214) do
   end
 
   add_foreign_key "developer_profiles", "developers"
+  add_foreign_key "projects", "project_categories"
   add_foreign_key "projects", "project_owners"
   add_foreign_key "proposals", "developers"
   add_foreign_key "proposals", "projects"

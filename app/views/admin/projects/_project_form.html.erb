@@ -13,6 +13,10 @@
       <%= f.select :working_model, @project.class.working_models.keys.map { |key| [@project.class.human_enum_name(:working_model, key), key] }, { prompt: t('.select') } %>
     </div>
     <div>
+      <%= f.label :project_category_id, 'Categoria' %>
+      <%= f.collection_select :project_category_id, ProjectCategory.all, :id, :category %>
+    </div>
+    <div>
       <%= f.label :title %>
       <%= f.text_field :title %>
     </div>

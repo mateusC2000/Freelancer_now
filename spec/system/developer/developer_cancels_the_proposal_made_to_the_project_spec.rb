@@ -2,10 +2,12 @@ require 'rails_helper'
 
 describe 'Developer cancels the proposal made to the project' do
   it 'successfully' do
+    category = ProjectCategory.create!(category: 'Front-end')
     joe = ProjectOwner.create!(email: 'joe@mmurphy.com.br', password: '1234567')
     project = Project.create!(title: 'Front on Fire', description: 'Aprimoramento de site de imóveis com front-end',
                                requirements: 'Buscamos devs com experiência na área de front-end',
-                               maximum_value_per_hour: 25, end_date: 5.days.from_now, working_model: 1, project_owner: joe)
+                               maximum_value_per_hour: 25, end_date: 5.days.from_now, working_model: 1, project_category: category,
+                               project_owner: joe)
 
     light = Developer.create!(email: 'light@yagami', password: '123456')
     DeveloperProfile.create!(full_name: 'Light Yagami', social_name: 'Light', date_birth: '09/10/1985',

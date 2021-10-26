@@ -2,15 +2,18 @@ require 'rails_helper'
 
 describe 'Project owner view proposals' do
   it 'should view proposals from owned projects' do
+    category = ProjectCategory.create!(category: 'Front-end')
     kurt = ProjectOwner.create!(email: 'kurt@weler.com.br', password: '123456789')
     kproject = Project.create!(title: 'Desenvolvedor de Sites', description: 'Desenvolvimento de sites e-commerce e institucionais',
                                requirements: 'Buscamos pessoas com experiência em e-commerce, Google ADS CMS SEO',
-                               maximum_value_per_hour: 10, end_date: '30/11/2021', working_model: 1, project_owner: kurt)
+                               maximum_value_per_hour: 10, end_date: '30/11/2021', working_model: 1,
+                               project_category: category, project_owner: kurt)
 
     john = ProjectOwner.create!(email: 'john@mmurphy.com.br', password: '1234567')
     jproject = Project.create!(title: 'Front on Fire', description: 'Aprimoramento de site de imóveis com front-end',
                                requirements: 'Buscamos devs com experiência na área de front-end',
-                               maximum_value_per_hour: 25, end_date: '30/11/2021', working_model: 1, project_owner: john)
+                               maximum_value_per_hour: 25, end_date: '30/11/2021', working_model: 1,
+                               project_category: category, project_owner: john)
 
     bellamy = Developer.create!(email: 'bellamy@blake', password: '123456')
     DeveloperProfile.create!(full_name: 'Bellamy Blake', social_name: 'Bellamy', date_birth: '09/10/1985',
@@ -39,10 +42,12 @@ describe 'Project owner view proposals' do
   end
 
   it 'and accept proposal' do
+    category = ProjectCategory.create!(category: 'Front-end')
     kurt = ProjectOwner.create!(email: 'kurt@weler.com.br', password: '123456789')
     kproject = Project.create!(title: 'Desenvolvedor de Sites', description: 'Desenvolvimento de sites e-commerce e institucionais',
                                requirements: 'Buscamos pessoas com experiência em e-commerce, Google ADS CMS SEO',
-                               maximum_value_per_hour: 10, end_date: '30/11/2021', working_model: 1, project_owner: kurt)
+                               maximum_value_per_hour: 10, end_date: '30/11/2021', working_model: 1,
+                               project_category: category, project_owner: kurt)
 
     bellamy = Developer.create!(email: 'bellamy@blake', password: '123456')
     DeveloperProfile.create!(full_name: 'Bellamy Blake', social_name: 'Bellamy', date_birth: '09/10/1985',
@@ -68,10 +73,12 @@ describe 'Project owner view proposals' do
   end
 
   it 'and proposed refusal' do
+    category = ProjectCategory.create!(category: 'Front-end')
     kurt = ProjectOwner.create!(email: 'kurt@weler.com.br', password: '123456789')
     kproject = Project.create!(title: 'Desenvolvedor de Sites', description: 'Desenvolvimento de sites e-commerce e institucionais',
                                requirements: 'Buscamos pessoas com experiência em e-commerce, Google ADS CMS SEO',
-                               maximum_value_per_hour: 10, end_date: '30/11/2021', working_model: 1, project_owner: kurt)
+                               maximum_value_per_hour: 10, end_date: '30/11/2021', working_model: 1,
+                               project_category: category, project_owner: kurt)
 
     bellamy = Developer.create!(email: 'bellamy@blake', password: '123456')
     DeveloperProfile.create!(full_name: 'Bellamy Blake', social_name: 'Bellamy', date_birth: '09/10/1985',
@@ -105,10 +112,12 @@ describe 'Project owner view proposals' do
   end
 
   it 'except canceled' do
+    category = ProjectCategory.create!(category: 'Front-end')
     kurt = ProjectOwner.create!(email: 'kurt@weler.com.br', password: '123456789')
     project = Project.create!(title: 'Desenvolvedor de Sites', description: 'Desenvolvimento de sites e-commerce e institucionais',
                               requirements: 'Buscamos pessoas com experiência em e-commerce, Google ADS CMS SEO',
-                              maximum_value_per_hour: 10, end_date: '30/11/2021', working_model: 1, project_owner: kurt)
+                              maximum_value_per_hour: 10, end_date: '30/11/2021', working_model: 1,
+                              project_category: category, project_owner: kurt)
     bellamy = Developer.create!(email: 'bellamy@blake', password: '123456')
     DeveloperProfile.create!(full_name: 'Bellamy Blake', social_name: 'Bellamy', date_birth: '09/10/1985',
                              academic_formation: 'Graduado em Ciências da Tecnologia e Ciências de Dados.',

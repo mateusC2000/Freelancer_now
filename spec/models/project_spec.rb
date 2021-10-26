@@ -3,6 +3,7 @@ require 'rails_helper'
 describe Project do
   it { should belong_to(:project_owner) }
   it { should have_many(:proposals) }
+  it { should belong_to(:project_category) }
   
   it { should validate_presence_of(:title).with_message('não pode ficar em branco') }
   it { should validate_presence_of(:description).with_message('não pode ficar em branco') }

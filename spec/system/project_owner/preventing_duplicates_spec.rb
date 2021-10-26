@@ -2,10 +2,12 @@ require 'rails_helper'
 
 describe 'Preventing duplicates' do
   it 'of accept' do
+    category = ProjectCategory.create!(category: 'Front-end')
     joe = ProjectOwner.create!(email: 'joe@goldberg.com.br', password: '123456789')
     project = Project.create!(title: 'Desenvolvedor de Sites', description: 'Desenvolvimento de sites e-commerce e institucionais',
                                requirements: 'Buscamos pessoas com experiência em e-commerce, Google ADS CMS SEO',
-                               maximum_value_per_hour: 10, end_date: '30/11/2021', working_model: 1, project_owner: joe)
+                               maximum_value_per_hour: 10, end_date: '30/11/2021', working_model: 1,
+                               project_category: category, project_owner: joe)
     love = Developer.create!(email: 'love@quinn', password: '123456')
     DeveloperProfile.create!(full_name: 'Love Quinn', social_name: 'love', date_birth: '09/10/1985',
                              academic_formation: 'Graduada em Ciências da Tecnologia e Ciências de Dados.',
@@ -25,10 +27,12 @@ describe 'Preventing duplicates' do
   end
 
   it 'of recused' do
+    category = ProjectCategory.create!(category: 'Front-end')
     joe = ProjectOwner.create!(email: 'joe@goldberg.com.br', password: '123456789')
     project = Project.create!(title: 'Desenvolvedor de Sites', description: 'Desenvolvimento de sites e-commerce e institucionais',
                                requirements: 'Buscamos pessoas com experiência em e-commerce, Google ADS CMS SEO',
-                               maximum_value_per_hour: 10, end_date: '30/11/2021', working_model: 1, project_owner: joe)
+                               maximum_value_per_hour: 10, end_date: '30/11/2021', working_model: 1,
+                               project_category: category, project_owner: joe)
     love = Developer.create!(email: 'love@quinn', password: '123456')
     DeveloperProfile.create!(full_name: 'Love Quinn', social_name: 'love', date_birth: '09/10/1985',
                              academic_formation: 'Graduada em Ciências da Tecnologia e Ciências de Dados.',

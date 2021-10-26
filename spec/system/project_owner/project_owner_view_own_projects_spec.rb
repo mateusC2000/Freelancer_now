@@ -11,15 +11,18 @@ describe 'Project owner view own projects' do
   end
 
   it 'and should view owned projects' do
+    category = ProjectCategory.create!(category: 'Front-end')
     teu = ProjectOwner.create!(email: 'teu@shelby.com.br', password: '123456789')
     kurt = ProjectOwner.create!(email: 'kurt@weler.com.br', password: '123456789')
     Project.create!({ title: 'Desenvolvedor de Sites', description: 'Desenvolvimento de sites e-commerce e institucionais',
                       requirements: 'Buscamos pessoas com experiência em e-commerce, Google ADS CMS SEO',
-                      maximum_value_per_hour: 10, end_date: '30/12/2021', working_model: 1, project_owner: teu })
+                      maximum_value_per_hour: 10, end_date: '30/12/2021', working_model: 1,
+                      project_category: category, project_owner: teu })
 
     Project.create!({ title: 'Desenvolvedor de Aplicativos', description: 'Desenvolvimento de apps e-commerce e institucionais',
                       requirements: 'Buscamos pessoas com experiência em e-commerce, JS, Java e C#',
-                      maximum_value_per_hour: 15, end_date: '20/12/2021', working_model: 2, project_owner: kurt })
+                      maximum_value_per_hour: 15, end_date: '20/12/2021', working_model: 2,
+                      project_category: category, project_owner: kurt })
 
     login_as teu, scope: :project_owner
     visit root_path
@@ -42,10 +45,12 @@ describe 'Project owner view own projects' do
   end
 
   it 'must be logged in to view a project' do
+    category = ProjectCategory.create!(category: 'Front-end')
     teu = ProjectOwner.create!(email: 'teu@shelby.com.br', password: '123456789')
     project = Project.create!({ title: 'Desenvolvedor de Sites', description: 'Desenvolvimento de sites e-commerce e institucionais',
                                 requirements: 'Buscamos pessoas com experiência em e-commerce, Google ADS CMS SEO',
-                                maximum_value_per_hour: 10, end_date: '15/12/2021', working_model: 1, project_owner: teu })
+                                maximum_value_per_hour: 10, end_date: '15/12/2021', working_model: 1,
+                                project_category: category, project_owner: teu })
 
     visit admin_project_path(project)
 

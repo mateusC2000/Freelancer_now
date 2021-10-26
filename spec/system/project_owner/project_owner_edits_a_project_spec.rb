@@ -2,16 +2,19 @@ require 'rails_helper'
 
 describe 'Project owner edits a project' do
   it 'successfully' do
+    category = ProjectCategory.create!(category: 'Front-end')
     teu = ProjectOwner.create!(email: 'teu@shelby.com.br', password: '123456789')
     Project.create!(title: 'Desenvolvedor de Sites', description: 'Desenvolvimento de sites e-commerce e institucionais',
                     requirements: 'Buscamos pessoas com experiência em e-commerce, Google ADS CMS SEO',
-                    maximum_value_per_hour: 10, end_date: '30/12/2021', working_model: 1, project_owner: teu)
+                    maximum_value_per_hour: 10, end_date: '30/12/2021', working_model: 1,
+                    project_category: category, project_owner: teu)
 
     login_as teu, scope: :project_owner
     visit root_path
     click_on 'Meus Projetos'
     click_on 'Desenvolvedor de Sites'
     click_on 'Editar Projeto'
+    select 'Front-end', from: 'Categoria'
     select 'Remoto', from: 'Modelo de trabalho'
     fill_in 'Título', with: 'Desenvolvedor de Apps'
     fill_in 'Descrição', with: 'Desenvolvimento de aplicativos e minigames'
@@ -31,17 +34,19 @@ describe 'Project owner edits a project' do
   end
 
   it 'and must fill in all fields' do
+    category = ProjectCategory.create!(category: 'Front-end')
     teu = ProjectOwner.create!(email: 'teu@shelby.com.br', password: '123456789')
     Project.create!(title: 'Desenvolvedor de Sites', description: 'Desenvolvimento de sites e-commerce e institucionais',
                     requirements: 'Buscamos pessoas com experiência em e-commerce, Google ADS CMS SEO',
-                    maximum_value_per_hour: 10, end_date: '30/12/2021', working_model: 1, project_owner: teu)
+                    maximum_value_per_hour: 10, end_date: '30/12/2021', working_model: 1,
+                    project_category: category, project_owner: teu)
 
     login_as teu, scope: :project_owner
     visit root_path
     click_on 'Meus Projetos'
     click_on 'Desenvolvedor de Sites'
     click_on 'Editar Projeto'
-    select 'Remoto', from: ''
+    select 'Remoto', from: 'Modelo de trabalho'
     fill_in 'Título', with: ''
     fill_in 'Descrição', with: ''
     fill_in 'Requerimentos', with: ''
