@@ -16,3 +16,7 @@
         exit: 'Sair'
         developer_area: 'Área de desenvolvedores'
         my_proposals: 'Minhas Propostas'
+        project_for_category: Projetos por Categorias
+        search: Busca
+        search_project: 'Pesquise por projetos'
+        submit_tag: 'Pesquisar'
