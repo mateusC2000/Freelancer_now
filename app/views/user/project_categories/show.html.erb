@@ -1,0 +1,3 @@
+<% @category.projects.each do |project|%>
+  <%= link_to "#{project.title}", user_project_path(project) %>
+<% end %>

@@ -49,6 +49,18 @@
               <li>
                 <p><%= link_to t('.complete_profile'),  new_user_developer_profile_path, class: 'nav-link' unless current_developer.developer_profile %></p>
               </li>
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Projetos por Categorias
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <% ProjectCategory.all.each do |category| %>
+                    <li><a class="dropdown-item" href=<%= user_project_category_path(category) %>><%= category.category %></a></li>
+                  <% end %>
+                </ul>
+              </li>
+
             </ul>
           </div>
         </div>

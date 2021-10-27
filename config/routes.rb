@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   end
 
   namespace :user do
+    resources :project_categories, only: %i[show]
     resources :developer_profiles, only: %i[new create show edit update]
     resources :projects, only: %i[show] do
       resources :proposals, only: %i[index create show] do
