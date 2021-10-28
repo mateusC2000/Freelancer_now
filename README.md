@@ -77,6 +77,15 @@ email: kurt@weler.com.br, senha: 123456789
 ```
 email: jane@doe.com.br, senha: 123456789
 ```
+```
+email: ryan@kaen.com.br, senha: 123456789
+```
+```
+email: anjel@julian.com.br, senha: 123456789
+```
+```
+email: chris@rock.com.br, senha: 123456789
+```
 
   * E há um desenvolvedor com proposta feita a um dos projetos existentes:
 ```
