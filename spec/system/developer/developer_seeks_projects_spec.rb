@@ -31,7 +31,7 @@ describe 'Developer seeks projects' do
 
     login_as bellamy, scope: :developer
     visit root_path
-    fill_in 'Busca', with: 'Desenvolvedor'
+    find(:id, 'q').set('Desenvolvedor')
     click_on 'Pesquisar'
 
     expect(page).to have_content('Desenvolvedor de Aplicativos')

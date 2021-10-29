@@ -61,15 +61,16 @@
                 </ul>
               </li>
             </ul>
+
+            <%= form_tag(search_user_projects_path, method: :get, class: "d-flex") do %>
+              <%= text_field_tag :q, nil, placeholder: t('.search_project'), class: "form-control me-2" %>
+              <%= submit_tag t('.submit_tag'), class: "btn btn-outline-success" %>
+            <% end %>
+
           </div>
         </div>
       </nav>
-    
-      <%= form_tag(search_user_projects_path, method: :get) do %>
-        <%= label_tag :q, t('.search') %>
-        <%= text_field_tag :q, t('.search_project') %>
-        <%= submit_tag t('.submit_tag') %>
-      <% end %>
+
 
       <div class="container">
         <nav class="navbar navbar-light bg-light">
