@@ -67,3 +67,6 @@
       application:
         area_owner: 'Área do dono de projetos'
         area_dev: 'Área de desenvolvedores'
+        search: Busca
+        search_project: 'Pesquise por projetos'
+        submit_tag: 'Pesquisar'

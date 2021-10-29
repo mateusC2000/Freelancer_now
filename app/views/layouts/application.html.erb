@@ -40,6 +40,12 @@
                 </li>
               <% end %>
             </ul>
+
+              <%= form_tag(search_projects_path, method: :get, class: "d-flex") do %>
+                <%= text_field_tag :q, nil, placeholder: t('.search_project'), class: "form-control me-2" %>
+                <%= submit_tag t('.submit_tag'), class: "btn btn-outline-success" %>
+              <% end %>
+
           </div>
         </div>
       </nav>

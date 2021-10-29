@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
   devise_for :developers
   devise_for :project_owners
-  root 'home#index'
 
-  resources :projects, only: %i[show]
+  root 'home#index'
+ 
+  resources :projects, only: %i[show] do
+    get 'search', on: :collection
+  end
 
   namespace :admin do
     resources :projects, only: %i[new create show edit update] do
@@ -20,7 +23,6 @@ Rails.application.routes.draw do
     resources :project_categories, only: %i[show]
     resources :developer_profiles, only: %i[new create show edit update]
     resources :projects, only: %i[show] do
-      get 'search', on: :collection
       resources :proposals, only: %i[index create show] do
         post 'canceled', on: :member
       end

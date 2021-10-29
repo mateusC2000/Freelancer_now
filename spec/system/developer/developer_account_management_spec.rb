@@ -9,7 +9,7 @@ describe 'Developer account management' do
       click_on 'Área de desenvolvedores'
       fill_in 'Email', with: teu.email
       fill_in 'Senha', with: teu.password
-      within 'form' do
+      within 'div#login' do
         click_on 'Entrar'
       end
 
@@ -22,8 +22,8 @@ describe 'Developer account management' do
     end
 
     it 'there can be no blank fields' do
-      visit new_project_owner_session_path
-      within 'form' do
+      visit new_developer_session_path
+      within 'div#login' do
         click_on 'Entrar'
       end
       expect(page).to have_content('Email ou senha inválida.')
