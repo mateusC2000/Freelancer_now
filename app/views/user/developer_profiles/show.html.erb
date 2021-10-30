@@ -1,3 +1,6 @@
+<% if @developer_profile.image.attached? %>
+  <%= image_tag @developer_profile.image, size: '150x150' %>
+<% end %>
 <h3><%= @developer_profile.full_name %></h3>
 <h5><%= "#{@developer_profile.class.human_attribute_name(:social_name)}: #{@developer_profile.social_name}" %></h5>
 <h5><%= "#{@developer_profile.class.human_attribute_name(:date_birth)}: #{l(@developer_profile.date_birth)}" %></h5>

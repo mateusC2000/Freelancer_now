@@ -3,4 +3,6 @@ class DeveloperProfile < ApplicationRecord
   validates :full_name, :social_name, :date_birth,
             :academic_formation, :performance_zone,
             :professional_experiences, presence: true
+            
+  has_one_attached :image
 end

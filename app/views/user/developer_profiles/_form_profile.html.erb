@@ -8,6 +8,11 @@
 
 <%= form_with model: [:user, @developer_profile] do |f| %>
   <div>
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+
+  </div>
+  <div>
     <%= f.label :full_name %>
     <%= f.text_field :full_name %>
   </div>

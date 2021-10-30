@@ -11,6 +11,7 @@
           academic_formation: 'Formação Acadêmica'
           performance_zone: 'Zona de Atuação'
           professional_experiences: 'Experiências Profissionais'
+          image: 'Foto de Perfil'
     user:
       developer_profiles:
         show:

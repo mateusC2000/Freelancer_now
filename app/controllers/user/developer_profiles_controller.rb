@@ -34,7 +34,7 @@ class User::DeveloperProfilesController < DevelopersController
   def profile_params
     params.require(:developer_profile).permit(:full_name, :social_name, :date_birth,
                                               :academic_formation, :performance_zone,
-                                              :professional_experiences)
+                                              :professional_experiences, :image)
   end
   def set_developer_profile
     @developer_profile = DeveloperProfile.find(params[:id])

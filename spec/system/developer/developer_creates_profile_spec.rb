@@ -14,8 +14,10 @@ describe 'Developer creates profile' do
     fill_in 'Formação Acadêmica', with: 'Pós Graduado em Full Stack.'
     fill_in 'Zona de Atuação', with: 'Sou desenvolvedor nas áreas de back-end e front-end.'
     fill_in 'Experiências Profissionais', with: 'Participação na turma 5 do Treinadev, e estágio em parceiras.'
+    attach_file 'Foto de Perfil', Rails.root.join('spec/images/profile.png')
     click_on 'Criar Perfil'
 
+    expect(page).to have_css('img[src*="profile.png"]')
     expect(page).to have_content('Perfil atualizado com sucesso')
     expect(page).to have_content('João Batista Campos')
     expect(page).to have_content('João')
