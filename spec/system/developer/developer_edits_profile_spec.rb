@@ -19,7 +19,8 @@ describe 'Developer edits profile' do
     fill_in 'Data de Nascimento', with: '09/10/1985'
     fill_in 'Formação Acadêmica', with: 'Pós Graduado em Full Stack e Graduado em Ciências de Dados.'
     fill_in 'Zona de Atuação', with: 'Sou desenvolvedor nas áreas de back-end e front-end.'
-    fill_in 'Experiências Profissionais', with: 'Já trabalhei em empresas como Millennium Falcon Code e TIE Avançado e na MarketCode.'
+    fill_in 'Experiências Profissionais',
+            with: 'Já trabalhei em empresas como Millennium Falcon Code e TIE Avançado e na MarketCode.'
     click_on 'Atualizar Perfil'
 
     expect(page).to have_content('Perfil atualizado com sucesso')

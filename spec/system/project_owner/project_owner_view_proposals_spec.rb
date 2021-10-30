@@ -104,7 +104,6 @@ describe 'Project owner view proposals' do
   end
 
   it 'must be logged in to view a proposal' do
-
     visit my_projects_admin_projects_path
 
     expect(current_path).to eq(new_project_owner_session_path)

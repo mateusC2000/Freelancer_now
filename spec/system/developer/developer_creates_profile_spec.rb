@@ -38,7 +38,6 @@ describe 'Developer creates profile' do
   end
 
   it 'must be logged in to creates a profile' do
-
     visit new_user_developer_profile_path
 
     expect(current_path).to eq(new_developer_session_path)
