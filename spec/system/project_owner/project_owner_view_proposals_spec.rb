@@ -37,8 +37,8 @@ describe 'Project owner view proposals' do
     expect(page).to have_link('Bellamy Blake')
     expect(page).to have_content('Motivação: Por pura diversão')
     expect(page).to have_content(/40/)
-    expect(page).to have_button('Aceitar Proposta')
-    expect(page).to have_button('Recusar Proposta')
+    expect(page).to have_link('Aceitar Proposta')
+    expect(page).to have_link('Recusar Proposta')
   end
 
   it 'and accept proposal' do

@@ -15,14 +15,19 @@
   <% if project_owner_signed_in? && @project.project_owner == current_project_owner %>
     <% @project.proposals.each do |proposal| %>
       <% unless proposal.canceled?%>
-        <h3><%= t('.proposals') %></h3>
-        <h4>Proposta de <%= link_to proposal.developer.developer_profile.full_name, candidate_profile_admin_proposal_path %></h4>
-        <h4><%= "#{proposal.class.human_attribute_name(:motivation)}: #{proposal.motivation}" %></h4>
-        <h4><%= "#{proposal.class.human_attribute_name(:weekly_hours_available)}: #{proposal.weekly_hours_available}" %></h4>
-        <h3><%= "#{proposal.class.human_attribute_name(:status)}: #{proposal.class.human_enum_name(:status, proposal.status)}" %></h3>
-        <%= button_to t('.accept'), accept_admin_proposal_path(proposal) if proposal.pending? %>
-        <%= button_to t('.recused'), recused_admin_proposal_path(proposal) if proposal.pending? %>
+        <h3 class="text-center"><%= t('.proposals') %></h3>
+        <div class="card text-center">
+          <div class="card-body">
+            <h5 class="card-title">Proposta de <%= link_to proposal.developer.developer_profile.full_name, candidate_profile_admin_proposal_path %></h5>
+            <p class="card-text"><%= "#{proposal.class.human_attribute_name(:motivation)}: #{proposal.motivation}" %></p>
+            <p class="card-text"><%= "#{proposal.class.human_attribute_name(:weekly_hours_available)}: #{proposal.weekly_hours_available}" %></p>
+            <p class="card-text"><%= "#{proposal.class.human_attribute_name(:status)}: #{proposal.class.human_enum_name(:status, proposal.status)}" %></p>
+            <%= link_to t('.accept'), accept_admin_proposal_path(proposal), method: :post, class: "btn btn-primary" if proposal.pending? %>
+            <%= link_to t('.recused'), recused_admin_proposal_path(proposal), method: :post, class: "btn btn-primary" if proposal.pending? %>
+          </div>
+        </div>
       <% end %>
     <% end %>
   <% end %>
 </div>
+

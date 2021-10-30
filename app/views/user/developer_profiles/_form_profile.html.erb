@@ -7,34 +7,51 @@
 <% end %>
 
 <%= form_with model: [:user, @developer_profile] do |f| %>
-  <div>
-    <%= f.label :image %>
-    <%= f.file_field :image %>
+  <div class="row mb-3">
+    <%= f.label :image, class: "col-sm-2 col-form-label" %>
+    <div class="col-sm">
+      <%= f.file_field :image, class: "form-control" %>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <%= f.label :full_name, class: "col-sm-2 col-form-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :full_name, class: "form-control" %>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <%= f.label :social_name, class: "col-sm-2 col-form-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :social_name, class: "form-control" %>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <%= f.label :date_birth, class: "col-sm-2 col-form-label" %>
+    <div class="col-sm-10">
+      <%= f.date_field :date_birth, class: "form-control" %>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <%= f.label :academic_formation, class: "col-sm-2 col-form-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :academic_formation, class: "form-control" %>
+    </div>
+  </div>
 
+  <div class="row mb-3">
+    <%= f.label :performance_zone, class: "col-sm-2 col-form-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :performance_zone, class: "form-control" %>
+    </div>
   </div>
-  <div>
-    <%= f.label :full_name %>
-    <%= f.text_field :full_name %>
+
+  <div class="row mb-3">
+    <%= f.label :professional_experiences, class: "col-sm-2 col-form-label" %>
+    <div class="col-sm-10">
+      <%= f.text_area :professional_experiences, class: "form-control" %>
+    </div>
   </div>
-  <div>
-    <%= f.label :social_name %>
-    <%= f.text_field :social_name %>
-  </div>
-  <div>
-    <%= f.label :date_birth %>
-    <%= f.date_field :date_birth %>
-  </div>
-  <div>
-    <%= f.label :academic_formation %>
-    <%= f.text_field :academic_formation %>
-  </div>
-  <div>
-    <%= f.label :performance_zone %>
-    <%= f.text_field :performance_zone %>
-  </div>
-  <div>
-    <%= f.label :professional_experiences %>
-    <%= f.text_area :professional_experiences %>
-  </div>
-  <%= f.submit %>
+
+  <%= f.submit class: 'btn btn-primary btn-sm' %>
 <% end %>
+

@@ -1,11 +1,25 @@
 <% if @developer_profile.image.attached? %>
-  <%= image_tag @developer_profile.image, size: '150x150' %>
+  <%= image_tag @developer_profile.image, size: '150x150', class: "rounded mx-auto d-block"%>
 <% end %>
-<h3><%= @developer_profile.full_name %></h3>
-<h5><%= "#{@developer_profile.class.human_attribute_name(:social_name)}: #{@developer_profile.social_name}" %></h5>
-<h5><%= "#{@developer_profile.class.human_attribute_name(:date_birth)}: #{l(@developer_profile.date_birth)}" %></h5>
-<h5><%= "#{@developer_profile.class.human_attribute_name(:academic_formation)}: #{@developer_profile.academic_formation}" %></h5>
-<h5><%= "#{@developer_profile.class.human_attribute_name(:performance_zone)}: #{@developer_profile.performance_zone}" %></h5>
-<h5><%= "#{@developer_profile.class.human_attribute_name(:professional_experiences)}: #{@developer_profile.professional_experiences}" %></h5>
+<div class="mb-5" >
+  <h1 class="text-center"><%= @developer_profile.full_name %></h1>
+</div>
+
+<div class="mb-4">
+  <h4><%= "#{@developer_profile.class.human_attribute_name(:social_name)}: #{@developer_profile.social_name}" %></h4>
+</div>
+<div class="mb-4">
+  <h4><%= "#{@developer_profile.class.human_attribute_name(:date_birth)}: #{l(@developer_profile.date_birth)}" %></h4>
+</div>
+<div class="mb-4">
+  <h4><%= "#{@developer_profile.class.human_attribute_name(:academic_formation)}: #{@developer_profile.academic_formation}" %></h4>
+</div>
+<div class="mb-4">
+  <h4><%= "#{@developer_profile.class.human_attribute_name(:performance_zone)}: #{@developer_profile.performance_zone}" %></h4>
+</div>
+<div class="mb-4">
+  <h4><%= "#{@developer_profile.class.human_attribute_name(:professional_experiences)}: #{@developer_profile.professional_experiences}" %></h4>
+</div>
+
 <%= link_to t('.edit'), edit_user_developer_profile_path, class: 'btn btn-secondary btn-sm' %>
 <%= link_to t('.back'), root_path, class: 'btn btn-secondary btn-sm' %>
