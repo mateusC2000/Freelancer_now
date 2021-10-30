@@ -73,11 +73,12 @@ Project.create!(title: 'Desenvolvedor Flutter para Android, IOS, Desktop e web',
                 project_category: back_front, project_owner: chris)
 
 darth = Developer.create!(email: 'darth@vader.com.br', password: '123456789')
-DeveloperProfile.create!(full_name: 'Anakin Skywalker', social_name: 'Anakin', date_birth: '09/10/1985',
+profile = DeveloperProfile.create!(full_name: 'Anakin Skywalker', social_name: 'Anakin', date_birth: '09/10/1985',
                          academic_formation: 'Graduado em Ciências da Tecnologia e Ciências de Dados.',
                          performance_zone: 'Sou desenvolvedor nas áreas de back-end e front-end.',
                          professional_experiences: 'Já trabalhei em empresas como Millennium Falcon Code e TIE Avançado.',
                          developer: darth)
+profile.image.attach(io: File.open('spec/images/darth.jpg'), filename: 'darth.jpg')
 
 Proposal.create!(motivation: 'Por pura diversão', weekly_hours_available: 40,
                  project: prime_tech, developer: darth)
