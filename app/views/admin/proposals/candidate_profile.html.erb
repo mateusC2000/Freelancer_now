@@ -1,6 +1,8 @@
 
 <h3><%= t('.candidate_profile') %></h3>
-
+<% if @candidate_profile.image.attached? %>
+  <%= image_tag @candidate_profile.image, size: '150x150', class: "rounded mx-auto d-block"%>
+<% end %>
 <p class="text-center"><%= @candidate_profile.full_name %></p>
 <p><%= "#{@candidate_profile.class.human_attribute_name(:social_name)}: #{@candidate_profile.social_name}" %></p>
 <p><%= "#{@candidate_profile.class.human_attribute_name(:date_birth)}: #{l(@candidate_profile.date_birth)}" %></p>
