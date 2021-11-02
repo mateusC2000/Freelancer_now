@@ -2,8 +2,8 @@
 
 ##  Sobre o Projeto
 
-O projeto consiste em uma plataforma web baseada em um negócio com foco de que criadores de projetos e profissionais da área de tecnologia possam se encontrarem para fins profissionais.
-Os profissionais podem criar uma conta na plataforma para buscar projetos e enviar uma
+O projeto consiste em uma plataforma web baseada em um negócio com foco de que criadores de projetos e profissionais da área de tecnologia possam se encontrar para fins profissionais.
+Os profissionais podem criar uma conta na plataforma e completam seu perfil  para buscar projetos e enviar uma
 proposta referente ao mesmo. Os donos de projetos cadastram seus projetos e avaliam as propostas e perfis dos profissionais, de forma que eles podem aceitar tal proposta ou não.
 
 ## Pré-requisitos:
@@ -70,7 +70,7 @@ http://localhost:3000
 ```
 ## Observações:
 
-  * Dentre os dados do banco de dados há 2 logins já existentes para a área de dono de projetos com projetos já existentes, são eles:
+  * Dentre os dados do banco de dados há 5 logins já existentes para a área de dono de projetos com projetos já existentes, são eles:
 ```
 email: kurt@weler.com.br, senha: 123456789
 ```
