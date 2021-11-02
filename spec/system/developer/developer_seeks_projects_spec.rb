@@ -34,6 +34,7 @@ describe 'Developer seeks projects' do
     find(:id, 'q').set('Desenvolvedor')
     click_on 'Pesquisar'
 
+    expect(current_path).to eq(search_user_projects_path)
     expect(page).to have_content('Desenvolvedor de Aplicativos')
     expect(page).to have_content('Desenvolvedor de Sites')
     expect(page).not_to have_content('Front on Fire')

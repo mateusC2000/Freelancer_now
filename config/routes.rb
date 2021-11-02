@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     resources :project_categories, only: %i[show]
     resources :developer_profiles, only: %i[new create show edit update]
     resources :projects, only: %i[show] do
+      get 'search', on: :collection
       resources :proposals, only: %i[index create show] do
         post 'canceled', on: :member
       end

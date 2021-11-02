@@ -78,7 +78,7 @@ profile = DeveloperProfile.create!(full_name: 'Anakin Skywalker', social_name: '
                          performance_zone: 'Sou desenvolvedor nas áreas de back-end e front-end.',
                          professional_experiences: 'Já trabalhei em empresas como Millennium Falcon Code e TIE Avançado.',
                          developer: darth)
-profile.image.attach(io: File.open('spec/images/darth.jpg'), filename: 'darth.jpg')
+profile.image.attach(io: File.open('app/assets/images/darth.jpg'), filename: 'darth.jpg')
 
 Proposal.create!(motivation: 'Por pura diversão', weekly_hours_available: 40,
                  project: prime_tech, developer: darth)
