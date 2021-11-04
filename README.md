@@ -18,6 +18,7 @@ proposta referente ao mesmo. Os donos de projetos cadastram seus projetos e aval
   * RSpec  https://rubygems.org/gems/rspec/versions/3.10.0
   * Capybara  https://rubygems.org/gems/capybara/versions/3.35.3
   * Shoulda Matchers  https://github.com/thoughtbot/shoulda-matchers
+  * Factory Bot  https://github.com/thoughtbot/factory_bot
                                           
 #### Autorização/Autenticação
 

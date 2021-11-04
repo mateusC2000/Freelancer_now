@@ -9,13 +9,7 @@ describe 'Visitor visits home page' do
   end
 
   it 'and sees available projects' do
-    category = ProjectCategory.create!(category: 'Front-end')
-    teu = ProjectOwner.create!(email: 'teu@shelby.com.br', password: '123456789')
-    Project.create!(title: 'Desenvolvedor de Sites',
-                    description: 'Desenvolvimento de sites e-commerce e institucionais',
-                    requirements: 'Buscamos pessoas com experiência em e-commerce Google ADS CMS SEO',
-                    maximum_value_per_hour: 10, end_date: '20/11/2021', working_model: 2,
-                    project_category: category, project_owner: teu)
+    create(:project)
 
     visit root_path
     click_on 'Desenvolvedor de Sites'
