@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'Project Owner account management' do
   context 'log in' do
     it 'successfully' do
-      teu = ProjectOwner.create!(email: 'teu@shelby.com.br', password: '123456789')
+      teu = create(:project_owner)
 
       visit root_path
       click_on 'Área do dono de projetos'
@@ -30,9 +30,9 @@ describe 'Project Owner account management' do
     end
 
     it 'and logs out' do
-      teu = Developer.create!(email: 'teu@shelby.com.br', password: '123456789')
+      teu = create(:project_owner)
 
-      login_as teu, scope: :developer
+      login_as teu, scope: :project_owner
       visit root_path
       click_on 'Sair'
 

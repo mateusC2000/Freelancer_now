@@ -2,12 +2,8 @@ require 'rails_helper'
 
 describe 'Developer sees your profile ' do
   it 'successfully' do
-    darth = Developer.create!(email: 'darth@vader.com.br', password: '123456789')
-    DeveloperProfile.create!(full_name: 'Anakin Skywalker', social_name: 'Anakin', date_birth: '09/10/1985',
-                             academic_formation: 'Graduado em Ciências da Tecnologia e Ciências de Dados.',
-                             performance_zone: 'Sou desenvolvedor nas áreas de back-end e front-end.',
-                             professional_experiences: 'Já trabalhei em empresas como Millennium Falcon Code e TIE Avançado.',
-                             developer: darth)
+    darth = create(:developer)
+    create(:developer_profile, developer: darth)
 
     login_as darth, scope: :developer
     visit root_path
@@ -23,18 +19,11 @@ describe 'Developer sees your profile ' do
   end
 
   it 'and see only your own profile' do
-    darth = Developer.create!(email: 'darth@vader.com.br', password: '123456789')
-    luke = Developer.create!(email: 'luke@skywalker.com.br', password: '123456789')
-    DeveloperProfile.create!(full_name: 'Anakin Skywalker', social_name: 'Anakin', date_birth: '09/10/1985',
-                             academic_formation: 'Graduado em Ciências da Tecnologia e Ciências de Dados.',
-                             performance_zone: 'Sou desenvolvedor nas áreas de back-end e front-end.',
-                             professional_experiences: 'Já trabalhei em empresas como Millennium Falcon Code e TIE Avançado.',
-                             developer: darth)
-    DeveloperProfile.create!(full_name: 'Luke Skywalker', social_name: 'Luke', date_birth: '09/10/1994',
-                             academic_formation: 'Pós Graduado em Ciências de Dados.',
-                             performance_zone: 'Desenvolvedor na área de back-end.',
-                             professional_experiences: 'Já trabalhei em empresas como Lego Star Code e Star Destroyer.',
-                             developer: luke)
+    darth = create(:developer)
+    create(:developer_profile, developer: darth)
+    luke = create(:developer)
+    create(:developer_profile, developer: luke, full_name: 'Luke Skywalker')
+
     login_as darth, scope: :developer
     visit root_path
     click_on 'Meu Perfil'
@@ -45,12 +34,9 @@ describe 'Developer sees your profile ' do
   end
 
   it 'must see my profile button, if there is already registered profile' do
-    darth = Developer.create!(email: 'darth@vader.com.br', password: '123456789')
-    DeveloperProfile.create!(full_name: 'Anakin Skywalker', social_name: 'Anakin', date_birth: '09/10/1985',
-                             academic_formation: 'Graduado em Ciências da Tecnologia e Ciências de Dados.',
-                             performance_zone: 'Sou desenvolvedor nas áreas de back-end e front-end.',
-                             professional_experiences: 'Já trabalhei em empresas como Millennium Falcon Code e TIE Avançado.',
-                             developer: darth)
+    darth = create(:developer)
+    create(:developer_profile, developer: darth)
+
     login_as darth, scope: :developer
     visit root_path
 
@@ -59,7 +45,8 @@ describe 'Developer sees your profile ' do
   end
 
   it 'should see create profile button if there is no profile registered' do
-    darth = Developer.create!(email: 'darth@vader.com.br', password: '123456789')
+    darth = create(:developer)
+    
     login_as darth, scope: :developer
     visit root_path
 
@@ -68,12 +55,8 @@ describe 'Developer sees your profile ' do
   end
 
   it 'must be logged in to view own profile' do
-    darth = Developer.create!(email: 'darth@vader.com.br', password: '123456789')
-    profile = DeveloperProfile.create!(full_name: 'Anakin Skywalker', social_name: 'Anakin', date_birth: '09/10/1985',
-                                       academic_formation: 'Graduado em Ciências da Tecnologia e Ciências de Dados.',
-                                       performance_zone: 'Sou desenvolvedor nas áreas de back-end e front-end.',
-                                       professional_experiences: 'Já trabalhei em empresas como Millennium Falcon Code e TIE Avançado.',
-                                       developer: darth)
+    darth = create(:developer)
+    profile = create(:developer_profile, developer: darth)
 
     visit user_developer_profile_path(profile)
 

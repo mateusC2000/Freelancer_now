@@ -2,12 +2,8 @@ require 'rails_helper'
 
 describe 'Developer edits profile' do
   it 'successfully' do
-    bellamy = Developer.create!(email: 'bellamy@blake', password: '123456')
-    DeveloperProfile.create!(full_name: 'Bellamy Blake', social_name: 'Bellamy', date_birth: '09/10/1985',
-                             academic_formation: 'Pós Graduado em Full Stack.',
-                             performance_zone: 'Sou desenvolvedor nas áreas de back-end e front-end.',
-                             professional_experiences: 'Já trabalhei em empresas como Millennium Falcon Code e TIE Avançado.',
-                             developer: bellamy)
+    bellamy = create(:developer)
+    create(:developer_profile, developer: bellamy)
 
     login_as bellamy, scope: :developer
     visit root_path
@@ -33,12 +29,8 @@ describe 'Developer edits profile' do
   end
 
   it 'and there should be no blank fields' do
-    bellamy = Developer.create!(email: 'bellamy@blake', password: '123456')
-    DeveloperProfile.create!(full_name: 'Bellamy Blake', social_name: 'Bellamy', date_birth: '09/10/1985',
-                             academic_formation: 'Pós Graduado em Full Stack.',
-                             performance_zone: 'Sou desenvolvedor nas áreas de back-end e front-end.',
-                             professional_experiences: 'Já trabalhei em empresas como Millennium Falcon Code e TIE Avançado.',
-                             developer: bellamy)
+    bellamy = create(:developer)
+    create(:developer_profile, developer: bellamy)
 
     login_as bellamy, scope: :developer
     visit root_path

@@ -2,8 +2,8 @@ require 'rails_helper'
 
 describe 'Project Owner creates a project' do
   it 'successfully' do
-    ProjectCategory.create!(category: 'Front-end')
-    teu = ProjectOwner.create!(email: 'teu@shelby.com.br', password: '123456789')
+    create(:project_category, category: 'Front-end')
+    teu = create(:project_owner)
 
     login_as teu, scope: :project_owner
     visit root_path
@@ -29,7 +29,7 @@ describe 'Project Owner creates a project' do
   end
 
   it 'and there should be no blank fields' do
-    teu = ProjectOwner.create!(email: 'teu@shelby.com.br', password: '123456789')
+    teu = create(:project_owner)
 
     login_as teu, scope: :project_owner
     visit new_admin_project_path

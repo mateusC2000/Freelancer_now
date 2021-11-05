@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'Developer creates profile' do
   it 'successfully' do
-    joao = Developer.create!(email: 'jbaptist@fields.com.br', password: '123456789')
+    joao = create(:developer)
 
     login_as joao, scope: :developer
     visit root_path
@@ -28,7 +28,7 @@ describe 'Developer creates profile' do
   end
 
   it 'and there should be no blank fields' do
-    joao = Developer.create!(email: 'joao@shelby.com.br', password: '123456789')
+    joao = create(:developer)
 
     login_as joao, scope: :developer
     visit new_user_developer_profile_path

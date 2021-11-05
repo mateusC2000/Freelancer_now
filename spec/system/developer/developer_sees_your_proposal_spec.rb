@@ -2,28 +2,11 @@ require 'rails_helper'
 
 describe 'Developer sees your proposal' do
   it 'successfully' do
-    category = ProjectCategory.create!(category: 'Front-end')
-    kurt = ProjectOwner.create!(email: 'kurt@weler.com.br', password: '123456789')
-    kproject = Project.create!({ title: 'Desenvolvedor de Sites', description: 'Desenvolvimento de sites e-commerce e institucionais',
-                                 requirements: 'Buscamos pessoas com experiência em e-commerce, Google ADS CMS SEO',
-                                 maximum_value_per_hour: 10, end_date: 5.days.from_now, working_model: 1, project_category: category,
-                                 project_owner: kurt })
-
-    john = ProjectOwner.create!(email: 'john@mmurphy.com.br', password: '1234567')
-    Project.create!({ title: 'Front on Fire', description: 'Aprimoramento de site de imóveis com front-end',
-                      requirements: 'Buscamos devs com experiência na área de front-end',
-                      maximum_value_per_hour: 25, end_date: 5.days.from_now, working_model: 1,
-                      project_category: category, project_owner: john })
-
-    bellamy = Developer.create!(email: 'bellamy@blake', password: '123456')
-    DeveloperProfile.create!(full_name: 'Bellamy Blake', social_name: 'Bellamy', date_birth: '09/10/1985',
-                             academic_formation: 'Graduado em Ciências da Tecnologia e Ciências de Dados.',
-                             performance_zone: 'Sou desenvolvedor nas áreas de back-end e front-end.',
-                             professional_experiences: 'Já trabalhei em empresas como Millennium Falcon Code e TIE Avançado.',
-                             developer: bellamy)
-
-    Proposal.create!({ motivation: 'Por pura diversão', weekly_hours_available: 40,
-                       project: kproject, developer: bellamy })
+    project = create(:project, title: 'Desenvolvedor de Sites')
+    create(:project, title: 'Front on Fire')
+    bellamy = create(:developer)
+    create(:developer_profile, developer: bellamy)
+    create(:proposal, project: project, developer: bellamy)
 
     login_as bellamy, scope: :developer
     visit root_path
@@ -36,28 +19,11 @@ describe 'Developer sees your proposal' do
   end
 
   it 'see the details of an accepted proposal' do
-    category = ProjectCategory.create!(category: 'Front-end')
-    kurt = ProjectOwner.create!(email: 'kurt@weler.com.br', password: '123456789')
-    kproject = Project.create!({ title: 'Desenvolvedor de Sites', description: 'Desenvolvimento de sites e-commerce e institucionais',
-                                 requirements: 'Buscamos pessoas com experiência em e-commerce, Google ADS CMS SEO',
-                                 maximum_value_per_hour: 10, end_date: 5.days.from_now, working_model: 1,
-                                 project_category: category, project_owner: kurt })
-
-    john = ProjectOwner.create!(email: 'john@mmurphy.com.br', password: '1234567')
-    Project.create!({ title: 'Front on Fire', description: 'Aprimoramento de site de imóveis com front-end',
-                      requirements: 'Buscamos devs com experiência na área de front-end',
-                      maximum_value_per_hour: 25, end_date: 5.days.from_now, working_model: 1,
-                      project_category: category, project_owner: john })
-
-    bellamy = Developer.create!(email: 'bellamy@blake', password: '123456')
-    DeveloperProfile.create!(full_name: 'Bellamy Blake', social_name: 'Bellamy', date_birth: '09/10/1985',
-                             academic_formation: 'Graduado em Ciências da Tecnologia e Ciências de Dados.',
-                             performance_zone: 'Sou desenvolvedor nas áreas de back-end e front-end.',
-                             professional_experiences: 'Já trabalhei em empresas como Millennium Falcon Code e TIE Avançado.',
-                             developer: bellamy)
-
-    Proposal.create!({ motivation: 'Por pura diversão', weekly_hours_available: 40,
-                       project: kproject, developer: bellamy, status: :accepted })
+    project = create(:project, title: 'Desenvolvedor de Sites')
+    create(:project, title: 'Front on Fire')
+    bellamy = create(:developer)
+    create(:developer_profile, developer: bellamy)
+    create(:proposal, project: project, developer: bellamy, status: :accepted)
 
     login_as bellamy, scope: :developer
     visit root_path
@@ -72,28 +38,11 @@ describe 'Developer sees your proposal' do
   end
 
   it 'see details of a rejected proposal' do
-    category = ProjectCategory.create!(category: 'Front-end')
-    kurt = ProjectOwner.create!(email: 'kurt@weler.com.br', password: '123456789')
-    kproject = Project.create!({ title: 'Desenvolvedor de Sites', description: 'Desenvolvimento de sites e-commerce e institucionais',
-                                 requirements: 'Buscamos pessoas com experiência em e-commerce, Google ADS CMS SEO',
-                                 maximum_value_per_hour: 10, end_date: 5.days.from_now, working_model: 1,
-                                 project_category: category, project_owner: kurt })
-
-    john = ProjectOwner.create!(email: 'john@mmurphy.com.br', password: '1234567')
-    Project.create!({ title: 'Front on Fire', description: 'Aprimoramento de site de imóveis com front-end',
-                      requirements: 'Buscamos devs com experiência na área de front-end',
-                      maximum_value_per_hour: 25, end_date: 5.days.from_now, working_model: 1,
-                      project_category: category, project_owner: john })
-
-    bellamy = Developer.create!(email: 'bellamy@blake', password: '123456')
-    DeveloperProfile.create!(full_name: 'Bellamy Blake', social_name: 'Bellamy', date_birth: '09/10/1985',
-                             academic_formation: 'Graduado em Ciências da Tecnologia e Ciências de Dados.',
-                             performance_zone: 'Sou desenvolvedor nas áreas de back-end e front-end.',
-                             professional_experiences: 'Já trabalhei em empresas como Millennium Falcon Code e TIE Avançado.',
-                             developer: bellamy)
-
-    Proposal.create!({ motivation: 'Por pura diversão', weekly_hours_available: 20,
-                       project: kproject, developer: bellamy, status: :recused })
+    project = create(:project, title: 'Desenvolvedor de Sites')
+    create(:project, title: 'Front on Fire')
+    bellamy = create(:developer)
+    create(:developer_profile, developer: bellamy)
+    create(:proposal, project: project, developer: bellamy, status: :recused)
 
     login_as bellamy, scope: :developer
     visit root_path
@@ -102,56 +51,35 @@ describe 'Developer sees your proposal' do
 
     expect(page).to have_content('Após avaliarmos seu perfil, infelizmente tivemos que recusar a sua proposta.')
     expect(page).to have_content('Motivação: Por pura diversão')
-    expect(page).to have_content('Horas Semanais Disponíveis: 20')
+    expect(page).to have_content('Horas Semanais Disponíveis: 40')
     expect(page).to have_content("Proposta enviada em: #{I18n.l(Proposal.last.updated_at, format: :long)}")
     expect(page).to have_content('Situação da Proposta: Recusada')
   end
 
   it 'must be logged in to view own proposals' do
-    category = ProjectCategory.create!(category: 'Front-end')
-    john = ProjectOwner.create!(email: 'john@mmurphy.com.br', password: '1234567')
-    jproject = Project.create!({ title: 'Front on Fire', description: 'Aprimoramento de site de imóveis com front-end',
-                                 requirements: 'Buscamos devs com experiência na área de front-end',
-                                 maximum_value_per_hour: 25, end_date: 5.days.from_now, working_model: 1,
-                                 project_category: category, project_owner: john })
+    project = create(:project, title: 'Desenvolvedor de Sites')
 
-    visit user_project_proposals_path(jproject)
+    visit user_project_proposals_path(project)
 
     expect(current_path).to eq(new_developer_session_path)
     expect(page).to have_content('Para continuar, efetue login ou registre-se')
   end
 
   it 'must be logged in to view details of proposal' do
-    category = ProjectCategory.create!(category: 'Front-end')
-    john = ProjectOwner.create!(email: 'john@mmurphy.com.br', password: '1234567')
-    jproject = Project.create!({ title: 'Front on Fire', description: 'Aprimoramento de site de imóveis com front-end',
-                                 requirements: 'Buscamos devs com experiência na área de front-end',
-                                 maximum_value_per_hour: 25, end_date: 5.days.from_now, working_model: 1,
-                                 project_category: category, project_owner: john })
-    bellamy = Developer.create!(email: 'bellamy@blake', password: '123456')
-    proposal = Proposal.create!({ motivation: 'Por pura diversão', weekly_hours_available: 20,
-                                  project: jproject, developer: bellamy, status: :recused })
+    project = create(:project, title: 'Desenvolvedor de Sites')
+    bellamy = create(:developer)
+    proposal = create(:proposal, project: project, developer: bellamy, status: :recused)
 
-    visit user_project_proposal_path(jproject, proposal)
+    visit user_project_proposal_path(project, proposal)
 
     expect(current_path).to eq(new_developer_session_path)
     expect(page).to have_content('Para continuar, efetue login ou registre-se')
   end
 
   it 'in blank' do
-    category = ProjectCategory.create!(category: 'Front-end')
-    kurt = ProjectOwner.create!(email: 'kurt@weler.com.br', password: '123456789')
-    Project.create!({ title: 'Desenvolvedor de Sites', description: 'Desenvolvimento de sites e-commerce e institucionais',
-                      requirements: 'Buscamos pessoas com experiência em e-commerce, Google ADS CMS SEO',
-                      maximum_value_per_hour: 10, end_date: 5.days.from_now, working_model: 1,
-                      project_category: category, project_owner: kurt })
-
-    bellamy = Developer.create!(email: 'bellamy@blake', password: '123456')
-    DeveloperProfile.create!(full_name: 'Bellamy Blake', social_name: 'Bellamy', date_birth: '09/10/1985',
-                             academic_formation: 'Graduado em Ciências da Tecnologia e Ciências de Dados.',
-                             performance_zone: 'Sou desenvolvedor nas áreas de back-end e front-end.',
-                             professional_experiences: 'Já trabalhei em empresas como Millennium Falcon Code e TIE Avançado.',
-                             developer: bellamy)
+    create(:project, title: 'Desenvolvedor de Sites')
+    bellamy = create(:developer)
+    create(:developer_profile, developer: bellamy)
 
     login_as bellamy, scope: :developer
     visit root_path
