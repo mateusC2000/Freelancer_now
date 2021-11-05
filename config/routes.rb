@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :project_owners
 
   root 'home#index'
- 
+
   resources :projects, only: %i[show] do
     get 'search', on: :collection
   end

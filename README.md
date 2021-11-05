@@ -19,6 +19,8 @@ proposta referente ao mesmo. Os donos de projetos cadastram seus projetos e aval
   * Capybara  https://rubygems.org/gems/capybara/versions/3.35.3
   * Shoulda Matchers  https://github.com/thoughtbot/shoulda-matchers
   * Factory Bot  https://github.com/thoughtbot/factory_bot
+  * Rubocop https://github.com/rubocop/rubocop
+  * Rubocop-Rails https://github.com/rubocop/rubocop-rails
                                           
 #### Autorização/Autenticação
 

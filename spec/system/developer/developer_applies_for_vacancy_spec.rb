@@ -10,13 +10,15 @@ describe 'Developer applies for vacancy' do
     visit root_path
     click_on 'Desenvolvedor de Sites'
     fill_in 'Motivação',
-            with: 'Tenho experiencia na área de desenvolvimento e pretendo focar minha carreira apenas nisso, além de ter gostado da proposta'
+            with: 'Tenho experiencia na área de desenvolvimento e pretendo focar '\
+                  'minha carreira apenas nisso, além de ter gostado da proposta'
     fill_in 'Horas Semanais Disponíveis', with: 40
     click_on 'Candidate-se'
 
     expect(page).to have_content('Proposta enviada com sucesso!')
     expect(page).to have_content('Avaliaremos seu perfil e em breve retornaremos uma resposta.')
-    expect(page).to have_content('Motivação: Tenho experiencia na área de desenvolvimento e pretendo focar minha carreira apenas nisso, além de ter gostado da proposta')
+    expect(page).to have_content('Motivação: Tenho experiencia na área de desenvolvimento e pretendo focar minha '\
+                                 'carreira apenas nisso, além de ter gostado da proposta')
     expect(page).to have_content('Horas Semanais Disponíveis: 40')
     expect(page).to have_content("Proposta enviada em: #{I18n.l(Proposal.last.created_at, format: :long)}")
     expect(page).to have_content('Situação da Proposta: Pendente')

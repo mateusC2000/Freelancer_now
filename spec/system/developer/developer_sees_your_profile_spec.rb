@@ -14,7 +14,8 @@ describe 'Developer sees your profile ' do
     expect(page).to have_content('Data de Nascimento: 09/10/1985')
     expect(page).to have_content('Formação Acadêmica: Graduado em Ciências da Tecnologia e Ciências de Dados.')
     expect(page).to have_content('Zona de Atuação: Sou desenvolvedor nas áreas de back-end e front-end.')
-    expect(page).to have_content('Experiências Profissionais: Já trabalhei em empresas como Millennium Falcon Code e TIE Avançado.')
+    expect(page).to have_content('Experiências Profissionais: Já trabalhei em empresas como '\
+                                 'Millennium Falcon Code e TIE Avançado.')
     expect(page).to have_link('Voltar', href: root_path)
   end
 
@@ -46,7 +47,7 @@ describe 'Developer sees your profile ' do
 
   it 'should see create profile button if there is no profile registered' do
     darth = create(:developer)
-    
+
     login_as darth, scope: :developer
     visit root_path
 

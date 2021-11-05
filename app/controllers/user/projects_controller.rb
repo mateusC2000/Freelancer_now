@@ -1,5 +1,4 @@
 class User::ProjectsController < DevelopersController
-
   def search
     @projects = Project.where("title like '%#{params[:q]}%'")
   end

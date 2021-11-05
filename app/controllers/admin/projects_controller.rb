@@ -4,7 +4,7 @@ class Admin::ProjectsController < ProjectOwnersController
   def new
     @project = Project.new
   end
-  
+
   def create
     @project = Project.new(project_params)
     @project.project_owner = current_project_owner
@@ -15,15 +15,13 @@ class Admin::ProjectsController < ProjectOwnersController
     end
   end
 
-  def show
-  end
+  def show; end
 
   def my_projects
     @projects = current_project_owner.projects
   end
-  
-  def edit
-  end
+
+  def edit; end
 
   def update
     if @project.update(project_params)

@@ -1,8 +1,7 @@
 class User::DeveloperProfilesController < DevelopersController
   before_action :set_developer_profile, only: %i[show edit update]
 
-  def show
-  end
+  def show; end
 
   def new
     @developer_profile = DeveloperProfile.new
@@ -18,8 +17,7 @@ class User::DeveloperProfilesController < DevelopersController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @developer_profile.update(profile_params)
@@ -28,7 +26,7 @@ class User::DeveloperProfilesController < DevelopersController
       render :edit
     end
   end
-  
+
   private
 
   def profile_params
@@ -36,6 +34,7 @@ class User::DeveloperProfilesController < DevelopersController
                                               :academic_formation, :performance_zone,
                                               :professional_experiences, :image)
   end
+
   def set_developer_profile
     @developer_profile = DeveloperProfile.find(params[:id])
   end
