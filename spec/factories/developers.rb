@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :developer do
-    email { generate(:email) }
+    sequence(:email) { Faker::Internet.unique.email }
     password { '123456789' }
   end
 end

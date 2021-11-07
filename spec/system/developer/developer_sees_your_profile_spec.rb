@@ -3,7 +3,12 @@ require 'rails_helper'
 describe 'Developer sees your profile ' do
   it 'successfully' do
     darth = create(:developer)
-    create(:developer_profile, developer: darth)
+    create(:developer_profile, developer: darth, full_name: 'Anakin Skywalker',
+                               social_name: 'Anakin', date_birth: '09/10/1985',
+                               academic_formation: 'Graduado em Ciências da Tecnologia e Ciências de Dados.',
+                               performance_zone: 'Sou desenvolvedor nas áreas de back-end e front-end.',
+                               professional_experiences: 'Experiências Profissionais: Já trabalhei em empresas como '\
+                                                         'Millennium Falcon Code e TIE Avançado.')
 
     login_as darth, scope: :developer
     visit root_path
@@ -21,7 +26,7 @@ describe 'Developer sees your profile ' do
 
   it 'and see only your own profile' do
     darth = create(:developer)
-    create(:developer_profile, developer: darth)
+    create(:developer_profile, developer: darth, full_name: 'Anakin Skywalker')
     luke = create(:developer)
     create(:developer_profile, developer: luke, full_name: 'Luke Skywalker')
 

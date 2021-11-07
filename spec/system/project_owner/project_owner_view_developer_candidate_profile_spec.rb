@@ -5,7 +5,13 @@ describe 'Project owner view developer candidate profile' do
     kurt = create(:project_owner)
     project = create(:project, project_owner: kurt, title: 'Desenvolvedor de Sites')
     bellamy = create(:developer)
-    profile = create(:developer_profile, developer: bellamy, full_name: 'Bellamy Blake')
+    profile = create(:developer_profile, developer: bellamy, full_name: 'Bellamy Blake',
+                                         social_name: 'Bellamy', date_birth: '09/10/1985',
+                                         academic_formation: 'Graduado em Ciências da Tecnologia e Ciências de Dados.',
+                                         performance_zone: 'Sou desenvolvedor nas áreas de back-end e front-end.',
+                                         professional_experiences: 'Já trabalhei em empresas como Millennium '\
+                                                                   'Falcon Code e TIE Avançado.')
+
     profile.image.attach(io: File.open('spec/images/profile.png'), filename: 'profile.png')
     create(:proposal, project: project, developer: bellamy)
 

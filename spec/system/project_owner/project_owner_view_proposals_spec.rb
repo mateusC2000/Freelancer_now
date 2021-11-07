@@ -7,8 +7,9 @@ describe 'Project owner view proposals' do
     project = create(:project, project_owner: kurt, title: 'Desenvolvedor de Sites')
     other_project = create(:project, project_owner: john, title: 'Front on Fire')
     darth = create(:developer)
-    create(:developer_profile, developer: darth)
-    create(:proposal, project: project, developer: darth)
+    create(:developer_profile, developer: darth, full_name: 'Anakin Skywalker')
+    create(:proposal, project: project, developer: darth, motivation: 'Por pura diversão',
+                      weekly_hours_available: 40)
     create(:proposal, project: other_project, developer: darth)
 
     login_as kurt, scope: :project_owner
@@ -28,8 +29,9 @@ describe 'Project owner view proposals' do
     kurt = create(:project_owner)
     project = create(:project, project_owner: kurt, title: 'Desenvolvedor de Sites')
     darth = create(:developer)
-    create(:developer_profile, developer: darth)
-    create(:proposal, project: project, developer: darth)
+    create(:developer_profile, developer: darth, full_name: 'Anakin Skywalker')
+    create(:proposal, project: project, developer: darth, motivation: 'Por pura diversão',
+                      weekly_hours_available: 40)
 
     login_as kurt, scope: :project_owner
     visit my_projects_admin_projects_path
@@ -48,9 +50,10 @@ describe 'Project owner view proposals' do
   it 'and proposed refusal' do
     kurt = create(:project_owner)
     project = create(:project, project_owner: kurt, title: 'Desenvolvedor de Sites')
-    bellamy = create(:developer)
-    create(:developer_profile, developer: bellamy)
-    create(:proposal, project: project, developer: bellamy)
+    darth = create(:developer)
+    create(:developer_profile, developer: darth, full_name: 'Anakin Skywalker')
+    create(:proposal, project: project, developer: darth,
+                      motivation: 'Por pura diversão', weekly_hours_available: 40)
 
     login_as kurt, scope: :project_owner
     visit my_projects_admin_projects_path

@@ -21,6 +21,7 @@ proposta referente ao mesmo. Os donos de projetos cadastram seus projetos e aval
   * Factory Bot  https://github.com/thoughtbot/factory_bot
   * Rubocop https://github.com/rubocop/rubocop
   * Rubocop-Rails https://github.com/rubocop/rubocop-rails
+  * Faker https://github.com/faker-ruby/faker
                                           
 #### Autorização/Autenticação
 
