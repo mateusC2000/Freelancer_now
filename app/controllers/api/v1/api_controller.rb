@@ -4,11 +4,11 @@ class Api::V1::ApiController < ActionController::API
 
   private
 
-  def render_not_found(_e)
+  def render_not_found
     render status: :not_found, json: '{ message: Objeto não encontrado }'
   end
 
-  def render_generic_error(_e)
+  def render_generic_error
     render status: :internal_server_error, json: '{ message: Erro geral }'
   end
 end

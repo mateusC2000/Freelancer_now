@@ -9,7 +9,7 @@ describe 'Visitor visits home page' do
   end
 
   it 'and sees available projects' do
-    create(:project, title: 'Desenvolvedor de Sites')
+    create(:project, title: 'Desenvolvedor de Sites', end_date: '20/11/2023')
 
     visit root_path
     click_on 'Desenvolvedor de Sites'
@@ -18,7 +18,7 @@ describe 'Visitor visits home page' do
     expect(page).to have_content('Desenvolvimento de sites e-commerce e institucionais')
     expect(page).to have_content('Buscamos pessoas com experiência em e-commerce Google ADS CMS SEO')
     expect(page).to have_content('Máximo pago por hora: R$ 10,00')
-    expect(page).to have_content('Último dia útil: 20/11/2021')
+    expect(page).to have_content('Último dia útil: 20/11/2023')
     expect(page).to have_content('Remoto')
     expect(page).to have_link('Voltar')
   end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_29_193042) do
+ActiveRecord::Schema.define(version: 2021_11_11_141410) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -107,6 +107,7 @@ ActiveRecord::Schema.define(version: 2021_10_29_193042) do
     t.string "motivation"
     t.integer "weekly_hours_available"
     t.index ["developer_id"], name: "index_proposals_on_developer_id"
+    t.index ["project_id", "developer_id"], name: "index_proposals_on_project_id_and_developer_id", unique: true
     t.index ["project_id"], name: "index_proposals_on_project_id"
   end
 

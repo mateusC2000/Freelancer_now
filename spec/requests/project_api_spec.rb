@@ -68,7 +68,7 @@ describe 'project API' do
 
       project_params = { project: { title: 'Desenvolvendo Back e Front', description: 'Lê o título.',
                                     requirements: 'Saber back e front', maximum_value_per_hour: 40,
-                                    working_model: 'remote', end_date: '05/01/2022',
+                                    working_model: 'remote', end_date: 1.day.from_now,
                                     project_owner_id: project_owner.id,
                                     project_category_id: project_category.id } }
 
@@ -76,13 +76,12 @@ describe 'project API' do
 
       expect(response).to have_http_status(201)
       expect(response.content_type).to include('application/json')
-      expect(parsed_body[:id]).to eq(Project.last)
+      expect(parsed_body[:id]).to eq(Project.last.id)
       expect(parsed_body[:title]).to eq('Desenvolvendo Back e Front')
       expect(parsed_body[:description]).to eq('Lê o título.')
       expect(parsed_body[:requirements]).to eq('Saber back e front')
       expect(parsed_body[:maximum_value_per_hour]).to eq('40.0')
       expect(parsed_body[:working_model]).to eq('remote')
-      expect(parsed_body[:end_date]).to eq('2022-01-05')
     end
   end
 end

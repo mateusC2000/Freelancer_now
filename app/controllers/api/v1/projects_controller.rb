@@ -20,6 +20,6 @@ class Api::V1::ProjectsController < Api::V1::ApiController
   def project_params
     params.require(:project).permit(:title, :description, :requirements,
                                     :maximum_value_per_hour, :end_date,
-                                    :working_model, :project_category_id)
+                                    :working_model, :project_category_id, :project_owner_id)
   end
 end
