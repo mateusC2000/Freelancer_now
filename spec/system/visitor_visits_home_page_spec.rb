@@ -5,14 +5,14 @@ describe 'Visitor visits home page' do
     visit root_path
 
     expect(page).to have_content('FreelancerNow')
-    expect(page).to have_content('Sua próxima contratação está aqui!')
+    expect(page).to have_content('Projetos Disponíveis')
   end
 
   it 'and sees available projects' do
     create(:project, title: 'Desenvolvedor de Sites', end_date: '20/11/2023')
 
     visit root_path
-    click_on 'Desenvolvedor de Sites'
+    click_on 'Ver Informações do Projeto'
 
     expect(page).to have_content('Desenvolvedor de Sites')
     expect(page).to have_content('Desenvolvimento de sites e-commerce e institucionais')

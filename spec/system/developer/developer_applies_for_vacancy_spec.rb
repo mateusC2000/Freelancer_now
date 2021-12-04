@@ -8,7 +8,7 @@ describe 'Developer applies for vacancy' do
 
     login_as darth, scope: :developer
     visit root_path
-    click_on 'Desenvolvedor de Sites'
+    click_on 'Ver Informações do Projeto'
     fill_in 'Motivação',
             with: 'Tenho experiencia na área de desenvolvimento e pretendo focar '\
                   'minha carreira apenas nisso, além de ter gostado da proposta'
@@ -31,7 +31,7 @@ describe 'Developer applies for vacancy' do
 
     login_as darth, scope: :developer
     visit root_path
-    click_on 'Desenvolvedor de Sites'
+    click_on 'Ver Informações do Projeto'
     click_on 'Candidate-se'
 
     expect(page).to have_content('não pode ficar em branco', count: 2)
@@ -43,7 +43,7 @@ describe 'Developer applies for vacancy' do
 
     login_as darth, scope: :developer
     visit root_path
-    click_on 'Desenvolvedor de Sites'
+    click_on 'Ver Informações do Projeto'
 
     expect(page).to have_link('Complete seu perfil para candidatar-se a vaga.')
   end

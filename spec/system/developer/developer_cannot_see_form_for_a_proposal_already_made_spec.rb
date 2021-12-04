@@ -9,7 +9,7 @@ describe 'Developer cannot see form for a proposal already made' do
 
     login_as darth, scope: :developer
     visit root_path
-    click_on 'Desenvolvedor de Sites'
+    click_on 'Ver Informações do Projeto'
 
     expect(page).not_to have_content('Candidatar-se a vaga')
     expect(page).not_to have_button('Candidate-se')

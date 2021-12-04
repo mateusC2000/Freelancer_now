@@ -1,15 +1,37 @@
 <div class="container">
-
-  <h5><%= t('.slogan') %></h5>
   
-  <h4><%= t('.available_projects') unless project_owner_signed_in? %></h4>
+  <img src="https://lh3.googleusercontent.com/eEhtFPSWF5dRAPb1NZoJqETHtaB9ZYEoAsMoMS_Sx8wEKqXOh8N6HW0cYS3T-bIyKpU7FtUKZ7hTXKorrrZ9eoBErdFSqbQo5shiSlb_Jj6kxuSAa2nb2VDJkfxATmu8Uv1ew1DE2gy6ffDXL-IWGxP9YaCDicsMRubMRPvhW5cpvzIq_yeVud5XqAhmiDfQaVoZXZphM9dphg2f2Xbjp2T_z-Dpm00zDOSi4wq8lC-X_7YO3zM8souxB0FrGkZAi9RgVzU2v53izSOXtoBobZUWkap6vsAFQ0CcecJuD4QNRq00zfBB2w5618eOjRZTEcdHdtpvYIouclxKsKXDA1Ou08EtyCAH4oUW4cQD3vzH6icyuqkf6p2GEXNnMcRr8TC9-k5KGj1DvIvuoFQ0HsvfnU896hD9hxcOWPd3GHY3sZ239pEiwqWlE1qKISUizZv5zSjH1jIh_tYiheyhB3I7pyieMtcGSTdHL3SNa-W5DeafQMQhR_gZ-n9WapbV19EN85gnGx1jTKF8GHm4S55QV_3C5AJM768QeVybhsiWrMgVUDHGiltlxiKUP3D8Bbxu7x5vHYEsPaRI3w2b3ufssGbU_ZLTacGu9V2R0ydZqdJcUJYfDKvPrRysJdJpUKJTryqu6bP8kDw4rWMHSvtWyTeJWze8otL6oTTUYw97jKFUyFY1PKqAKfx30T4jp-xKNrM6i--0t2gwWE3j2ULbCw=w938-h625-no?authuser=0" class="img-fluid" width="1150">
 
+  <h4><%= t('.available_projects') unless project_owner_signed_in? %></h4>
 
   <nav>
     <% @projects.each do |project| %>
-      <p><%= link_to project.title, user_project_path(project), class: 'btn btn-outline-dark' if developer_signed_in? %></p>
-
-      <p><%= link_to project.title, project_path(project), class: 'btn btn-outline-dark' unless developer_signed_in? || project_owner_signed_in? %></p>
+      <% if developer_signed_in? %>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title"><%= project.title %></h5>
+                <p class="card-text"><%= project.description %></p>
+                <a href=<%= user_project_path(project)%> class="btn btn-primary">Ver Informações do Projeto</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      <% unless developer_signed_in? || project_owner_signed_in? %>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title"><%= project.title %></h5>
+                <p class="card-text"><%= project.description %></p>
+                <a href=<%= project_path(project)%> class="btn btn-primary">Ver Informações do Projeto</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
     <% end %>
   </nav>
 </div>
