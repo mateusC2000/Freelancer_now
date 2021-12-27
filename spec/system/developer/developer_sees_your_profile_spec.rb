@@ -4,7 +4,7 @@ describe 'Developer sees your profile ' do
   it 'successfully' do
     darth = create(:developer)
     create(:developer_profile, developer: darth, full_name: 'Anakin Skywalker',
-                               social_name: 'Anakin', date_birth: '09/10/1985',
+                               social_name: 'Darth', date_birth: '09/10/1985',
                                academic_formation: 'Graduado em Ciências da Tecnologia e Ciências de Dados.',
                                performance_zone: 'Sou desenvolvedor nas áreas de back-end e front-end.',
                                professional_experiences: 'Experiências Profissionais: Já trabalhei em empresas como '\
@@ -15,7 +15,7 @@ describe 'Developer sees your profile ' do
     click_on 'Meu Perfil'
 
     expect(page).to have_content('Anakin Skywalker')
-    expect(page).to have_content('Nome Social: Anakin')
+    expect(page).to have_content('Darth')
     expect(page).to have_content('Data de Nascimento: 09/10/1985')
     expect(page).to have_content('Formação Acadêmica: Graduado em Ciências da Tecnologia e Ciências de Dados.')
     expect(page).to have_content('Zona de Atuação: Sou desenvolvedor nas áreas de back-end e front-end.')

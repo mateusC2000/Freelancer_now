@@ -16,7 +16,7 @@ describe 'Project owner edits a project' do
     fill_in 'Descrição', with: 'Desenvolvimento de aplicativos e minigames'
     fill_in 'Requerimentos', with: 'Buscamos pessoas com experiência em Java, JS'
     fill_in 'Valor máximo por hora', with: 30
-    fill_in 'Último dia útil', with: '25/12/2021'
+    fill_in 'Último dia útil', with: '25/12/2022'
     click_on 'Atualizar Projeto'
 
     expect(page).to have_content('Projeto atualizado com sucesso')
@@ -24,7 +24,7 @@ describe 'Project owner edits a project' do
     expect(page).to have_content('Desenvolvimento de aplicativos e minigames')
     expect(page).to have_content('Buscamos pessoas com experiência em Java, JS')
     expect(page).to have_content('Máximo pago por hora: R$ 30,00')
-    expect(page).to have_content('Último dia útil: 25/12/2021')
+    expect(page).to have_content('Último dia útil: 25/12/2022')
     expect(page).to have_content('Remoto')
     expect(page).to have_link('Voltar', href: my_projects_admin_projects_path)
   end
