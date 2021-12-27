@@ -1,13 +1,68 @@
+<div class="text-center"><h3 class="text-4xl font-semibold leading-normal mb-2 text-blueGray-700 mb-2"><%= t('.candidate_profile') %></h3></div>
 
-<h3><%= t('.candidate_profile') %></h3>
-<% if @candidate_profile.image.attached? %>
-  <%= image_tag @candidate_profile.image, size: '150x150', class: "rounded mx-auto d-block"%>
-<% end %>
-<p class="text-center"><%= @candidate_profile.full_name %></p>
-<p><%= "#{@candidate_profile.class.human_attribute_name(:social_name)}: #{@candidate_profile.social_name}" %></p>
-<p><%= "#{@candidate_profile.class.human_attribute_name(:date_birth)}: #{l(@candidate_profile.date_birth)}" %></p>
-<p><%= "#{@candidate_profile.class.human_attribute_name(:academic_formation)}: #{@candidate_profile.academic_formation}" %></p>
-<p><%= "#{@candidate_profile.class.human_attribute_name(:performance_zone)}: #{@candidate_profile.performance_zone}" %></p>
-<p><%= "#{@candidate_profile.class.human_attribute_name(:professional_experiences)}: #{@candidate_profile.professional_experiences}" %></p>
-<%= link_to t('.back'), admin_project_path(@project)%>
+<link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css">
+<link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
 
+<main class="profile-page">
+  <section class="relative block h-500-px">
+    <div class="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-70-px" style="transform: translateZ(0px)">
+      <svg class="absolute bottom-0 overflow-hidden" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" version="1.1" viewBox="0 0 2560 100" x="0" y="0">
+        <polygon class="text-blueGray-200 fill-current" points="2560 0 2560 100 0 100"></polygon>
+      </svg>
+    </div>
+  </section>
+  <section class="relative py-1 bg-blueGray-200">
+    <div class="container mx-auto px-4">
+      <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg -mt-64">
+        <div class="px-6">
+          <div class="flex flex-wrap justify-center">
+            <div class="w-full lg:w-3/12 px-4 lg:order-2 flex justify-center">
+              <div class="relative">
+                 <% if @candidate_profile.image.attached? %>
+                  <%= image_tag @candidate_profile.image, size: '150x150', class:"shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px" %>
+                <% else %>
+                  <%= image_tag "https://cdn1.leicesterymca.co.uk/uploads/2020/09/no-profile-image-300x300.jpg", size: '150x150', class:"shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px" %>
+                <% end %>
+              </div>
+            </div>
+            <div class="w-full lg:w-4/12 px-4 lg:order-3 lg:text-right lg:self-center">
+              <div class="py-6 px-3 mt-32 sm:mt-0">
+              </div>
+            </div>
+            <div class="w-full lg:w-4/12 px-4 lg:order-1">
+            </div>
+          </div>
+          <div class="text-center mt-12">
+            <div class="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold uppercase">
+              <%= "#{@candidate_profile.social_name}" %>
+            </div>
+            <h3 class="text-4xl font-semibold leading-normal mb-2 text-blueGray-700 mb-2">
+              <%= @candidate_profile.full_name %>
+            </h3>
+            <div class="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold uppercase">
+              <%= "#{@candidate_profile.class.human_attribute_name(:date_birth)}: #{l(@candidate_profile.date_birth)}" %>
+            </div>
+            <div class="mb-2 text-blueGray-600 mt-10">
+              <i class="fas fa-briefcase mr-2 text-lg text-blueGray-400"></i><%= "#{@candidate_profile.class.human_attribute_name(:performance_zone)}: #{@candidate_profile.performance_zone}" %>
+            </div>
+            <div class="mb-2 text-blueGray-600">
+              <i class="fas fa-university mr-2 text-lg text-blueGray-400"></i><%= "#{@candidate_profile.class.human_attribute_name(:academic_formation)}: #{@candidate_profile.academic_formation}" %>
+            </div>
+          </div>
+          <div class="mt-10 py-10 border-t border-blueGray-200 text-center">
+            <div class="flex flex-wrap justify-center">
+              <div class="w-full lg:w-9/12 px-4">
+                <p class="mb-4 text-lg leading-relaxed text-blueGray-700">
+                  <%= "#{@candidate_profile.class.human_attribute_name(:professional_experiences)}: #{@candidate_profile.professional_experiences}" %>
+                </p>
+              </div>
+              <div class="text-center">
+                <%= link_to t('.back'), admin_project_path(@project), class: 'btn btn-secondary btn-sm'%>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
