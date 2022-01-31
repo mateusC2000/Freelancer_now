@@ -7,7 +7,7 @@ services:
     tty: true
     volumes:
       - .:/opt/app
-    command: rails s -b 0.0.0.0
+    command: rails s -b 0.0.0.0 -p 3000
     ports:
       - 3000:3000
     expose:
@@ -18,9 +18,11 @@ services:
       - POSTGRES_HOST=db
     depends_on:
       - db
+      - redis
     networks:
       - freelancer-now
       - db-freelancer
+      - net-redis
   db:
     image: postgres:12-alpine
     environment:
@@ -30,10 +32,20 @@ services:
       - freelancer_now_data:/var/lib/postgresql/data
     networks:
       - db-freelancer
+  redis:
+    image: redis
+    command: redis-server
+    restart: always
+    networks:
+      - net-redis
+
 volumes:
   freelancer_now_data:
+  redis:
 networks: 
   freelancer-now: 
     external: true
   db-freelancer:
+    external: false
+  net-redis:
     external: false

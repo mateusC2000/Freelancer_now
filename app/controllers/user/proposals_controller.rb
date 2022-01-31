@@ -10,6 +10,7 @@ class User::ProposalsController < DevelopersController
     @proposal.project = @project
     if @proposal.save
       redirect_to [:user, @project, @proposal], notice: t('.success')
+      NotifyProposalMailerJob.perform_async(@proposal.id)
     else
       render 'user/projects/show'
     end

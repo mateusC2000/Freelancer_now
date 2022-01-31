@@ -12,10 +12,10 @@ RSpec.describe ProposalMailer, type: :mailer do
 
       proposal = create(:proposal, project: project, developer: darth)
 
-      mail = ProposalMailer.with(proposal: proposal).notify_new_proposal
+      mail = ProposalMailer.with(proposal: proposal.id).notify_new_proposal
 
       expect(mail.to).to eq [john.email.to_s]
-      expect(mail.from).to eq ['nao-responda@flats.com.br']
+      expect(mail.from).to eq ['nao-responda@freelancer.com.br']
       expect(mail.subject).to eq 'Nova proposta para seu projeto'
       expect(mail.body).to include 'Você recebeu uma proposta de darth@vader.com.br no seu projeto ADs'
     end
