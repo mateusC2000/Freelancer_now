@@ -6,11 +6,6 @@ RSpec.describe NotifyProposalMailerJob, type: :job do
   end
 
   describe 'NotifyProposalMailerJob' do
-    before do
-        Sidekiq::Extensions.enable_delay!
-        Sidekiq::Worker.clear_all
-    end
-
     it 'should enqueue a Email job' do
       proposal = create(:proposal)
 

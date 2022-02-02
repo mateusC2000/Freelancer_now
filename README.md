@@ -8,6 +8,7 @@ proposta referente ao mesmo. Os donos de projetos cadastram seus projetos e aval
 
 ## Pré-requisitos:
 
+ * Docker 20.10.11
  * Ruby 3.0.1
  * Rails 6.1.4.1
 
@@ -45,7 +46,7 @@ proposta referente ao mesmo. Os donos de projetos cadastram seus projetos e aval
 ```
   git clone https://github.com/mateusC2000/Freelancer_now.git
 ```
-### Instale as dependências necessárias:
+### Construa a imagem da aplicação:
 
   * Rode o comando: 
 ```
@@ -53,21 +54,27 @@ cd Freelancer_now
 ```
   * Após, rode  o comando: 
 ```
-bin/setup
+docker image build -t <image-name> .
 ```
 
-## Configuração do Banco de Dados
+## Iniciar o projeto:
 
-  * Rode o comando abaixo e preencha o banco de dados com os dados pré-existentes da aplicação.
+```
+docker-compose run --rm --service-ports app bash
+```
+
+  * Rode o comando abaixo para instalar todas as dependencias necessárias.
+```
+bin/setup
+```
+  * Rode o comando abaixo para popular o banco de dados.
 ```
 rails db:seed
 ```
-
   * Rode o comando abaixo para executar a aplicação.
 ```
-rails server
+rails s -b 0.0.0.0 -p 3000
 ```
-
   * Vá ao seu navegador e acesse:
 ```
 http://localhost:3000
