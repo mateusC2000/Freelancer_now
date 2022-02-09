@@ -1,4 +1,6 @@
 class Api::V1::ProjectsController < Api::V1::ApiController
+  before_action :require_login, only: :index
+
   def index
     @projects = Project.all
     render json: @projects.as_json(except: %i[created_at updated_at project_category_id],

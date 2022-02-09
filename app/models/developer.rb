@@ -1,4 +1,5 @@
 class Developer < ApplicationRecord
+  
   has_one :developer_profile, dependent: :destroy
   has_many :proposals, dependent: :destroy
   has_many :projects, through: :proposals
