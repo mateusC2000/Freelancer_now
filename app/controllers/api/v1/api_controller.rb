@@ -5,11 +5,11 @@ class Api::V1::ApiController < ActionController::API
   def login
     developer = Developer.find_by(email: params[:email])
     if developer&.valid_password?(params[:password])
-      payload = { developer_email: developer.email}
+      payload = { developer_email: developer.email }
       token = encode_token(payload)
       render status: :accepted, json: { token: token, message: "Bem-vindo #{params[:email]}" }
     else
-      render status: :unauthorized, json: { message: "Email ou senha inválida" }
+      render status: :unauthorized, json: { message: 'Email ou senha inválida' }
     end
   end
 
@@ -22,10 +22,8 @@ class Api::V1::ApiController < ActionController::API
   def session_user
     decoded_hash = decoded_token
     unless decoded_hash.nil?
-      developer_email = decoded_hash[0]['developer_email']
+      developer_email = decoded_hash[0]
       @developer = Developer.find_by(email: developer_email)
-    else
-      nil
     end
   end
 
@@ -36,20 +34,16 @@ class Api::V1::ApiController < ActionController::API
   def decoded_token
     if auth_header
       token = auth_header.split(' ')[1]
-      begin
-        JWT.decode(token, 'mysecret', true, augorithm: 'HS256')
-      rescue JWT::DecodeError
-        []
-      end
+      JWT.decode(token, ENV['JWT_SECRET'], true, augorithm: 'HS256')
     end
   end
 
   def require_login
-    render json: {message: "Por favor, faça login." }, status: :unauthorized unless logged_in?
+    render json: { message: 'Por favor, faça login.' }, status: :unauthorized unless logged_in?
   end
 
   def encode_token(payload)
-    JWT.encode(payload, "mysecret")
+    JWT.encode(payload, ENV['JWT_SECRET'])
   end
 
   def render_not_found

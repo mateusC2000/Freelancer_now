@@ -6,22 +6,35 @@ describe 'project API' do
       dev = create(:developer)
       create(:project, title: 'Desenvolvimento de Apps')
       create(:project, title: 'Desenvolvimento de Sites')
+      token = JWT.encode(dev.email, ENV['JWT_SECRET'])
 
-      token = JWT.encode(dev.email, "mysecret")
-      
-      get '/api/v1/projects', headers: { "Authorization" => "Bearer #{token}" }
+      get '/api/v1/projects', headers: { 'Authorization' => "Bearer #{token}" }
 
-      byebug
       expect(response).to have_http_status(200)
       expect(parsed_body.first[:title]).to eq('Desenvolvimento de Apps')
       expect(parsed_body.second[:title]).to eq('Desenvolvimento de Sites')
       expect(parsed_body.count).to eq(2)
     end
 
-    it 'returns no projects' do
-      get '/api/v1/projects'
+    it 'should get projects' do
+      create(:project, title: 'Desenvolvimento de Apps')
+      create(:project, title: 'Desenvolvimento de Sites')
 
+      get '/api/v1/projects'
       expect(response).to have_http_status(401)
+      expect(parsed_body[:title]).not_to eq('Desenvolvimento de Apps')
+      expect(parsed_body[:title]).not_to eq('Desenvolvimento de Sites')
+      expect(parsed_body[:message]).to eq('Por favor, faça login.')
+    end
+
+
+    it 'returns no projects' do
+      dev = create(:developer)
+      token = JWT.encode(dev.email, ENV['JWT_SECRET'])
+
+      get '/api/v1/projects', headers: { 'Authorization' => "Bearer #{token}" }
+
+      expect(response).to have_http_status(200)
       expect(parsed_body).to be_empty
     end
   end
@@ -99,20 +112,20 @@ describe 'project API' do
     end
 
     it 'and there can be no blank fields' do
-      dev = create(:developer, email: 'jane.doe@gmail.com', password: '123456789' )
+      dev = create(:developer, email: 'jane.doe@gmail.com', password: '123456789')
       post '/api/v1/login', params: { email: '', password: '123456789' }
 
       expect(response).to have_http_status(401)
       expect(response.content_type).to include('application/json')
-      expect(parsed_body[:message]).to eq("Email ou senha inválida")
+      expect(parsed_body[:message]).to eq('Email ou senha inválida')
     end
     it 'and there can be no blank fields' do
-      dev = create(:developer, email: 'jane.doe@gmail.com', password: '123456789' )
+      dev = create(:developer, email: 'jane.doe@gmail.com', password: '123456789')
       post '/api/v1/login', params: { email: 'jane.doe@gmail.com', password: '' }
 
       expect(response).to have_http_status(401)
       expect(response.content_type).to include('application/json')
-      expect(parsed_body[:message]).to eq("Email ou senha inválida")
+      expect(parsed_body[:message]).to eq('Email ou senha inválida')
     end
   end
 end
