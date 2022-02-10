@@ -41,13 +41,15 @@ describe 'project API' do
 
   context 'GET /api/v1/projects/:id' do
     it 'should return a project' do
+      dev = create(:developer)
       project = create(:project, title: 'Desenvolvendo Back e Front',
                                  description: 'Lê o título.',
                                  requirements: 'Saber back e front',
                                  maximum_value_per_hour: 40,
                                  working_model: 1)
+      token = JWT.encode(dev.email, ENV['JWT_SECRET'])
 
-      get "/api/v1/projects/#{project.id}"
+      get "/api/v1/projects/#{project.id}", headers: { 'Authorization' => "Bearer #{token}" }
 
       expect(response).to have_http_status(200)
       expect(response.content_type).to include('application/json')
@@ -57,22 +59,50 @@ describe 'project API' do
       expect(parsed_body[:maximum_value_per_hour]).to eq('40.0')
     end
 
-    it 'should return 404 if project does not exist' do
-      get '/api/v1/projects/999'
-
-      expect(response).to have_http_status(404)
-    end
-
-    it 'should return 500 if database is not available' do
+    it 'must be logged in' do
       project = create(:project, title: 'Desenvolvendo Back e Front',
                                  description: 'Lê o título.',
                                  requirements: 'Saber back e front',
                                  maximum_value_per_hour: 40,
                                  working_model: 1)
 
+      get "/api/v1/projects/#{project.id}"
+
+      expect(response).to have_http_status(401)
+      expect(response.content_type).to include('application/json')
+      expect(parsed_body[:message]).to eq('Por favor, faça login.')
+
+    end
+
+    it 'should return 404 if project does not exist' do
+      get '/api/v1/projects/999'
+
+      expect(response).to have_http_status(401)
+      expect(parsed_body[:message]).to eq('Por favor, faça login.')
+    end
+
+    it 'should return 404 if project does not exist' do
+      dev = create(:developer)
+      token = JWT.encode(dev.email, ENV['JWT_SECRET'])
+
+      get '/api/v1/projects/999', headers: { 'Authorization' => "Bearer #{token}" }
+
+      expect(response).to have_http_status(404)
+      expect(parsed_body[:message]).to eq('Objeto não encontrado')
+    end
+
+    it 'should return 500 if database is not available' do
+      dev = create(:developer)
+      project = create(:project, title: 'Desenvolvendo Back e Front',
+                                 description: 'Lê o título.',
+                                 requirements: 'Saber back e front',
+                                 maximum_value_per_hour: 40,
+                                 working_model: 1)
+      token = JWT.encode(dev.email, ENV['JWT_SECRET'])
+
       allow(Project).to receive(:find).with(project.id.to_s).and_raise(ActiveRecord::ActiveRecordError)
 
-      get "/api/v1/projects/#{project.id}"
+      get "/api/v1/projects/#{project.id}", headers: { 'Authorization' => "Bearer #{token}" }
 
       expect(response).to have_http_status(500)
     end

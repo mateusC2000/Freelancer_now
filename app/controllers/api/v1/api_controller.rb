@@ -20,9 +20,8 @@ class Api::V1::ApiController < ActionController::API
   end
 
   def session_user
-    decoded_hash = decoded_token
-    unless decoded_hash.nil?
-      developer_email = decoded_hash[0]
+    unless decoded_token.nil?
+      developer_email = decoded_token[0]
       @developer = Developer.find_by(email: developer_email)
     end
   end
@@ -34,7 +33,7 @@ class Api::V1::ApiController < ActionController::API
   def decoded_token
     if auth_header
       token = auth_header.split(' ')[1]
-      JWT.decode(token, ENV['JWT_SECRET'], true, augorithm: 'HS256')
+      JWT.decode(token, ENV['JWT_SECRET'], false, augorithm: 'HS256')
     end
   end
 

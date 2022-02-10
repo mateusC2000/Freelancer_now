@@ -1,5 +1,5 @@
 class Api::V1::ProjectsController < Api::V1::ApiController
-  before_action :require_login, only: :index
+  before_action :require_login, only: %i[index show]
 
   def index
     @projects = Project.all
