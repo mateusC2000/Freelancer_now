@@ -4,7 +4,7 @@ class Api::V1::ProjectsController < Api::V1::ApiController
   def index
     @projects = Project.all
     render json: @projects.as_json(except: %i[created_at updated_at project_category_id],
-                                   include: { project_category: { only: %i[name] } })
+                                   include: { project_category: { only: %i[category] }, project_owner: { only: %i[email]} })
   end
 
   def show
