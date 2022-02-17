@@ -2,14 +2,13 @@ class Api::V1::ProjectsController < Api::V1::ApiController
   before_action :require_login, only: %i[index show]
 
   def index
-    @projects = Project.all
-    render json: @projects.as_json(except: %i[created_at updated_at project_category_id],
-                                   include: { project_category: { only: %i[category] }, project_owner: { only: %i[email]} })
+    projects = Project.all
+    render json: projects, each_serializer: ProjectSerializer
   end
 
   def show
-    @project = Project.find(params[:id])
-    render json: @project
+    project = Project.find(params[:id])
+    render json: project, serializer: ProjectSerializer
   end
 
   def create
