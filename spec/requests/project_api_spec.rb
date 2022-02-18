@@ -4,14 +4,16 @@ describe 'project API' do
   context 'GET /api/v1/projects' do
     it 'should get projects' do
       dev = create(:developer)
-      create(:project, title: 'Desenvolvimento de Apps')
+      pj = create(:project, title: 'Desenvolvimento de Apps')
       create(:project, title: 'Desenvolvimento de Sites')
+      create(:proposal, project: pj, developer: dev)
       token = JWT.encode(dev.email, ENV['JWT_SECRET'])
 
       get '/api/v1/projects', headers: { 'Authorization' => "Bearer #{token}" }
-
       expect(response).to have_http_status(200)
       expect(parsed_body.first[:title]).to eq('Desenvolvimento de Apps')
+      expect(parsed_body.first[:proposals].first[:developer]).to eq({ email: dev.email })
+      expect(parsed_body.second[:proposals]).to eq([])
       expect(parsed_body.second[:title]).to eq('Desenvolvimento de Sites')
       expect(parsed_body.count).to eq(2)
     end
@@ -26,7 +28,6 @@ describe 'project API' do
       expect(parsed_body[:title]).not_to eq('Desenvolvimento de Sites')
       expect(parsed_body[:message]).to eq('Por favor, faça login.')
     end
-
 
     it 'returns no projects' do
       dev = create(:developer)
@@ -71,7 +72,6 @@ describe 'project API' do
       expect(response).to have_http_status(401)
       expect(response.content_type).to include('application/json')
       expect(parsed_body[:message]).to eq('Por favor, faça login.')
-
     end
 
     it 'should return 404 if project does not exist' do
@@ -142,7 +142,7 @@ describe 'project API' do
     end
 
     it 'and there can be no blank fields' do
-      dev = create(:developer, email: 'jane.doe@gmail.com', password: '123456789')
+      create(:developer, email: 'jane.doe@gmail.com', password: '123456789')
       post '/api/v1/login', params: { email: '', password: '123456789' }
 
       expect(response).to have_http_status(401)
@@ -150,7 +150,7 @@ describe 'project API' do
       expect(parsed_body[:message]).to eq('Email ou senha inválida')
     end
     it 'and there can be no blank fields' do
-      dev = create(:developer, email: 'jane.doe@gmail.com', password: '123456789')
+      create(:developer, email: 'jane.doe@gmail.com', password: '123456789')
       post '/api/v1/login', params: { email: 'jane.doe@gmail.com', password: '' }
 
       expect(response).to have_http_status(401)

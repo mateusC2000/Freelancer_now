@@ -1,5 +1,5 @@
 class ProposalSerializer < ApplicationSerializer
-  attributes :id, :status, :motivation, :weekly_hours_available, :developer
+  attributes :status, :motivation, :weekly_hours_available, :developer
 
   belongs_to :project
   belongs_to :developer
