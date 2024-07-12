@@ -15,7 +15,7 @@ describe 'Project owner view proposals' do
     login_as kurt, scope: :project_owner
     visit root_path
     click_on 'Meus Projetos'
-    click_on 'Desenvolvedor de Sites'
+    click_on 'Ver Detalhes'
 
     expect(page).to have_content('Proposta de Anakin Skywalker')
     expect(page).to have_link('Anakin Skywalker')
@@ -35,7 +35,7 @@ describe 'Project owner view proposals' do
 
     login_as kurt, scope: :project_owner
     visit my_projects_admin_projects_path
-    click_on 'Desenvolvedor de Sites'
+    click_on 'Ver Detalhes'
     click_on 'Aceitar Proposta'
 
     expect(current_path).to eq(admin_project_path(project))
@@ -57,7 +57,7 @@ describe 'Project owner view proposals' do
 
     login_as kurt, scope: :project_owner
     visit my_projects_admin_projects_path
-    click_on 'Desenvolvedor de Sites'
+    click_on 'Ver Detalhes'
     click_on 'Recusar Proposta'
 
     expect(current_path).to eq(admin_project_path(project))
@@ -86,7 +86,7 @@ describe 'Project owner view proposals' do
     login_as kurt, scope: :project_owner
     visit root_path
     click_on 'Meus Projetos'
-    click_on 'Desenvolvedor de Sites'
+    click_on 'Ver Detalhes'
 
     expect(page).not_to have_content('Proposta de Anakin Skywalker')
     expect(page).not_to have_link('Anakin Skywalker')

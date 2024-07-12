@@ -8,7 +8,7 @@ describe 'Project owner edits a project' do
     login_as teu, scope: :project_owner
     visit root_path
     click_on 'Meus Projetos'
-    click_on 'Desenvolvedor de Sites'
+    click_on 'Ver Detalhes'
     click_on 'Editar Projeto'
     select 'Front-end', from: 'Categoria'
     select 'Remoto', from: 'Modelo de trabalho'
@@ -17,7 +17,7 @@ describe 'Project owner edits a project' do
     fill_in 'Requerimentos', with: 'Buscamos pessoas com experiência em Java, JS'
     fill_in 'Valor máximo por hora', with: 30
     fill_in 'Último dia útil', with: '25/12/2025'
-    click_on 'Atualizar Projeto'
+    click_on 'Salvar'
 
     expect(page).to have_content('Projeto atualizado com sucesso')
     expect(page).to have_content('Desenvolvedor de Apps')
@@ -36,7 +36,7 @@ describe 'Project owner edits a project' do
     login_as teu, scope: :project_owner
     visit root_path
     click_on 'Meus Projetos'
-    click_on 'Desenvolvedor de Sites'
+    click_on 'Ver Detalhes'
     click_on 'Editar Projeto'
     select 'Remoto', from: 'Modelo de trabalho'
     fill_in 'Título', with: ''
@@ -44,7 +44,7 @@ describe 'Project owner edits a project' do
     fill_in 'Requerimentos', with: ''
     fill_in 'Valor máximo por hora', with: ''
     fill_in 'Último dia útil', with: ''
-    click_on 'Atualizar Projeto'
+    click_on 'Salvar'
 
     expect(page).to have_content('não pode ficar em branco', count: 5)
   end

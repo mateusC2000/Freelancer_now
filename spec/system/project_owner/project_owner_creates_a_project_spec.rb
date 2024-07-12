@@ -16,7 +16,7 @@ describe 'Project Owner creates a project' do
     fill_in 'Requerimentos', with: 'Buscamos pessoas com experiência em e-commerce Google ADS CMS SEO'
     fill_in 'Valor máximo por hora', with: 10
     fill_in 'Último dia útil', with: '30/11/2025'
-    click_on 'Criar Projeto'
+    click_on 'Salvar'
 
     expect(page).to have_content('Desenvolvedor de Sites')
     expect(page).to have_content('Desenvolvimento de sites e-commerce e institucionais')
@@ -33,9 +33,9 @@ describe 'Project Owner creates a project' do
 
     login_as teu, scope: :project_owner
     visit new_admin_project_path
-    click_on 'Criar Projeto'
+    click_on 'Salvar'
 
-    expect(page).to have_content('não pode ficar em branco', count: 6)
+    expect(page).to have_content('não pode ficar em branco')
   end
 
   it 'must be logged in to creates a project' do

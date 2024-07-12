@@ -18,7 +18,7 @@ describe 'Project owner view developer candidate profile' do
     login_as kurt, scope: :project_owner
     visit root_path
     click_on 'Meus Projetos'
-    click_on 'Desenvolvedor de Sites'
+    click_on 'Ver Detalhes'
     click_on 'Bellamy Blake'
 
     expect(page).to have_css('img[src*="profile.png"]')

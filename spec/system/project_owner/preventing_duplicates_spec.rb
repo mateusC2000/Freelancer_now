@@ -10,7 +10,7 @@ describe 'Preventing duplicates' do
 
     login_as joe, scope: :project_owner
     visit my_projects_admin_projects_path
-    click_on 'Desenvolvedor de Sites'
+    click_on 'Ver Detalhes'
     click_on 'Aceitar Proposta'
 
     expect(current_path).to eq(admin_project_path(project))
@@ -26,7 +26,7 @@ describe 'Preventing duplicates' do
 
     login_as joe, scope: :project_owner
     visit my_projects_admin_projects_path
-    click_on 'Desenvolvedor de Sites'
+    click_on 'Ver Detalhes'
     click_on 'Recusar Proposta'
 
     expect(current_path).to eq(admin_project_path(project))
