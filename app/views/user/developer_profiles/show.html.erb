@@ -9,7 +9,7 @@
       </svg>
     </div>
   </section>
-  <section class="relative py-1 bg-blueGray-200">
+  <section class="relative py-16 bg-blueGray-200">
     <div class="container mx-auto px-4">
       <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg -mt-64">
         <div class="px-6">
@@ -17,9 +17,9 @@
             <div class="w-full lg:w-3/12 px-4 lg:order-2 flex justify-center">
               <div class="relative">
                 <% if @developer_profile.image.attached? %>
-                  <%= image_tag @developer_profile.image, size: '150x150', class:"shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px" %>
+                  <%= image_tag @developer_profile.image, size: '150x150', class: "shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px" %>
                 <% else %>
-                  <%= image_tag "https://cdn1.leicesterymca.co.uk/uploads/2020/09/no-profile-image-300x300.jpg", size: '150x150', class:"shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px" %>
+                  <%= image_tag "https://cdn1.leicesterymca.co.uk/uploads/2020/09/no-profile-image-300x300.jpg", size: '150x150', class: "shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px" %>
                 <% end %>
               </div>
             </div>
@@ -32,7 +32,7 @@
           </div>
           <div class="text-center mt-12">
             <div class="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold uppercase">
-              <%= "#{@developer_profile.social_name}" %>
+              <%= @developer_profile.social_name %>
             </div>
             <h3 class="text-4xl font-semibold leading-normal mb-2 text-blueGray-700 mb-2">
               <%= @developer_profile.full_name %>
@@ -53,10 +53,10 @@
                 <p class="mb-4 text-lg leading-relaxed text-blueGray-700">
                   <%= "#{@developer_profile.class.human_attribute_name(:professional_experiences)}: #{@developer_profile.professional_experiences}" %>
                 </p>
-              </div>
-              <div class="text-center">
-                <%= link_to t('.edit'), edit_user_developer_profile_path, class: 'btn btn-secondary btn-sm' %>
-                <%= link_to t('.back'), root_path, class: 'btn btn-secondary btn-sm' %>
+                <div class="text-center mt-6">
+                  <%= link_to t('.edit'), edit_user_developer_profile_path, class: 'btn btn-primary btn-sm' %>
+                  <%= link_to t('.back'), root_path, class: 'btn btn-secondary btn-sm' %>
+                </div>
               </div>
             </div>
           </div>

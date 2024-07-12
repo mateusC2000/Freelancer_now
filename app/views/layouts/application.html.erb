@@ -1,56 +1,62 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>FreelancerNow</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>FreelancerNow</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <style>
+    body {
+      background-color: #f8f9fa; /* Cor de fundo suave */
+    }
+  </style>
+</head>
 
-  <body>
-    <% if notice %>
-        <div class="alert alert-success" role="alert">
-          <%= notice %>
-        </div>
-    <% end %>
-    <% if alert %>
-      <div class="alert alert-danger" role="alert">
-        <%= alert %>
-      </div>
-    <% end %>
-
-    <div class="container">
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-          <a class="navbar-brand" href=<%= root_path %>>FreelancerNow</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-              <% unless developer_signed_in? || project_owner_signed_in? %>
-                <li class="nav-item">
-                  <%= link_to t('.area_owner'), new_project_owner_session_path, class: 'nav-link' %>
-                </li>
-                <li class="nav-item">
-                  <%= link_to t('.area_dev'), new_developer_session_path, class: 'nav-link' %>
-                </li>
-              <% end %>
-            </ul>
-
-              <%= form_tag(search_projects_path, method: :get, class: "d-flex") do %>
-                <%= text_field_tag :q, nil, placeholder: t('.search_project'), class: "form-control me-2" %>
-                <%= submit_tag t('.submit_tag'), class: "btn btn-outline-success" %>
-              <% end %>
-
-          </div>
-        </div>
-      </nav>
-    
-      <%= yield %>
+<body>
+  <% if notice %>
+    <div class="alert alert-success" role="alert">
+      <%= notice %>
     </div>
-  </body>
+  <% end %>
+
+  <% if alert %>
+    <div class="alert alert-danger" role="alert">
+      <%= alert %>
+    </div>
+  <% end %>
+
+  <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="<%= root_path %>">FreelancerNow</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <% unless developer_signed_in? || project_owner_signed_in? %>
+              <li class="nav-item">
+                <%= link_to t('.area_owner'), new_project_owner_session_path, class: 'nav-link btn btn-outline-primary me-2' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to t('.area_dev'), new_developer_session_path, class: 'nav-link btn btn-outline-primary' %>
+              </li>
+            <% end %>
+          </ul>
+
+          <%= form_tag(search_projects_path, method: :get, class: "d-flex ms-auto") do %>
+            <%= text_field_tag :q, nil, placeholder: t('.search_project'), class: "form-control me-2" %>
+            <%= submit_tag t('.submit_tag'), class: "btn btn-primary" %>
+          <% end %>
+
+        </div>
+      </div>
+    </nav>
+
+    <%= yield %>
+  </div>
+</body>
 </html>

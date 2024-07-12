@@ -1,32 +1,39 @@
- <div class="container">
-  <nav class="navbar navbar-light bg-light">
-    <div class="container-fluid">
-      <h1 class="navbar-brand" href="#"><%= t('.title') %></h1>
-    </div>
-  </nav>
+<div class="container">
+  <div class="row justify-content-center mt-5">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header bg-light">
+          <h1 class="text-center"><%= t('.title') %></h1>
+        </div>
+        <div class="card-body">
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <div class="mb-3">
+              <%= f.label :email, class: 'form-label' %>
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
+            </div>
 
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <div class="field">
-      <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-    </div>
+            <div class="mb-3">
+              <%= f.label :password, class: 'form-label' %>
+              <%= f.password_field :password, autocomplete: "current-password", class: 'form-control' %>
+            </div>
 
-    <div class="field">
-      <%= f.label :password %><br />
-      <%= f.password_field :password, autocomplete: "current-password" %>
-    </div>
+            <% if devise_mapping.rememberable? %>
+              <div class="mb-3 form-check">
+                <%= f.check_box :remember_me, class: 'form-check-input' %>
+                <%= f.label :remember_me, class: 'form-check-label' %>
+              </div>
+            <% end %>
 
-    <% if devise_mapping.rememberable? %>
-      <div class="field">
-        <%= f.check_box :remember_me %>
-        <%= f.label :remember_me %>
+            <div id="login" class="text-center">
+              <%= f.submit t('.login'), class: 'btn btn-primary btn-sm' %>
+            </div>
+          <% end %>
+        </div>
       </div>
-    <% end %>
-
-    <div id="login" class="actions">
-      <%= f.submit t('.login'), class: 'btn btn-primary btn-sm' %>
     </div>
-  <% end %>
+  </div>
 
-  <%= render "developers/shared/links" %>
+  <div class="row mt-3 justify-content-center text-center">
+    <%= render "developers/shared/links" %>
+  </div>
 </div>

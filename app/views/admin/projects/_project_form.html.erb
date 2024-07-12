@@ -1,43 +1,45 @@
-<div class="container">
+<div class="container my-4">
   <% if @project.errors.any? %>
-    <ul>
-      <% @project.errors.full_messages.each do |error| %>
-        <li><%= error %></li>
-      <% end %>
-    </ul>
+    <div class="alert alert-danger">
+      <ul>
+        <% @project.errors.full_messages.each do |error| %>
+          <li><%= error %></li>
+        <% end %>
+      </ul>
+    </div>
   <% end %>
 
-  <%= form_with model: [:admin, @project] do |f| %>
-    <div>
-      <%= f.label :working_model %>
-      <%= f.select :working_model, @project.class.working_models.keys.map { |key| [@project.class.human_enum_name(:working_model, key), key] }, { prompt: t('.select') } %>
+  <%= form_with model: [:admin, @project], class: 'mt-4' do |f| %>
+    <div class="mb-3">
+      <%= f.label :working_model, class: 'form-label' %>
+      <%= f.select :working_model, @project.class.working_models.keys.map { |key| [@project.class.human_enum_name(:working_model, key), key] }, { prompt: t('.select') }, class: 'form-select' %>
     </div>
-    <div>
-      <%= f.label :project_category_id, 'Categoria' %>
-      <%= f.collection_select :project_category_id, ProjectCategory.all, :id, :category %>
+    <div class="mb-3">
+      <%= f.label :project_category_id, 'Categoria', class: 'form-label' %>
+      <%= f.collection_select :project_category_id, ProjectCategory.all, :id, :category, { prompt: t('.select') }, class: 'form-select' %>
     </div>
-    <div>
-      <%= f.label :title %>
-      <%= f.text_field :title %>
+    <div class="mb-3">
+      <%= f.label :title, class: 'form-label' %>
+      <%= f.text_field :title, class: 'form-control' %>
     </div>
-    <div>
-      <%= f.label :description %>
-      <%= f.text_area :description %>
+    <div class="mb-3">
+      <%= f.label :description, class: 'form-label' %>
+      <%= f.text_area :description, class: 'form-control', rows: 5 %>
     </div>
-    <div>
-      <%= f.label :requirements %>
-      <%= f.text_field :requirements %>
+    <div class="mb-3">
+      <%= f.label :requirements, class: 'form-label' %>
+      <%= f.text_field :requirements, class: 'form-control' %>
     </div>
-    <div>
-      <%= f.label :maximum_value_per_hour %>
-      <%= f.number_field :maximum_value_per_hour %>
+    <div class="mb-3">
+      <%= f.label :maximum_value_per_hour, class: 'form-label' %>
+      <%= f.number_field :maximum_value_per_hour, class: 'form-control' %>
     </div>
-    <div>
-      <%= f.label :end_date %>
-      <%= f.date_field :end_date %>
+    <div class="mb-3">
+      <%= f.label :end_date, class: 'form-label' %>
+      <%= f.date_field :end_date, class: 'form-control' %>
     </div>
-    <div>
-      <%= f.submit %>
+    <div class="text-center">
+      <%= f.submit 'Salvar', class: 'btn btn-primary' %>
     </div>
   <% end %>
 </div>

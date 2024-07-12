@@ -1,17 +1,32 @@
-<div class="container">
-  <nav class="navbar navbar-light bg-light">
+<div class="container my-4">
+  <nav class="navbar navbar-light bg-light mb-4">
     <div class="container-fluid">
       <span class="navbar-brand mb-0 h1"><%= t('.my_projects') %></span>
     </div>
   </nav>
 
   <% if @projects.empty? %>
-    <h2><%= t('.empty') %></h2>
-    <h3><%= link_to(t('.first'), new_admin_project_path) %></h3>
+    <div class="text-center">
+      <h2><%= t('.empty') %></h2>
+      <h3><%= link_to t('.first'), new_admin_project_path, class: 'btn btn-primary' %></h3>
+    </div>
   <% else %>
-    <% @projects.each do |project| %>
-      <p><%= link_to project.title, admin_project_path(project), class: 'btn btn-outline-dark' %></p>
-    <% end %>
-    <%= link_to t('.back'), root_path, class: 'btn btn-secondary btn-sm' %>
+    <div class="row">
+      <% @projects.each do |project| %>
+        <div class="col-md-4 mb-4">
+          <div class="card h-100">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title text-center mb-4"><%= project.title %></h5>
+              <div class="mt-auto text-center">
+                <%= link_to 'Ver Detalhes', admin_project_path(project), class: 'btn btn-outline-dark' %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="text-center">
+      <%= link_to t('.back'), root_path, class: 'btn btn-secondary btn-sm mt-4' %>
+    </div>
   <% end %>
 </div>

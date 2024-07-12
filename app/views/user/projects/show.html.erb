@@ -1,38 +1,59 @@
-<div class="container">
-  <h1><%= @project.title %></h1>
+<div class="container my-4">
+  <h1 class="text-center mb-4"><%= @project.title %></h1>
 
-  <h3><%= @project.description %></h3>
-  <h3><%= @project.requirements %></h3>
-  <h3><%= "#{t('.value')} #{number_to_currency(@project.maximum_value_per_hour)}" %></h3>
-  <h3><%= " #{t('.day')} #{l(@project.end_date)}" %></h3>
-  <h3><%= @project.class.human_enum_name(:working_model, @project.working_model) %></h3>
-  <%= link_to t('.back'), root_path, class: 'btn btn-secondary btn-sm' %>
+  <div class="mb-3">
+    <h5><%= @project.description %></h5>
+  </div>
+  <div class="mb-3">
+    <h5><%= @project.requirements %></h5>
+  </div>
+  <div class="mb-3">
+    <h5><%= "#{t('.value')} #{number_to_currency(@project.maximum_value_per_hour)}" %></h5>
+  </div>
+  <div class="mb-3">
+    <h5><%= " #{t('.day')} #{l(@project.end_date)}" %></h5>
+  </div>
+  <div class="mb-3">
+    <h5><%= @project.class.human_enum_name(:working_model, @project.working_model) %></h5>
+  </div>
 
+  <div class="mb-4">
+    <%= link_to t('.back'), root_path, class: 'btn btn-secondary btn-sm' %>
+  </div>
 
   <% if @proposal.errors.any? %>
-    <% @proposal.errors.full_messages.each do |error| %>
-      <li><%= error %></li>
-    <% end %>
+    <div class="alert alert-danger">
+      <ul>
+        <% @proposal.errors.full_messages.each do |error| %>
+          <li><%= error %></li>
+        <% end %>
+      </ul>
+    </div>
   <% end %>
 
   <% if current_developer.projects.include?(@project) %>
-    <p><%= t('.proposal_made') %></p>
-    <p><%= t('.more_details') %> <%= link_to t('.my_proposals'), user_project_proposals_path(@project) %></p>
-    
+    <div class="alert alert-info">
+      <p><%= t('.proposal_made') %></p>
+      <p><%= t('.more_details') %> <%= link_to t('.my_proposals'), user_project_proposals_path(@project) %></p>
+    </div>
   <% elsif current_developer.developer_profile.present? %>
-    <h3><%= t('.apply_vacancy') %></h3>
-    <%= form_with model: [:user, @project, @proposal] do |f|  %>
-      <div class="form-text">
+    <h3 class="text-center mb-4"><%= t('.apply_vacancy') %></h3>
+    <%= form_with model: [:user, @project, @proposal], class: 'mb-4' do |f| %>
+      <div class="form-group mb-3">
         <%= f.label :motivation %>
-        <%= f.text_area :motivation %>
+        <%= f.text_area :motivation, class: 'form-control' %>
       </div>
-      <div>
+      <div class="form-group mb-3">
         <%= f.label :weekly_hours_available %>
-        <%= f.number_field :weekly_hours_available %>
+        <%= f.number_field :weekly_hours_available, class: 'form-control' %>
       </div>
-      <%= f.submit t('.submit'), class: 'btn btn-primary btn-sm' %>
+      <div class="text-center">
+        <%= f.submit t('.submit'), class: 'btn btn-primary btn-sm' %>
+      </div>
     <% end %>
   <% else %>
-    <p><%= link_to t('.complete_profile'), new_user_developer_profile_path %></p>
+    <div class="alert alert-warning">
+      <p><%= link_to t('.complete_profile'), new_user_developer_profile_path %></p>
+    </div>
   <% end %>
 </div>

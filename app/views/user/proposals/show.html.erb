@@ -1,19 +1,24 @@
-<div class="card text-center">
-  <% if @proposal.canceled?%>
-    <h5><%= "#{@proposal.class.human_attribute_name(:status)}: #{@proposal.class.human_enum_name(:status, @proposal.status)}" %></h5>
-  <% else %>
-      <h5><%= t('.proposal_pending') if @proposal.pending? %></h5>
-      <h5><%= t('.proposal_accepted') if @proposal.accepted? %></h5>
-      <h5><%= t('.proposal_recused') if @proposal.recused? %></h5>
-    
-    <div class="card-body">
-      <h5 class="card-text"><%= "#{@proposal.class.human_attribute_name(:created_at)}: #{l(@proposal.created_at, format: :long )}" %></h5>
-      <h5 class="card-text"><%= "#{@proposal.class.human_attribute_name(:status)}: #{@proposal.class.human_enum_name(:status, @proposal.status)}" %></h5>
-      <h5 class="card-text"><%= "#{@proposal.class.human_attribute_name(:motivation)}: #{@proposal.motivation}" %></h5>
-      <h5 class="card-text"><%= "#{@proposal.class.human_attribute_name(:weekly_hours_available)}: #{@proposal.weekly_hours_available}" %></h5>
-      <%= button_to t('.cancel_proposal'), canceled_user_project_proposal_path(@proposal), class: "btn btn-primary" if @proposal.pending? %>
-    </div>
-    
-  <% end %>
+<div class="container mt-5">
+  <div class="card text-center border-dark mb-4">
+    <% if @proposal.canceled? %>
+      <div class="card-header">
+        <h5 class="mb-0"><%= "#{@proposal.class.human_attribute_name(:status)}: #{@proposal.class.human_enum_name(:status, @proposal.status)}" %></h5>
+      </div>
+    <% else %>
+      <div class="card-header">
+        <h5 class="mb-0"><%= t('.proposal_pending') if @proposal.pending? %></h5>
+        <h5 class="mb-0"><%= t('.proposal_accepted') if @proposal.accepted? %></h5>
+        <h5 class="mb-0"><%= t('.proposal_recused') if @proposal.recused? %></h5>
+      </div>
+      <div class="card-body">
+        <h5 class="card-text"><%= "#{@proposal.class.human_attribute_name(:created_at)}: #{l(@proposal.created_at, format: :long)}" %></h5>
+        <h5 class="card-text"><%= "#{@proposal.class.human_attribute_name(:status)}: #{@proposal.class.human_enum_name(:status, @proposal.status)}" %></h5>
+        <h5 class="card-text"><%= "#{@proposal.class.human_attribute_name(:motivation)}: #{@proposal.motivation}" %></h5>
+        <h5 class="card-text"><%= "#{@proposal.class.human_attribute_name(:weekly_hours_available)}: #{@proposal.weekly_hours_available}" %></h5>
+        <% if @proposal.pending? %>
+          <%= button_to t('.cancel_proposal'), canceled_user_project_proposal_path(@proposal), method: :post, class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 </div>
-
