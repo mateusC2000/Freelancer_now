@@ -42,7 +42,7 @@ volumes:
   redis:
 networks: 
   freelancer-now: 
-    external: true
+    external: false
   db-freelancer:
     external: false
   net-redis:
