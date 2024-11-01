@@ -32,4 +32,8 @@
         candidate_profile:
           candidate_profile: 'Perfil do Candidato'
           back: 'Voltar'
+        accept:
+          proposal_accepted: 'Proposta aceita com sucesso!'
+        recused:
+          proposal_rejected: 'Proposta recusada com sucesso!'
 

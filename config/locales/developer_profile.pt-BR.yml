@@ -23,3 +23,5 @@
           submit: 'Atualizar Perfil'
         update:
           success: 'Perfil atualizado com sucesso'
+        create:
+          success: 'Perfil atualizado com sucesso'

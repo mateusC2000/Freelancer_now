@@ -1,4 +1,4 @@
-FROM ruby:3.0.1
+FROM ruby:3.3.5
 
 ENV NODE_VERSION 12
 ENV INSTALL_PATH /opt/app

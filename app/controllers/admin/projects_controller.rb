@@ -1,9 +1,13 @@
 class Admin::ProjectsController < ProjectOwnersController
   before_action :set_project, only: %i[show edit update]
 
+  def show; end
+
   def new
     @project = Project.new
   end
+
+  def edit; end
 
   def create
     @project = Project.new(project_params)
@@ -15,13 +19,9 @@ class Admin::ProjectsController < ProjectOwnersController
     end
   end
 
-  def show; end
-
   def my_projects
     @projects = current_project_owner.projects
   end
-
-  def edit; end
 
   def update
     if @project.update(project_params)

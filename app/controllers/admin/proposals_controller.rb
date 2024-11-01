@@ -3,12 +3,12 @@ class Admin::ProposalsController < ProjectOwnersController
 
   def accept
     @proposal.accepted!
-    redirect_to [:admin, @proposal.project], notice: 'Proposta aceita com sucesso!'
+    redirect_to [:admin, @proposal.project], notice: t('.proposal_accepted')
   end
 
   def recused
     @proposal.recused!
-    redirect_to [:admin, @proposal.project], notice: 'Proposta recusada com sucesso!'
+    redirect_to [:admin, @proposal.project], notice: t('.proposal_rejected')
   end
 
   def candidate_profile

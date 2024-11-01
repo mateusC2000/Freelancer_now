@@ -9,7 +9,7 @@ proposta referente ao mesmo. Os donos de projetos cadastram seus projetos e aval
 ## Pré-requisitos:
 
  * Docker 20.10.11
- * Ruby 3.0.1
+ * Ruby 3.3.5
  * Rails 6.1.4.1
 
 ### Gems Complementares

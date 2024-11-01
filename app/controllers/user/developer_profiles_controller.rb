@@ -7,17 +7,17 @@ class User::DeveloperProfilesController < DevelopersController
     @developer_profile = DeveloperProfile.new
   end
 
+  def edit; end
+
   def create
     @developer_profile = DeveloperProfile.new(profile_params)
     @developer_profile.developer = current_developer
     if @developer_profile.save
-      redirect_to [:user, @developer_profile], notice: 'Perfil atualizado com sucesso!'
+      redirect_to [:user, @developer_profile], notice: t('.success')
     else
       render :new
     end
   end
-
-  def edit; end
 
   def update
     if @developer_profile.update(profile_params)

@@ -3,6 +3,6 @@ class ProposalMailer < ApplicationMailer
     @proposal = Proposal.find(params[:proposal])
     @project_owner = @proposal.project.project_owner
     mail(to: @project_owner.email,
-         subject: 'Nova proposta para seu projeto')
+         subject: t('mailer.new_proposal_subject'))
   end
 end

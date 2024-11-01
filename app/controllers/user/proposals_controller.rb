@@ -5,6 +5,10 @@ class User::ProposalsController < DevelopersController
     @proposals = current_developer.proposals
   end
 
+  def show
+    @proposal = Proposal.find(params[:id])
+  end
+
   def create
     @proposal = current_developer.proposals.new(proposal_params)
     @proposal.project = @project
@@ -14,10 +18,6 @@ class User::ProposalsController < DevelopersController
     else
       render 'user/projects/show'
     end
-  end
-
-  def show
-    @proposal = Proposal.find(params[:id])
   end
 
   def canceled

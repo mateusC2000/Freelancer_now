@@ -34,7 +34,7 @@ class Api::V1::ApiController < ActionController::API
     return unless auth_header
 
     token = auth_header.split[1]
-    JWT.decode(token, ENV['JWT_SECRET'], false, algorithm: 'HS256')
+    JWT.decode(token, ENV.fetch('JWT_SECRET', nil), false, algorithm: 'HS256')
   end
 
   def require_login
@@ -42,7 +42,7 @@ class Api::V1::ApiController < ActionController::API
   end
 
   def encode_token(payload)
-    JWT.encode(payload, ENV['JWT_SECRET'])
+    JWT.encode(payload, ENV.fetch('JWT_SECRET', nil))
   end
 
   def render_not_found

@@ -7,7 +7,7 @@ describe 'project API' do
       pj = create(:project, title: 'Desenvolvimento de Apps')
       create(:project, title: 'Desenvolvimento de Sites')
       create(:proposal, project: pj, developer: dev)
-      token = JWT.encode(dev.email, ENV['JWT_SECRET'])
+      token = JWT.encode(dev.email, ENV.fetch('JWT_SECRET', nil))
 
       get '/api/v1/projects', headers: { 'Authorization' => "Bearer #{token}" }
       expect(response).to have_http_status(200)
@@ -31,7 +31,7 @@ describe 'project API' do
 
     it 'returns no projects' do
       dev = create(:developer)
-      token = JWT.encode(dev.email, ENV['JWT_SECRET'])
+      token = JWT.encode(dev.email, ENV.fetch('JWT_SECRET', nil))
 
       get '/api/v1/projects', headers: { 'Authorization' => "Bearer #{token}" }
 
@@ -48,7 +48,7 @@ describe 'project API' do
                                  requirements: 'Saber back e front',
                                  maximum_value_per_hour: 40,
                                  working_model: 1)
-      token = JWT.encode(dev.email, ENV['JWT_SECRET'])
+      token = JWT.encode(dev.email, ENV.fetch('JWT_SECRET', nil))
 
       get "/api/v1/projects/#{project.id}", headers: { 'Authorization' => "Bearer #{token}" }
 
@@ -83,7 +83,7 @@ describe 'project API' do
 
     it 'should return 404 if project does not exist' do
       dev = create(:developer)
-      token = JWT.encode(dev.email, ENV['JWT_SECRET'])
+      token = JWT.encode(dev.email, ENV.fetch('JWT_SECRET', nil))
 
       get '/api/v1/projects/999', headers: { 'Authorization' => "Bearer #{token}" }
 
@@ -98,7 +98,7 @@ describe 'project API' do
                                  requirements: 'Saber back e front',
                                  maximum_value_per_hour: 40,
                                  working_model: 1)
-      token = JWT.encode(dev.email, ENV['JWT_SECRET'])
+      token = JWT.encode(dev.email, ENV.fetch('JWT_SECRET', nil))
 
       allow(Project).to receive(:find).with(project.id.to_s).and_raise(ActiveRecord::ActiveRecordError)
 
