@@ -44,10 +44,6 @@ jobs:
           cp config/database.yml.ci config/database.yml
           bundle exec rails db:create db:migrate
 
-      - name: Precompilar assets
-        run: |
-          bundle exec rails assets:precompile
-
       - name: Rodar testes
         run: |
           bundle exec rspec
