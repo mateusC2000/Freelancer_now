@@ -34,5 +34,7 @@ jobs:
           cp config/database.yml.ci config/database.yml
           bundle exec rails db:create db:migrate
 
-      - name: Rodar testes
-        run: bundle exec rspec
+      - name: Rodar testes dentro do Docker
+        run: |
+          docker-compose up
+          docker exec -T freelancer_now bundle exec rspec
