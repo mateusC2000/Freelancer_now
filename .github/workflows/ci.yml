@@ -24,7 +24,17 @@ jobs:
         with:
           ruby-version: '3.3.5'
 
-      - name: Instalar dependências
+      - name: Instalar Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Instalar dependências do Node.js
+        run: |
+          corepack enable
+          yarn install --check-files
+
+      - name: Instalar dependências do Ruby
         run: |
           gem install bundler
           bundle install
@@ -34,7 +44,10 @@ jobs:
           cp config/database.yml.ci config/database.yml
           bundle exec rails db:create db:migrate
 
-      - name: Rodar testes dentro do Docker
+      - name: Precompilar assets
         run: |
-          docker compose run --rm app bash
-          rspec
+          bundle exec rails assets:precompile
+
+      - name: Rodar testes
+        run: |
+          bundle exec rspec
