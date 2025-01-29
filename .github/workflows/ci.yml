@@ -3,7 +3,7 @@ name: CI
 on: [push, pull_request]
 
 jobs:
-  test:
+  run_tests:
     runs-on: ubuntu-latest
     services:
       postgres:
@@ -16,34 +16,34 @@ jobs:
           - 5432:5432
 
     steps:
-      - name: Checkout do código
+      - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Configurar Ruby
+      - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.3.5'
 
-      - name: Instalar Node.js
+      - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '18'
 
-      - name: Instalar dependências do Node.js
+      - name: Install Node.js dependencies
         run: |
           corepack enable
           yarn install --check-files
 
-      - name: Instalar dependências do Ruby
+      - name: Install Ruby dependencies
         run: |
           gem install bundler
           bundle install
 
-      - name: Configurar banco de dados
+      - name: Set up database
         run: |
           cp config/database.yml.ci config/database.yml
           bundle exec rails db:create db:migrate
 
-      - name: Rodar testes
+      - name: Run tests
         run: |
           bundle exec rspec
