@@ -28,9 +28,6 @@ jobs:
         run: |
           gem install bundler
           bundle install
-          sudo apt-get update
-          sudo apt-get install -y nodejs npm
-          npm install bootstrap
 
       - name: Configurar banco de dados
         run: |
@@ -39,4 +36,5 @@ jobs:
 
       - name: Rodar testes dentro do Docker
         run: |
-          docker compose run --rm app bash -c "rspec"
+          docker compose run --rm app bash
+          rspec
