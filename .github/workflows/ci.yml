@@ -36,5 +36,4 @@ jobs:
 
       - name: Rodar testes dentro do Docker
         run: |
-          docker compose up
-          docker exec -T freelancer_now bundle exec rspec
+          docker compose run --rm app bash -c "rspec"
