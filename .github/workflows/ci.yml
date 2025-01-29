@@ -1,0 +1,38 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:latest
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: test_db
+        ports:
+          - 5432:5432
+
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v3
+
+      - name: Configurar Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3.5'
+
+      - name: Instalar dependências
+        run: |
+          gem install bundler
+          bundle install
+
+      - name: Configurar banco de dados
+        run: |
+          cp config/database.yml.ci config/database.yml
+          bundle exec rails db:create db:migrate
+
+      - name: Rodar testes
+        run: bundle exec rspec
